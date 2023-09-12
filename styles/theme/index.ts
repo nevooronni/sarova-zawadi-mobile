@@ -2,7 +2,9 @@
  * App Main Colors
  */
 
-const colors = {
+import { Color } from "../../types/colors";
+
+const colors: Color = {
   // Primary
   red: '#b23440',
   darkRed: '#640200',
