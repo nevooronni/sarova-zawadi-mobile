@@ -1,3 +1,4 @@
+import React from 'react';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
@@ -5,6 +6,7 @@ import { SplashScreen, Stack } from 'expo-router';
 import { useEffect } from 'react';
 import { useColorScheme } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import Lottie from 'lottie-react-native'
 import Home from './home';
 
 export {
@@ -45,11 +47,30 @@ export default function RootLayout() {
 }
 
 function RootLayoutNav() {
+  const [showAnimation, setShowAnimation] = React.useState<boolean>(false)
   const colorScheme = useColorScheme();
 
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <SafeAreaProvider>
+        {showAnimation ? <Lottie
+            // ref={animationRef}
+            source={require('../animations/animation_spinner_one.json')}
+            loop
+            autoPlay
+            style={{ 
+              width: 60, 
+              height: 60,
+              alignSelf: 'center', 
+              zIndex: 1,
+              position: 'absolute', 
+              top: 155, 
+              left: 80,
+            }}
+            onAnimationFinish={() => {
+              setShowAnimation(false)
+            }}
+          /> : null}
         <Home />
       </SafeAreaProvider>
     </ThemeProvider>

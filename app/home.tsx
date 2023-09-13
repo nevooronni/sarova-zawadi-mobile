@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Text, SafeAreaView, View, Platform, RefreshControl, StyleSheet, Button, TouchableOpacity, ImageBackground, Dimensions, Modal, Pressable } from 'react-native';
+import { Text, SafeAreaView, View, StyleSheet, TouchableOpacity, ImageBackground, Dimensions, Modal, Pressable } from 'react-native';
 import colors from '../styles/theme';
 import { FontAwesome } from '@expo/vector-icons';
-import { Link, useRouter } from "expo-router";
+import { useRouter } from "expo-router";
 
 const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
@@ -18,28 +18,28 @@ export default function Home():JSX.Element {
         <ImageBackground
           source={backgroundImage}
           resizeMode="stretch"
-          style={styles.container}
+          style={loginStyles.container}
         > 
           {!modalVisible ? 
             <>
               <View style={{ flexDirection: 'row', justifyContent: 'space-around', width: '100%', paddingTop: 520 }}>
                 <TouchableOpacity
-                  style={styles.joinButton}
+                  style={loginStyles.joinButton}
                   onPress={() => {}}
                 >
-                  <Text style={styles.joinText}>Join</Text>
+                  <Text style={loginStyles.joinText}>Join</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-                  style={styles.loginButton}
+                  style={loginStyles.loginButton}
                   onPress={() => {}}
                 >
-                  <Text style={styles.loginText}>Sign in</Text>
+                  <Text style={loginStyles.loginText}>Sign in</Text>
                 </TouchableOpacity>
               </View>
               <TouchableOpacity
                 onPress={() => setModalVisible(true)}
               >
-                <Text style={styles.whyText}>Why Join?</Text>
+                <Text style={loginStyles.whyText}>Why Join?</Text>
               </TouchableOpacity> 
             </>
           : null}
@@ -67,8 +67,8 @@ function WhyJoinModal({ modalVisible, setModalVisible }:
         setModalVisible(!modalVisible);
       }}
     >
-      <View style={styles.centeredView}>
-        <View style={styles.modalView}>
+      <View style={loginStyles.centeredView}>
+        <View style={loginStyles.modalView}>
           <FontAwesome 
             name='close' 
             size={iconsSize} 
@@ -76,17 +76,17 @@ function WhyJoinModal({ modalVisible, setModalVisible }:
             style={{ marginBottom: 10 }} 
             onPress={() => setModalVisible(!modalVisible)}
           />
-          <Text style={styles.modalHeader}>Experience More Benefits, </Text>
-          <Text style={styles.modalHeader}>Priviledges and Rewards</Text>
-          <Text style={styles.modalHeaderDesc}>Members can earn redeem and enjoy exclusive benefits at all our sarova brands country wide.</Text>
-          <Text style={styles.modalSubHeader}>Priviledges and Rewards</Text>
-          <Text style={styles.modalText}>Members can earn redeem and enjoy exclusive benefits at all our sarova brands country wide.</Text>
-          <Text style={styles.modalSubHeader}>Points on the go</Text>
-          <Text style={styles.modalText}>Earn points is as simple as staying at any of our Sarova Hotels. Resorts and Game lodges. You can earn points on all eligible offerings</Text>
-          <Text style={styles.modalSubHeader}>Time to treat yourself</Text>
-          <Text style={styles.modalText}>Use your points for free nights at our hotels, dinner at any of our restaurants, VIP access and more.</Text>
-          <Pressable onPress={() => router.replace('/auth/join')} style={[styles.loginButton, { alignSelf: 'center', marginTop: 5 }]}>
-            <Text style={styles.loginText}>Join</Text>
+          <Text style={loginStyles.modalHeader}>Experience More Benefits, </Text>
+          <Text style={loginStyles.modalHeader}>Priviledges and Rewards</Text>
+          <Text style={loginStyles.modalHeaderDesc}>Members can earn redeem and enjoy exclusive benefits at all our sarova brands country wide.</Text>
+          <Text style={loginStyles.modalSubHeader}>Priviledges and Rewards</Text>
+          <Text style={loginStyles.modalText}>Members can earn redeem and enjoy exclusive benefits at all our sarova brands country wide.</Text>
+          <Text style={loginStyles.modalSubHeader}>Points on the go</Text>
+          <Text style={loginStyles.modalText}>Earn points is as simple as staying at any of our Sarova Hotels. Resorts and Game lodges. You can earn points on all eligible offerings</Text>
+          <Text style={loginStyles.modalSubHeader}>Time to treat yourself</Text>
+          <Text style={loginStyles.modalText}>Use your points for free nights at our hotels, dinner at any of our restaurants, VIP access and more.</Text>
+          <Pressable onPress={() => router.replace('/auth/join')} style={[loginStyles.loginButton, { alignSelf: 'center', marginTop: 5 }]}>
+            <Text style={loginStyles.loginText}>Join</Text>
           </Pressable>
         </View>
       </View>
@@ -94,7 +94,7 @@ function WhyJoinModal({ modalVisible, setModalVisible }:
   )
 }
 
-const styles = StyleSheet.create({
+export const loginStyles = StyleSheet.create({
   container: {
     height: screenHeight,
     width: screenWidth,
