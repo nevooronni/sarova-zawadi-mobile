@@ -10,6 +10,7 @@ const colors: Color = {
   darkRed: '#640200',
   lightGray: '#959090',
   mediumGray: '#575051',
+  darkGray: '#6c6666',
   green: '#046465',
   lightGreen: '#3eb334',
   black: '#000000',

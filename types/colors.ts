@@ -3,6 +3,7 @@ export interface Color {
   darkRed: string;
   lightGray: string;
   mediumGray: string;
+  darkGray: string;
   green: string;
   lightGreen: string;
   black: string;
