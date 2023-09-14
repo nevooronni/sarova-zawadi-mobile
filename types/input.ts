@@ -1,9 +1,17 @@
 import { KeyboardTypeOptions, NativeSyntheticEvent, ReturnKeyTypeOptions, Text, TextInput, TextInputSubmitEditingEventData, View } from "react-native";
 
+// type Errors = {
+//   message: string
+// }
 export interface InputText {
-  value: string;
+  name: string;
+  value?: string;
   label?: string;
   width?: string | number;
+  errors?: any;
+  control?: any; 
+  errorMessage?: string;
+  isRequired?: boolean;
   keyboardType?: KeyboardTypeOptions | undefined;
   multiline?: boolean | undefined; 
   onSubmitEditing?:  ((e: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => void) | undefined;

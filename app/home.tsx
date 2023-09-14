@@ -12,40 +12,36 @@ export default function Home():JSX.Element {
   const [modalVisible, setModalVisible] = useState<boolean>(false);
 
   return (
-    <SafeAreaView>
-      <View>
-        <WhyJoinModal modalVisible={modalVisible} setModalVisible={setModalVisible} />
-        <ImageBackground
-          source={backgroundImage}
-          resizeMode="stretch"
-          style={loginStyles.container}
-        > 
-          {!modalVisible ? 
-            <>
-              <View style={{ flexDirection: 'row', justifyContent: 'space-around', width: '100%', paddingTop: 520 }}>
-                <TouchableOpacity
-                  style={loginStyles.joinButton}
-                  onPress={() => {}}
-                >
-                  <Text style={loginStyles.joinText}>Join</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                  style={loginStyles.loginButton}
-                  onPress={() => {}}
-                >
-                  <Text style={loginStyles.loginText}>Sign in</Text>
-                </TouchableOpacity>
-              </View>
-              <TouchableOpacity
-                onPress={() => setModalVisible(true)}
-              >
-                <Text style={loginStyles.whyText}>Why Join?</Text>
-              </TouchableOpacity> 
-            </>
-          : null}
-        </ImageBackground>
-      </View>
-    </SafeAreaView>
+    <ImageBackground
+      source={backgroundImage}
+      resizeMode="stretch"
+      style={loginStyles.container}
+    > 
+      <WhyJoinModal modalVisible={modalVisible} setModalVisible={setModalVisible} />
+      {!modalVisible ? 
+        <>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-around', width: '100%', paddingTop: '120%' }}>
+            <TouchableOpacity
+              style={loginStyles.joinButton}
+              onPress={() => {}}
+            >
+              <Text style={loginStyles.joinText}>Join</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={loginStyles.loginButton}
+              onPress={() => {}}
+            >
+              <Text style={loginStyles.loginText}>Sign in</Text>
+            </TouchableOpacity>
+          </View>
+          <TouchableOpacity
+            onPress={() => setModalVisible(true)}
+          >
+            <Text style={loginStyles.whyText}>Why Join?</Text>
+          </TouchableOpacity> 
+        </>
+      : null}
+    </ImageBackground>
   );
 }
 
@@ -73,7 +69,7 @@ function WhyJoinModal({ modalVisible, setModalVisible }:
             name='close' 
             size={iconsSize} 
             color={iconColor} 
-            style={{ marginBottom: 10 }} 
+            style={{ marginBottom: 10, marginTop: -15, color: '#71716F', }} 
             onPress={() => setModalVisible(!modalVisible)}
           />
           <Text style={loginStyles.modalHeader}>Experience More Benefits, </Text>
@@ -103,37 +99,37 @@ export const loginStyles = StyleSheet.create({
   },
   joinButton: {
     backgroundColor: 'white',
-    width: 140,
+    width: 135,
     paddingHorizontal: 5,
-    paddingVertical: 14,
+    paddingVertical: 10,
     borderRadius: 6,
     fontSize: 18,
   },
   loginButton: {
     backgroundColor: colors?.red,
-    width: 140,
+    width: 135,
     paddingHorizontal: 5,
-    paddingVertical: 14,
+    paddingVertical: 10,
     borderRadius: 6,
   },
   joinText: {
     color: 'red',
     alignSelf: 'center',
-    fontWeight: '500',
-    fontSize: 17,
+    // fontWeight: '500',
+    fontSize: 14,
   },
   loginText: {
     color: 'white',
     alignSelf: 'center',
-    fontWeight: '500',
-    fontSize: 17,
+    // fontWeight: '500',
+    fontSize: 14,
   },
   whyText: {
     color: 'white',
     alignSelf: 'center',
     fontWeight: '500',
-    marginTop: 50,
-    fontSize: 16,
+    marginTop: 42,
+    fontSize: 12,
   },
   centeredView: {
     flex: 1,
@@ -147,7 +143,7 @@ export const loginStyles = StyleSheet.create({
     margin: 20,
     backgroundColor: 'white',
     borderRadius: 15,
-    padding: 35,
+    padding: 30,
     alignItems: 'flex-start',
     shadowColor: '#000',
     shadowOffset: {

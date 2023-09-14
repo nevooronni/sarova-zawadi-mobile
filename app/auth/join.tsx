@@ -1,79 +1,134 @@
-import React, { useState } from 'react';
-import { Text, SafeAreaView, View, Platform, RefreshControl, StyleSheet, Button, TouchableOpacity, ImageBackground, Dimensions, Modal, Pressable, TextInput } from 'react-native';
+import React from 'react';
+import { Text, SafeAreaView, View, Dimensions, TouchableOpacity, Platform } from 'react-native';
+import { useForm } from "react-hook-form"
 import colors from '../../styles/theme';
-import { FontAwesome } from '@expo/vector-icons';
 import { useRouter } from "expo-router";
 import WPTextInput from '../../components/Input/WPTextInput';
 import { loginStyles } from '../home';
+import { ScrollView } from 'react-native-gesture-handler';
+import { useAppActions, useAppState } from '../../store';
+import SpinnerLoader from '../../components/Loaders/Spinner';
 
-const screenHeight = Dimensions.get('window').height;
-const screenWidth = Dimensions.get('window').width;
-const backgroundImage = require('../../assets/images/sarova-background.png/')
+type FormData = {
+  first_name: string
+  last_name: string
+  country_region: string
+  email: string
+  id_passport: string
+  password: string
+  confirm_password: string
+}
 
 export default function Join():JSX.Element {
+  const state = useAppState()
+  const { setIsLoading, setFullName } = useAppActions()
+  const { control, handleSubmit, formState: { errors }} = useForm<FormData>()
   const router = useRouter()
-  const [modalVisible, setModalVisible] = useState<boolean>(false);
-  const [text, onChangeText] = React.useState('Useless Text');
-  const [number, onChangeNumber] = React.useState('');
+  const onSubmit = (data: FormData) => {
+    setIsLoading(true)
+    setFullName(data?.first_name)
+
+    setTimeout(() => {
+      setIsLoading(false)
+      router.replace('/auth/login')
+    }, 3000)
+  }
+
   return (
     <SafeAreaView>
-      <View style={{ padding: 30, gap: 20 }}>
+      <SpinnerLoader
+        isLoading={state.isLoading}
+        color={colors?.red}
+      />
+      <ScrollView
+        contentContainerStyle={{
+          paddingTop: Platform.select({ ios: 30 }),
+          paddingBottom: 20
+        }}
+      >
+      <View style={{ justifyContent: 'center', paddingHorizontal: 28, gap: 18, height: '100%' }}>
         <View style={{ flexDirection: 'row', justifyContent: 'flex-start' }}>
           <Text style={{ color: colors?.red, fontSize: 28, fontWeight: 'normal' }}>Join</Text>
         </View>
         <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
           <WPTextInput
+            name='first_name'
             label='First Name'
             placeholder='Enter first name'
-            value={text}
+            control={control}
+            errors={errors}
+            errorMessage='* First name is required'
+            isRequired
             width='46%'
-            onChangeText={onChangeText}
           />
           <WPTextInput
+            name='last_name'
+            label='Last Name'
+            placeholder='Enter first name'
+            control={control}
+            errors={errors}
+            errorMessage='* Last name is required'
+            isRequired
             width='46%'
-            label='First Name'
-            onChangeText={onChangeNumber}
-            value={number}
-            placeholder='Enter last name'
           />
         </View>
         <View style={{ flexDirection: 'row', justifyContent: 'flex-start' }}>
           <WPTextInput
+            name='country_region'
             label='Country/Region'
             placeholder='Enter country/region'
-            value=''
+            control={control}
+            errors={errors}
+            errorMessage='* country/region is required'
+            isRequired
             width='100%'
           />
         </View>
         <View style={{ flexDirection: 'row', justifyContent: 'flex-start' }}>
           <WPTextInput
+            name='email'
             label='Email Address'
             placeholder='Enter email address'
-            value=''
+            control={control}
+            errors={errors}
+            errorMessage='* email is required'
+            isRequired
             width='100%'
           />
         </View>
         <View style={{ flexDirection: 'row', justifyContent: 'flex-start' }}>
           <WPTextInput
+            name='id_passport'
             label='ID/Passport Number'
             placeholder='Enter ID/passport number'
-            value=''
+            control={control}
+            errors={errors}
+            errorMessage='* id/passport is required'
+            isRequired
             width='100%'
           />
         </View>
         <View style={{ flexDirection: 'row', justifyContent: 'flex-start' }}>
           <WPTextInput
+            name='password'
             label='Password'
             placeholder='Enter password'
-            value=''
+            control={control}
+            errors={errors}
+            errorMessage='* password is required'
+            isRequired
             width='100%'
           />
         </View>
         <View style={{ flexDirection: 'row', justifyContent: 'flex-start' }}>
           <WPTextInput
+            name='confirm_password'
             label='Confirm Password'
             placeholder='Enter confirm password'
-            value=''
+            control={control}
+            errors={errors}
+            errorMessage='* confirm password is required'
+            isRequired
             width='100%'
           />
         </View>
@@ -83,118 +138,23 @@ export default function Join():JSX.Element {
           </Text>
         </View>
         <View>
-          <Pressable onPress={() => router.replace('/auth/join')} style={[styles.loginButton, { alignSelf: 'center', marginTop: 5 }]}>
+          <TouchableOpacity
+            style={[loginStyles.loginButton, , { alignSelf: 'center', marginTop: 5 }]}
+            onPress={handleSubmit(onSubmit)} 
+          >
             <Text style={loginStyles.loginText}>Join</Text>
-          </Pressable>
+          </TouchableOpacity>
         </View>
+        {/* <TouchableOpacity
+            style={[loginStyles.loginButton, , { alignSelf: 'center', marginTop: 5 }]}
+            onPress={handleSubmit(onSubmit)} 
+          >
+          <Text style={loginStyles.loginText}>Test store</Text>
+        </TouchableOpacity> */}
       </View>
+      </ScrollView>
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    height: screenHeight,
-    width: screenWidth,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  joinButton: {
-    backgroundColor: 'white',
-    width: 140,
-    paddingHorizontal: 5,
-    paddingVertical: 14,
-    borderRadius: 6,
-    fontSize: 18,
-  },
-  loginButton: {
-    backgroundColor: colors?.red,
-    width: 140,
-    paddingHorizontal: 5,
-    paddingVertical: 14,
-    borderRadius: 6,
-  },
-  joinText: {
-    color: 'red',
-    alignSelf: 'center',
-    fontWeight: '500',
-    fontSize: 17,
-  },
-  loginText: {
-    color: 'white',
-    alignSelf: 'center',
-    fontWeight: '500',
-    fontSize: 17,
-  },
-  whyText: {
-    color: 'white',
-    alignSelf: 'center',
-    fontWeight: '500',
-    marginTop: 50,
-    fontSize: 16,
-  },
-  centeredView: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 22,
-  },
-  modalView: {
-    // height: '70%',
-    width: '86%',
-    margin: 20,
-    backgroundColor: 'white',
-    borderRadius: 15,
-    padding: 35,
-    alignItems: 'flex-start',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
-  },
-  button: {
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2,
-  },
-  buttonOpen: {
-    backgroundColor: '#F194FF',
-  },
-  buttonClose: {
-    backgroundColor: '#2196F3',
-  },
-  textStyle: {
-    color: 'white',
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-  modalHeader: {
-    textAlign: 'left',
-    color: colors?.red,
-    fontSize: 19,
-    fontWeight: '500',
-  },
-  modalSubHeader: {
-    textAlign: 'left',
-    fontSize: 19,
-    fontWeight: '500',
-    marginTop: 16,
-    marginBottom: 5,
-  },
-  modalHeaderDesc: {
-    marginTop: 15,
-    fontSize: 12,
-    color: colors?.mediumGray,
-  },
-  modalText: {
-    marginBottom: 15,
-    textAlign: 'left',
-    color: '#726c6d',
-  },
-})
 
 
