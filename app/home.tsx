@@ -9,39 +9,42 @@ const screenWidth = Dimensions.get('window').width;
 const backgroundImage = require('../assets/images/sarova-background.png/')
 
 export default function Home():JSX.Element {
+  const router = useRouter()
   const [modalVisible, setModalVisible] = useState<boolean>(false);
 
   return (
-    <ImageBackground
-      source={backgroundImage}
-      resizeMode="stretch"
-      style={loginStyles.container}
-    > 
-      <WhyJoinModal modalVisible={modalVisible} setModalVisible={setModalVisible} />
-      {!modalVisible ? 
-        <>
-          <View style={{ flexDirection: 'row', justifyContent: 'space-around', width: '100%', paddingTop: '120%' }}>
+    <View style={loginStyles.backgroundContainer}>
+      <ImageBackground
+        source={backgroundImage}
+        resizeMode="stretch"
+        style={loginStyles.container}
+      > 
+        <WhyJoinModal modalVisible={modalVisible} setModalVisible={setModalVisible} />
+        {!modalVisible ? 
+          <>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-around', width: '100%', paddingTop: '120%' }}>
+              <TouchableOpacity
+                style={loginStyles.joinButton}
+                onPress={() => router.replace('/auth/join')}
+              >
+                <Text style={loginStyles.joinText}>Join</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={loginStyles.loginButton}
+                onPress={() => router.replace('/auth/login')}
+              >
+                <Text style={loginStyles.loginText}>Sign in</Text>
+              </TouchableOpacity>
+            </View>
             <TouchableOpacity
-              style={loginStyles.joinButton}
-              onPress={() => {}}
+              onPress={() => setModalVisible(true)}
             >
-              <Text style={loginStyles.joinText}>Join</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={loginStyles.loginButton}
-              onPress={() => {}}
-            >
-              <Text style={loginStyles.loginText}>Sign in</Text>
-            </TouchableOpacity>
-          </View>
-          <TouchableOpacity
-            onPress={() => setModalVisible(true)}
-          >
-            <Text style={loginStyles.whyText}>Why Join?</Text>
-          </TouchableOpacity> 
-        </>
-      : null}
-    </ImageBackground>
+              <Text style={loginStyles.whyText}>Why Join?</Text>
+            </TouchableOpacity> 
+          </>
+        : null}
+      </ImageBackground>
+    </View>
   );
 }
 
@@ -91,9 +94,14 @@ function WhyJoinModal({ modalVisible, setModalVisible }:
 }
 
 export const loginStyles = StyleSheet.create({
+  backgroundContainer: {
+    flex: 1,
+    flexDirection: 'column',
+  },
   container: {
     height: screenHeight,
     width: screenWidth,
+    resizeMode: 'cover',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -101,16 +109,15 @@ export const loginStyles = StyleSheet.create({
     backgroundColor: 'white',
     width: 135,
     paddingHorizontal: 5,
-    paddingVertical: 10,
+    paddingVertical: 14,
     borderRadius: 6,
-    fontSize: 18,
   },
   loginButton: {
     backgroundColor: colors?.red,
-    width: 135,
     paddingHorizontal: 5,
-    paddingVertical: 10,
+    paddingVertical: 14,
     borderRadius: 6,
+    width: 135,
   },
   joinText: {
     color: 'red',

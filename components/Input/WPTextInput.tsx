@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, TextInput, View, StyleSheet, Platform } from "react-native";
-import { useForm, Controller } from "react-hook-form"
+import { Controller } from "react-hook-form"
 import { InputText } from '../../types/input';
 import colors from '../../styles/theme';
 
@@ -11,14 +11,21 @@ export function WPTextInputUncontrolled({
   width,
   errors,
   errorMessage,
-  isRequired,
   keyboardType, 
   multiline, 
   onSubmitEditing ,
   returnKeyType,
   onChangeText,
   placeholder,
+  customStyles, 
+  customRequiredStyles,
+  placeholderTextColor,
+  secureTextEntry,
+  defaultValue
 }: InputText):JSX.Element {
+  const selectStyles = customStyles ? [styles.inputStyle, customStyles] : styles.inputStyle
+  const selectRequiredStyles = customRequiredStyles ? [styles.requiredStyle, customRequiredStyles] : styles.requiredStyle
+
   return (
     //@ts-ignore
     <View style={{ width: width }}>
@@ -31,15 +38,17 @@ export function WPTextInputUncontrolled({
         keyboardType={keyboardType}
         value={value}
         placeholder={placeholder}
-        style={styles.inputStyle}
+        style={selectStyles}
+        defaultValue={defaultValue}
+        secureTextEntry={secureTextEntry}
+        placeholderTextColor={placeholderTextColor}
       />
-        {errors?.[name] && <Text>{errorMessage}</Text>}
+        {errors?.[name] && <Text style={selectRequiredStyles}>{errorMessage}</Text>}
       </View>
   )
 }
 export default function WPTextInput({ 
   name,
-  value, 
   label,
   width,
   control,
@@ -50,9 +59,17 @@ export default function WPTextInput({
   multiline, 
   onSubmitEditing ,
   returnKeyType,
-  onChangeText,
+  // onChangeText,
   placeholder,
+  customStyles, 
+  customRequiredStyles,
+  placeholderTextColor,
+  secureTextEntry,
+  defaultValue,
 }: InputText):JSX.Element {
+  const [secure, setSecure] = React.useState(true)
+  const selectStyles = customStyles ? [styles.inputStyle, customStyles] : styles.inputStyle
+  const selectRequiredStyles = customRequiredStyles ? [styles.requiredStyle, customRequiredStyles] : styles.requiredStyle
   return (
     //@ts-ignore
     <View style={{ width: width }}>
@@ -72,21 +89,25 @@ export default function WPTextInput({
               multiline={multiline}
               keyboardType={keyboardType}
               placeholder={placeholder}
-              style={styles.inputStyle}
+              style={selectStyles}
+              defaultValue={defaultValue}
+              secureTextEntry={secureTextEntry}
+              placeholderTextColor={placeholderTextColor}
             />
           )}
           name={name}
         />
-        {errors?.[name] && <Text style={styles.requiredStyle}>{errorMessage}</Text>}
+        {errors?.[name] && <Text style={selectRequiredStyles}>{errorMessage}</Text>}
     </View>
   )
 }
 
 const styles = StyleSheet.create({
   inputStyle: {
+    backgroundColor: 'white',
     borderColor: 'gray',
     borderWidth: 1,
-    paddingHorizontal: 8,
+    paddingHorizontal: 18,
     paddingVertical: Platform.OS === 'ios' ? 11 : 7,
     borderRadius: 4,
     width: '100%'

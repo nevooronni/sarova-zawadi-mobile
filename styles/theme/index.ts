@@ -6,7 +6,9 @@ import { Color } from "../../types/colors";
 
 const colors: Color = {
   // Primary
+  white: '#ffffff',
   red: '#b11f27',
+  bgRed: '#b23440',
   darkRed: '#640200',
   lightGray: '#959090',
   mediumGray: '#575051',

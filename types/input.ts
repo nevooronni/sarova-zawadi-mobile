@@ -18,4 +18,9 @@ export interface InputText {
   returnKeyType?: ReturnKeyTypeOptions | undefined; 
   onChangeText?: ((text: string) => void) | undefined;
   placeholder?: string;
+  customStyles?: any;
+  customRequiredStyles?: any;
+  secureTextEntry?: boolean | undefined;
+  placeholderTextColor?: string | undefined;
+  defaultValue?: string | undefined;
 }

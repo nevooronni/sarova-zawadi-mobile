@@ -1,16 +1,14 @@
 import React from 'react';
-import { Text, SafeAreaView, View, Dimensions, TouchableOpacity, Platform } from 'react-native';
+import { Text, SafeAreaView, View, TouchableOpacity, StyleSheet } from 'react-native';
+import { Image } from 'expo-image';
 import { useForm } from "react-hook-form"
 import colors from '../../styles/theme';
 import { useRouter } from "expo-router";
 import WPTextInput from '../../components/Input/WPTextInput';
 import { loginStyles } from '../home';
-import { ScrollView } from 'react-native-gesture-handler';
-import { useAppState } from '../../store';
+import { useAppActions, useAppState } from '../../store';
+import SpinnerLoader from '../../components/Loaders/Spinner';
 // import { setIsLoading, } from '../../store';
-
-const screenHeight = Dimensions.get('window').height;
-const screenWidth = Dimensions.get('window').width;
 
 type FormData = {
   first_name: string
@@ -24,59 +22,127 @@ type FormData = {
 
 export default function Login():JSX.Element {
   const state = useAppState()
+  const { setIsLoading } = useAppActions()
   const { control, handleSubmit, formState: { errors }} = useForm<FormData>()
   const router = useRouter()
   const onSubmit = (data: FormData) => {
-    // setIsLoading({ isLoading: true })
+    setIsLoading(true)
 
-    // setTimeout(() => {
-    //   setIsLoading({ isLoading: false })
-    //   // router.replace('/auth/login')
-    // }, 3000)
+    setTimeout(() => {
+      setIsLoading(false)
+      router.replace('/pages/landing')
+    }, 3000)
   }
+  const imageUrl = require('../../assets/images/sarova_zawadi.png')
 
   return (
-    <SafeAreaView>
-      <View style={{ justifyContent: 'center', paddingHorizontal: 28, gap: 18, height: '100%' }}>
-        <View style={{ flexDirection: 'row', justifyContent: 'flex-start' }}>
-          <Text style={{ color: colors?.red, fontSize: 28, fontWeight: 'normal' }}>Login</Text>
+      <View style={styles.container}>
+        <SpinnerLoader
+          isLoading={state.isLoading}
+          color={colors?.red}
+        />
+        <Image
+          style={styles.image}
+          source={imageUrl}
+          contentFit='contain'
+          transition={1000}
+        />
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingTop: 45 }}>
+          <WPTextInput
+            name='email'
+            placeholder='Enter email address'
+            control={control}
+            errors={errors}
+            defaultValue={state.email}
+            errorMessage='email is required'
+            isRequired
+            width='100%'
+            customStyles={{ height: 50, color: colors?.red }}
+            customRequiredStyles={{ color: colors?.white }}
+            placeholderTextColor={colors?.red}
+          />
         </View>
-        <View style={{ flexDirection: 'row', justifyContent: 'flex-start' }}>
-          <Text style={{ color: colors?.red, fontSize: 28, fontWeight: 'normal' }}>
-            {state?.userFullName ? `Welcome ${state?.userFullName}` : ''}
+        <View style={{ flexDirection: 'row', justifyContent: 'flex-start', paddingTop: 25 }}>
+          <WPTextInput
+            name='password'
+            placeholder='Enter password'
+            control={control}
+            errors={errors}
+            errorMessage='password is required'
+            isRequired
+            width='100%'
+            customStyles={{ height: 50, color: colors?.red }}
+            customRequiredStyles={{ color: colors?.white }}
+            placeholderTextColor={colors?.red}
+            secureTextEntry //to later implement eye icon
+          />
+        </View>
+        <View style={{ flexDirection: 'row', justifyContent: 'flex-end' }}>
+          <Text style={{ color: colors?.white, fontSize: 14, fontWeight: 'normal' }}>
+            Forgot Password?
           </Text>
         </View>
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-          <WPTextInput
-            name='first_name'
-            label='First Name'
-            placeholder='Enter first name'
-            control={control}
-            errors={errors}
-            errorMessage='* First name is required'
-            isRequired
-            width='46%'
-          />
-          <WPTextInput
-            name='last_name'
-            label='Last Name'
-            placeholder='Enter first name'
-            control={control}
-            errors={errors}
-            errorMessage='* Last name is required'
-            isRequired
-            width='46%'
-          />
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingTop: 30 }}>
+          <TouchableOpacity
+              style={styles.joinButton}
+              onPress={() => router.replace('/auth/join')} 
+            >
+            <Text style={styles.joinText}>Join</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+              style={styles.loginButton}
+              onPress={handleSubmit(onSubmit)} 
+              >
+            <Text style={styles.loginText}>Login</Text>
+          </TouchableOpacity>
         </View>
-        <TouchableOpacity
-            style={[loginStyles.loginButton, , { alignSelf: 'center', marginTop: 5 }]}
-            // onPress={() => setIsLoading(true)} 
-          >
-          <Text style={loginStyles.loginText}>Login</Text>
-        </TouchableOpacity>
       </View>
-    </SafeAreaView>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: colors?.bgRed,
+    justifyContent: 'flex-start', 
+    paddingTop: 70,
+    paddingHorizontal: 35, 
+    gap: 18, 
+    height: '100%',
+    resizeMode: 'cover'
+  },
+  joinButton: {
+    backgroundColor: 'transparent',
+    borderColor: colors?.white,
+    borderWidth: 1,
+    paddingHorizontal: 5,
+    paddingVertical: 14,
+    borderRadius: 6,
+    width: 135,
+  },
+  joinText: {
+    color: colors?.white,
+    fontSize: 18,
+    alignSelf: 'center',
+  },
+  loginButton: {
+    backgroundColor: colors?.darkRed,
+    paddingHorizontal: 5,
+    paddingVertical: 14,
+    borderRadius: 6,
+    width: 135,
+  },
+  loginText: {
+    color: colors?.white,
+    fontSize: 18,
+    alignSelf: 'center',
+  },
+  image: {
+    width: 160,
+    height: 160,
+    alignSelf: 'center',
+    // backgroundColor: '#0553',
+    backgroundColor: 'transparent',
+  },
+})
 
 

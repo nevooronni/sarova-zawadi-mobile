@@ -21,12 +21,13 @@ type FormData = {
 
 export default function Join():JSX.Element {
   const state = useAppState()
-  const { setIsLoading, setFullName } = useAppActions()
+  const { setIsLoading, setFullName, setEmail } = useAppActions()
   const { control, handleSubmit, formState: { errors }} = useForm<FormData>()
   const router = useRouter()
   const onSubmit = (data: FormData) => {
     setIsLoading(true)
     setFullName(data?.first_name)
+    setEmail(data?.email);
 
     setTimeout(() => {
       setIsLoading(false)
@@ -118,6 +119,7 @@ export default function Join():JSX.Element {
             errorMessage='* password is required'
             isRequired
             width='100%'
+            secureTextEntry //to later implement eye icon
           />
         </View>
         <View style={{ flexDirection: 'row', justifyContent: 'flex-start' }}>
@@ -130,6 +132,7 @@ export default function Join():JSX.Element {
             errorMessage='* confirm password is required'
             isRequired
             width='100%'
+            secureTextEntry //to later implement eye icon
           />
         </View>
         <View>
