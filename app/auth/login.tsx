@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, SafeAreaView, View, TouchableOpacity, StyleSheet } from 'react-native';
+import { Text, SafeAreaView, View, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
 import { Image } from 'expo-image';
 import { useForm } from "react-hook-form"
 import colors from '../../styles/theme';
@@ -36,6 +36,7 @@ export default function Login():JSX.Element {
   const imageUrl = require('../../assets/images/sarova_zawadi.png')
 
   return (
+    <SafeAreaView>
       <View style={styles.container}>
         <SpinnerLoader
           isLoading={state.isLoading}
@@ -97,6 +98,7 @@ export default function Login():JSX.Element {
           </TouchableOpacity>
         </View>
       </View>
+    </SafeAreaView>
   );
 }
 
@@ -108,7 +110,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 35, 
     gap: 18, 
     height: '100%',
-    resizeMode: 'cover'
+    // resizeMode: 'cover'
   },
   joinButton: {
     backgroundColor: 'transparent',

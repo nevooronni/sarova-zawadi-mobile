@@ -13,8 +13,10 @@ const colors: Color = {
   lightGray: '#959090',
   mediumGray: '#575051',
   darkGray: '#6c6666',
+  mediumGray2: '#707070',
   green: '#046465',
   lightGreen: '#3eb334',
+  shadeGreen: '#1c7576',
   black: '#000000',
 
   // 'hue-green': {

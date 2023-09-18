@@ -44,7 +44,7 @@ export default function Join():JSX.Element {
       <ScrollView
         contentContainerStyle={{
           paddingTop: Platform.select({ ios: 30 }),
-          paddingBottom: 20
+          paddingBottom: 20,
         }}
       >
       <View style={{ justifyContent: 'center', paddingHorizontal: 28, gap: 18, height: '100%' }}>

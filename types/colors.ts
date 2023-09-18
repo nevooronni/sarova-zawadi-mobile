@@ -5,8 +5,10 @@ export interface Color {
   darkRed: string;
   lightGray: string;
   mediumGray: string;
+  mediumGray2: string;
   darkGray: string;
   green: string;
+  shadeGreen: string;
   lightGreen: string;
   black: string;
 }
