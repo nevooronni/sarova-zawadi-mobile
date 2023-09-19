@@ -34,7 +34,7 @@ export default function Scan():JSX.Element {
           />
           <Text style={{ color: colors?.white, fontSize: 17, marginTop: 20 }}>Scan Text Code to earn points</Text>
         </View>
-        <View style={{ flexDirection: 'column', alignItems: 'center', backgroundColor: colors?.white, height: 400 }}>
+        <View style={{ flexDirection: 'column', alignItems: 'center', backgroundColor: colors?.white, height: 450 }}>
           <View style={{ flexDirection: 'row', justifyContent: 'space-around', width: '80%', paddingTop: 20 }}>
             <Pressable
               style={[loginStyles.loginButton, { alignSelf: 'center', marginTop: 5 }]}
@@ -53,7 +53,7 @@ export default function Scan():JSX.Element {
             <Image
               source={selectedImage}
               style={{
-                height:300,
+                height:330,
                 width: 280,
                 borderRadius: 5
               }}
@@ -63,7 +63,8 @@ export default function Scan():JSX.Element {
         <View style={{ 
           backgroundColor: colors?.white, 
           borderTopWidth: .5, 
-          paddingVertical: 50,
+          paddingTop: 20,
+          paddingBottom: 50,
           borderColor: colors?.mediumGray,
           justifyContent: 'center',
           alignItems: 'center',
