@@ -6,8 +6,9 @@ import colors from '../../styles/theme';
 import { DrawerNavigationState, NavigationContainer, ParamListBase } from "@react-navigation/native";
 import { DrawerItemList, createDrawerNavigator } from "@react-navigation/drawer";
 import { SimpleLineIcons } from "@expo/vector-icons";
-import { Home } from '../../app/pages/landing'
+import Home from '../../app/pages/home'
 import { DrawerDescriptorMap, DrawerNavigationHelpers } from '@react-navigation/drawer/lib/typescript/src/types';
+import Scan from '../../app/pages/scan';
 
 function Explore({ navigation }) {
   return (
@@ -40,6 +41,8 @@ type Props = {
 
 
 const DrawerContent = ({ props }: Props ) => {
+  console.log("🚀 ~ file: index.tsx:86 ~ DrawerContent ~ props:", props)
+
   return (
     <SafeAreaView style={{ backgroundColor: colors?.bgRed }}>
       <View style={{ paddingHorizontal: 15, paddingTop: 25 }}>
@@ -74,7 +77,7 @@ const DrawerContent = ({ props }: Props ) => {
         />
         <Text
           style={{
-            fontSize: 20,
+            fontSize: 17,
             marginVertical: 6,
             fontWeight: "bold",
             color: colors?.white
@@ -95,6 +98,7 @@ export default function Drawer() {
       name: 'Home',
       drawerLabel: 'Home',
       title: 'Home',
+      show: true,
       drawerIcon: undefined,
       component: Home
     },
@@ -103,6 +107,7 @@ export default function Drawer() {
       name: 'MyProfile',
       drawerLabel: 'My Profile',
       title: 'My Profile',
+      show: true,
       drawerIcon: undefined,
       component: MyProfile
     },
@@ -111,6 +116,7 @@ export default function Drawer() {
       name: 'MyStays',
       drawerLabel: 'My Stays',
       title: 'My Stays',
+      show: true,
       drawerIcon: undefined,
       component: Explore
     },
@@ -119,6 +125,7 @@ export default function Drawer() {
       name: 'Rewards',
       drawerLabel: 'Rewards',
       title: 'Rewards',
+      show: true,
       drawerIcon: undefined,
       component: Explore
     },
@@ -126,6 +133,7 @@ export default function Drawer() {
       id: 5,
       name: 'TellAFriend',
       drawerLabel: 'Tell A Friend',
+      show: true,
       title: 'Tell A Friend',
       drawerIcon: undefined,
       component: Explore
@@ -134,6 +142,7 @@ export default function Drawer() {
       id: 6,
       name: 'Inbox',
       drawerLabel: 'Inbox',
+      show: true,
       title: 'Inbox',
       drawerIcon: () => (
         <SimpleLineIcons 
@@ -148,7 +157,16 @@ export default function Drawer() {
         />
       ),
       component: Explore
-    }
+    },
+    {
+      id: 7,
+      name: 'Scan',
+      drawerLabel: 'Scan',
+      title: 'Scan',
+      show: true,
+      drawerIcon: undefined,
+      component: Scan
+    },
   ]
 
   return (
@@ -167,11 +185,10 @@ export default function Drawer() {
             drawerLabelStyle: {
               color: colors?.white,
               alignSelf: 'center',
-              fontSize: 16,
+              fontSize: 14,
             }
           }}
           drawerContent={(props) => <DrawerContent props={props} />}
-          
         >
           {tabs?.map((tab, i) => (
             <Drawer.Screen

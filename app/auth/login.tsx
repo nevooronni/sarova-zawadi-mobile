@@ -36,7 +36,8 @@ export default function Login():JSX.Element {
   const imageUrl = require('../../assets/images/sarova_zawadi.png')
 
   return (
-    <SafeAreaView>
+    <View style={{ flex: 1 }}>
+    <ScrollView contentContainerStyle={{flex:1}}>
       <View style={styles.container}>
         <SpinnerLoader
           isLoading={state.isLoading}
@@ -98,7 +99,8 @@ export default function Login():JSX.Element {
           </TouchableOpacity>
         </View>
       </View>
-    </SafeAreaView>
+      </ScrollView>
+    </View>
   );
 }
 
@@ -110,7 +112,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 35, 
     gap: 18, 
     height: '100%',
-    // resizeMode: 'cover'
   },
   joinButton: {
     backgroundColor: 'transparent',

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, SafeAreaView, View, StyleSheet, TouchableOpacity, ImageBackground, Dimensions, Modal, Pressable } from 'react-native';
+import { Text, SafeAreaView, View, StyleSheet, TouchableOpacity, ImageBackground, Dimensions, Modal, Pressable, ScrollView } from 'react-native';
 import colors from '../styles/theme';
 import { FontAwesome } from '@expo/vector-icons';
 import { useRouter } from "expo-router";
@@ -96,12 +96,17 @@ function WhyJoinModal({ modalVisible, setModalVisible }:
 export const loginStyles = StyleSheet.create({
   backgroundContainer: {
     flex: 1,
-    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
   },
   container: {
-    height: screenHeight,
-    width: screenWidth,
-    resizeMode: 'cover',
+    flex: 1,
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    // resizeMode: 'cover',
     justifyContent: 'center',
     alignItems: 'center',
   },

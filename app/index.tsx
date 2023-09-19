@@ -4,10 +4,9 @@ import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native
 import { useFonts } from 'expo-font';
 import { SplashScreen } from 'expo-router';
 import { useEffect } from 'react';
-import { Text, View, useColorScheme } from 'react-native';
+import { useColorScheme } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import Home from './home';
-import { useAppState } from '../store';
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -47,7 +46,6 @@ export default function RootLayout() {
 }
 
 function RootLayoutNav() {
-  const state = useAppState()
   const colorScheme = useColorScheme()
 
   return (

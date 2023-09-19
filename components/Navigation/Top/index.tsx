@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, View } from 'react-native'
+import { DimensionValue, StyleSheet, View } from 'react-native'
 import { SimpleLineIcons } from "@expo/vector-icons";
 import colors from '../../../styles/theme';
 import { useNavigation } from 'expo-router';
@@ -11,11 +11,13 @@ export default function TopNavigation({
   paddingHorizontal,
   paddingVertical,
   goBack,
+  width,
  }: { 
   color: string,
   paddingHorizontal?: number,
   paddingVertical?: number,
-  goBack?: string,
+  goBack?: boolean,
+  width?: DimensionValue | undefined,
 }) {
   const navigation = useNavigation();
   const navStatus = useDrawerStatus();
@@ -23,6 +25,7 @@ export default function TopNavigation({
   return (
       <View style={[styles.container, 
         { 
+          width: width,
           paddingHorizontal: paddingHorizontal,
           paddingVertical: paddingVertical,
           justifyContent: goBack ? 'space-between'  : 'flex-end'
@@ -52,6 +55,7 @@ export default function TopNavigation({
 
 const styles = StyleSheet.create({
   container: {
+    width: '100%',
     backgroundColor: 'transparent',
     flexDirection: 'row',
     justifyContent: 'space-between',
