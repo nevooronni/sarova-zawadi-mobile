@@ -17,6 +17,7 @@ const colors: Color = {
   green: '#046465',
   lightGreen: '#3eb334',
   shadeGreen: '#1c7576',
+  shadeGreen2: '#47b63e',
   black: '#000000',
 
   // 'hue-green': {

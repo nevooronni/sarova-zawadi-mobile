@@ -1,13 +1,53 @@
-import React, { useState } from 'react'
-import { ScrollView, StyleSheet, View, Text, Pressable } from 'react-native'
+import React, { useState, useEffect } from 'react'
+import { ScrollView, StyleSheet, View, Text, Pressable, Button } from 'react-native'
 import TopNavigation from '../../components/Navigation/Top'
 import colors from '../../styles/theme'
 import * as ImagePicker from 'expo-image-picker'
 import { loginStyles } from '../home'
 import { Image } from 'expo-image';
+import SuccessModalPopup from '../../components/Modal'
+import SpinnerLoader from '../../components/Loaders/Spinner'
+import { useAppActions, useAppState } from '../../store'
+
 
 export default function Scan():JSX.Element {
+  const state = useAppState()
+  const { setIsLoading } = useAppActions()
+  const [isModalVisible, setModalVisible] = useState<boolean>(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
+
+  const toggleModal = () => {
+    setModalVisible(!isModalVisible);
+  };
+
+  useEffect(() => {
+    (async () => {
+      const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+      if (status !== 'granted') {
+        alert('media library permission is required to take a photo.');
+      }
+    })();
+  }, []);
+
+  useEffect(() => {
+    (async () => {
+      const { status } = await ImagePicker.requestCameraPermissionsAsync();
+      if (status !== 'granted') {
+        alert('Camera permission is required to take a photo.');
+      }
+    })();
+  }, []);
+
+  useEffect(() => {
+    if (selectedImage) {
+      setIsLoading(true)
+      setTimeout(() => {
+        setIsLoading(false)
+        toggleModal()
+        setSelectedImage(null)
+      }, 3500)
+    }
+  }, [selectedImage]);
 
   const pickImageAsync = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -22,8 +62,23 @@ export default function Scan():JSX.Element {
     }
   }
 
+  const takePhoto = async () => {
+    const result = await ImagePicker.launchCameraAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    if (!result.canceled) {
+      setSelectedImage(result.assets[0].uri);
+    }
+  };
+
   return (
     <View style={{ flex: 1 }}>
+      <SpinnerLoader isLoading={state.isLoading} color={colors?.red} />
+      <SuccessModalPopup isModalVisible={isModalVisible} toggleModal={toggleModal} />
       <ScrollView contentContainerStyle={{ flex:1,  }}>
         <View style={styles.container}>
           <TopNavigation 
@@ -44,7 +99,7 @@ export default function Scan():JSX.Element {
             </Pressable>
             <Pressable
               style={[loginStyles.loginButton, { alignSelf: 'center', marginTop: 5 }]}
-              onPress={pickImageAsync}
+              onPress={takePhoto}
             >
              <Text style={loginStyles.loginText}>Take a photo</Text>
             </Pressable>
@@ -84,7 +139,6 @@ export default function Scan():JSX.Element {
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
     width: '100%',
     height: '20%',
     alignItems: 'center',
@@ -93,5 +147,16 @@ const styles = StyleSheet.create({
     paddingBottom: 5,
     backgroundColor: colors?.bgRed,
   },
-  
+  listItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 5, 
+  },
+  bullet: {
+    marginRight: 5, 
+    fontSize: 14, 
+  },
+  itemText: {
+    fontSize: 14, 
+  },
 })

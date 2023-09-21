@@ -73,7 +73,7 @@ function WhyJoinModal({ modalVisible, setModalVisible }:
             size={iconsSize} 
             color={iconColor} 
             style={{ marginBottom: 10, marginTop: -15, color: '#71716F', }} 
-            onPress={() => setModalVisible(!modalVisible)}
+            // onPress={() => setModalVisible(!modalVisible)}
           />
           <Text style={loginStyles.modalHeader}>Experience More Benefits, </Text>
           <Text style={loginStyles.modalHeader}>Priviledges and Rewards</Text>

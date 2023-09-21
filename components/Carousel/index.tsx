@@ -10,18 +10,26 @@ interface Data {
   title: string;
 }
 
-export default function Carousel({ data, isLoading, paddingHorizontal, paddingVertical }: {
+export default function Carousel({ data, isLoading, paddingTop, paddingBottom, paddingHorizontal, paddingVertical }: {
   data: Data[],
   isLoading?: boolean,
   paddingHorizontal?: number,
   paddingVertical?: number,
+  paddingTop?: number,
+  paddingBottom?: number,
 }) {
   return (
     <FlatList
       horizontal
       data={data}
       showsHorizontalScrollIndicator={false}
-      contentContainerStyle={[styles.listContainer, { paddingHorizontal: paddingHorizontal, paddingVertical: paddingVertical }]}      renderItem={({ item, index }) => {
+      contentContainerStyle={[{ 
+        paddingTop: paddingTop, 
+        paddingBottom: paddingBottom,
+        paddingHorizontal: paddingHorizontal, 
+        paddingVertical: paddingVertical 
+      }]}      
+      renderItem={({ item, index }) => {
         return (
           
           <Pressable
@@ -32,14 +40,26 @@ export default function Carousel({ data, isLoading, paddingHorizontal, paddingVe
             // }}
             style={styles.pressable}
           >
-              <Image
-                style={styles.image}
-                source={item?.image}
-                contentFit='contain'
-                transition={1000}
-              />
-            <Text style={styles.text}>{item?.title ? item?.title : '-'}</Text>
+            <Shadow>
+              <View style={{ flex: 1, alignItems: "center", justifyContent: "center", borderRadius: 25, }}>
+                <View style={{ backgroundColor: "#eee", borderRadius: 25, overflow: "hidden" }}>
+                  <View>
+                    <Image
+                      style={styles.image}
+                      source={item?.image}
+                      transition={1000}
+                    />
+                  </View>
+                  <View style={{ paddingTop: 20, paddingBottom: 25, backgroundColor: colors?.white }}>
+                    <Text style={styles.text}>
+                      {item?.title ? item?.title : '-'}
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </Shadow>
           </Pressable>
+
         );
       }}
     />
@@ -53,7 +73,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'flex-start',
     justifyContent: 'space-between',
-    height: 320,
   },
   pressable:{
     paddingTop: 0,
@@ -61,21 +80,13 @@ const styles = StyleSheet.create({
     marginTop: 0,
     marginRight: 25,
     justifyContent: 'flex-start',
-    // backgroundColor: 'blue',
-    borderLeftWidth: .5, 
-    borderRightWidth: .5,
-    borderBottomWidth: .5,
-    borderColor: colors?.lightGray,
-    borderTopRightRadius: 10,
-    borderTopLeftRadius: 10,
-    borderBottomLeftRadius: 10,
-    borderBottomRightRadius: 10,
+    borderRadius: 25,
   },
   image: {
     borderTopRightRadius: 40,
     borderTopLeftRadius: 40,
-    width: 250, 
-    height: 250, 
+    width: 220, 
+    height: 220, 
     marginTop: -34,
   },
   text: { 

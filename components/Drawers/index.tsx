@@ -41,8 +41,6 @@ type Props = {
 
 
 const DrawerContent = ({ props }: Props ) => {
-  console.log("🚀 ~ file: index.tsx:86 ~ DrawerContent ~ props:", props)
-
   return (
     <SafeAreaView style={{ backgroundColor: colors?.bgRed }}>
       <View style={{ paddingHorizontal: 15, paddingTop: 25 }}>
@@ -209,7 +207,8 @@ export default function Drawer() {
                   paddingVertical: 5,
                   alignSelf: 'center',
                 },
-                drawerActiveBackgroundColor: colors?.bgRed,
+                drawerActiveBackgroundColor: 'none',
+                drawerActiveTintColor: colors?.white,
               }}
               component={tab.component}
             />

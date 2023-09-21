@@ -30,17 +30,17 @@ export default function Home({ navigation }){
     {
       id: 3,
       image: require('../../assets/images/brunch.png'),
-      title: 'Sunday Brunch'
+      title: 'Swimming'
     },
     {
       id: 4,
       image: require('../../assets/images/brunch.png'),
-      title: 'Sunday Brunch'
+      title: 'Meditation'
     },
     {
       id: 5,
       image: require('../../assets/images/brunch.png'),
-      title: 'Sunday Brunch'
+      title: 'Sauna'
     }
   ]
   return (
@@ -71,12 +71,12 @@ export default function Home({ navigation }){
           </Text>
         </View>
         <View style={{ gap: 6, paddingHorizontal: 30 }}>
-          <Text style={{ color: colors?.mediumGray, fontSize: 20, fontWeight: 'bold' }}>
+          <Text style={{ color: colors?.mediumGray, fontSize: 18, fontWeight: 'bold' }}>
             Recommended Activities For You
           </Text>
         </View>
-        <Carousel data={data} paddingVertical={30} paddingHorizontal={30} />
-        <View style={{ gap: 18, paddingHorizontal: 30, paddingVertical: 10 }}>
+        <Carousel data={data} paddingTop={30} paddingBottom={10} paddingHorizontal={30} />
+        <View style={{ gap: 18, paddingHorizontal: 30, paddingVertical: 0 }}>
           <TouchableOpacity
               style={[loginStyles.loginButton, { width: '90%' }]}
               onPress={() => navigation.navigate('Scan', { screen: 'Scan' })}
@@ -99,7 +99,7 @@ export default function Home({ navigation }){
 const styles = StyleSheet.create({
   container: {
     paddingTop: 3,
-    paddingBottom: 35,
+    paddingBottom: 55,
     backgroundColor: colors?.white,
     height: '100%'
   },

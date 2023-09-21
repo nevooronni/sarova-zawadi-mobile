@@ -9,6 +9,7 @@ export interface Color {
   darkGray: string;
   green: string;
   shadeGreen: string;
+  shadeGreen2: string;
   lightGreen: string;
   black: string;
 }
