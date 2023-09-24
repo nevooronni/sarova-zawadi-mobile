@@ -3,6 +3,7 @@ import { StyleSheet, View, Text, FlatList, Pressable } from 'react-native';
 import colors from '../../styles/theme';
 import { Image } from 'expo-image';
 import { Shadow } from 'react-native-shadow-2';
+import { useNavigation } from '@react-navigation/native';
 
 interface Data {
   id: number;
@@ -10,14 +11,18 @@ interface Data {
   title: string;
 }
 
-export default function Carousel({ data, isLoading, paddingTop, paddingBottom, paddingHorizontal, paddingVertical }: {
+export default function Carousel({ data, isLoading, paddingTop, paddingBottom, paddingHorizontal, paddingVertical, imageWidth, imageHeight, borderRadius }: {
   data: Data[],
   isLoading?: boolean,
   paddingHorizontal?: number,
   paddingVertical?: number,
   paddingTop?: number,
   paddingBottom?: number,
+  imageWidth?: number | undefined,
+  imageHeight?: number | undefined,
+  borderRadius?: number | undefined
 }) {
+  const navigation = useNavigation();
   return (
     <FlatList
       horizontal
@@ -34,18 +39,20 @@ export default function Carousel({ data, isLoading, paddingTop, paddingBottom, p
           
           <Pressable
             key={index}
-            // onPress={() => {
-            //   onSelect(item);
-            //   onCloseModal();
-            // }}
+            //@ts-ignore
+            onPress={() => navigation.navigate('Activities')}
             style={styles.pressable}
           >
             <Shadow>
-              <View style={{ flex: 1, alignItems: "center", justifyContent: "center", borderRadius: 25, }}>
+              <View style={{  alignItems: "center", justifyContent: "center", borderRadius: borderRadius || 25, }}>
                 <View style={{ backgroundColor: "#eee", borderRadius: 25, overflow: "hidden" }}>
                   <View>
                     <Image
-                      style={styles.image}
+                      style={[styles.image, 
+                        { width: imageWidth ? imageWidth : 220, 
+                          height: imageHeight ? imageHeight : 220,
+                        } 
+                      ]}
                       source={item?.image}
                       transition={1000}
                     />

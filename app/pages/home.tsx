@@ -7,42 +7,16 @@ import TopNavigation from '../../components/Navigation/Top';
 import { loginStyles } from '../home';
 import Carousel from '../../components/Carousel';
 import { useRouter } from 'expo-router';
+import { imageUrl } from '../../constants/image';
+import { carouselData } from '../../constants/content';
 
 export default function Home({ navigation }){
-  const router = useRouter()
-  const state = useAppState()
-  const imageUrl = require('../../assets/images/avatar.png')
+  // const state = useAppState()
   // const welcomeMessage = state?.userFullName ? `Welcome home ${state.userFullName}` : ''
   const welcomeMessage = `Welcome home Abi`
   const membershipPoints = `Zawadi Emarald Member - you have 5,000 points`
   const membershipNumber = `Membership Number - 5674000576`
-  const data = [
-    {
-      id: 1,
-      image: require('../../assets/images/training.png'),
-      title: 'Personal Training'
-    },
-    {
-      id: 2,
-      image: require('../../assets/images/brunch.png'),
-      title: 'Sunday Brunch'
-    },
-    {
-      id: 3,
-      image: require('../../assets/images/brunch.png'),
-      title: 'Swimming'
-    },
-    {
-      id: 4,
-      image: require('../../assets/images/brunch.png'),
-      title: 'Meditation'
-    },
-    {
-      id: 5,
-      image: require('../../assets/images/brunch.png'),
-      title: 'Sauna'
-    }
-  ]
+  
   return (
     <SafeAreaView >
       <ScrollView>
@@ -75,7 +49,12 @@ export default function Home({ navigation }){
             Recommended Activities For You
           </Text>
         </View>
-        <Carousel data={data} paddingTop={30} paddingBottom={10} paddingHorizontal={30} />
+        <Carousel 
+          data={carouselData} 
+          paddingTop={30} 
+          paddingBottom={10} 
+          paddingHorizontal={30} 
+        />
         <View style={{ gap: 18, paddingHorizontal: 30, paddingVertical: 0 }}>
           <TouchableOpacity
               style={[loginStyles.loginButton, { width: '90%' }]}

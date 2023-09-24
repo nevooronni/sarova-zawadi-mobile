@@ -4,11 +4,13 @@ import { Text, SafeAreaView, View, Button } from 'react-native';
 import { Image } from 'expo-image';
 import colors from '../../styles/theme';
 import { DrawerNavigationState, NavigationContainer, ParamListBase } from "@react-navigation/native";
-import { DrawerItemList, createDrawerNavigator } from "@react-navigation/drawer";
+import { DrawerItem, DrawerItemList, createDrawerNavigator } from "@react-navigation/drawer";
 import { SimpleLineIcons } from "@expo/vector-icons";
 import Home from '../../app/pages/home'
 import { DrawerDescriptorMap, DrawerNavigationHelpers } from '@react-navigation/drawer/lib/typescript/src/types';
 import Scan from '../../app/pages/scan';
+import Activities from '../../app/pages/activities';
+import SuccessBooking from '../../app/pages/sucessbooking';
 
 function Explore({ navigation }) {
   return (
@@ -41,6 +43,10 @@ type Props = {
 
 
 const DrawerContent = ({ props }: Props ) => {
+  const filteredItems = props.state.routeNames.filter(
+    (routeName) => routeName !== 'Scan' 
+  );
+
   return (
     <SafeAreaView style={{ backgroundColor: colors?.bgRed }}>
       <View style={{ paddingHorizontal: 15, paddingTop: 25 }}>
@@ -82,7 +88,7 @@ const DrawerContent = ({ props }: Props ) => {
           }}
         >Abbi Appleseed</Text>
       </View>
-      <DrawerItemList {...props} />
+      <DrawerItemList {...props} state={{ ...props.state, routeNames: filteredItems }} />
     </SafeAreaView>
   )
 }
@@ -165,7 +171,28 @@ export default function Drawer() {
       drawerIcon: undefined,
       component: Scan
     },
-  ]
+    {
+      id: 8,
+      name: 'Activities',
+      drawerLabel: 'Activities',
+      title: 'Activities',
+      show: true,
+      drawerIcon: undefined,
+      component: Activities
+    },
+    {
+      id: 8,
+      name: 'SuccessBooking',
+      drawerLabel: 'SuccessBooking',
+      title: 'SuccessBooking',
+      show: true,
+      drawerIcon: undefined,
+      component: SuccessBooking
+    }
+    
+  ];
+
+  const tabsToHide = [ 'Scan', 'Activities', 'SuccessBooking' ];
 
   return (
     <NavigationContainer independent={true}>
@@ -201,6 +228,7 @@ export default function Drawer() {
                   width: 240,
                 },
                 drawerItemStyle: {
+                  display: tabsToHide?.some(item => item === tab.name) ? 'none' : undefined,
                   borderBottomColor: tabs?.length - 1 === i ? colors?.bgRed : colors?.white,
                   borderBottomWidth: 0.6,
                   width: '100%',

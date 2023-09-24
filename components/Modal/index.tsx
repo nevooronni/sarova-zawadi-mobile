@@ -15,13 +15,13 @@ export default function SuccessModalPopup({ isModalVisible, toggleModal }: Modal
   return (
     <Modal isVisible={isModalVisible}>
        <Pressable onPress={toggleModal}>
-        <View style={styles.container}>
+        <View style={successModalStyles.container}>
           <View style={{ justifyContent: 'center', alignItems: 'center' }}>
             <Text style={{ color: colors?.bgRed, fontSize: 20, fontWeight: 'bold' }}>
               CONGRATULATIONS!
             </Text>
           </View>
-          <View style={styles.container2}>
+          <View style={successModalStyles.container2}>
             <FontAwesome 
               name='thumbs-up' 
               size={28} 
@@ -32,7 +32,7 @@ export default function SuccessModalPopup({ isModalVisible, toggleModal }: Modal
             <Text style={{ color: colors?.shadeGreen2, fontSize: 18, fontWeight: 'bold' }}>3000 ZAWADI EMARALD</Text>
             <Text style={{ color: colors?.shadeGreen2, fontSize: 18, fontWeight: 'bold'}}>reward points</Text>
           </View>
-          <View style={styles.container3}>
+          <View style={successModalStyles.container3}>
             <Text style={{ color: colors?.mediumGray, fontSize: 13, fontWeight: 'bold', textAlign: 'left' }}>COLLECT MORE POINTS TO UNLOCK</Text>
             <Text style={{ color: colors?.mediumGray, fontSize: 13, fontWeight: 'bold', textAlign: 'left', marginBottom: 10 }}>THESE AND MORE DIAMOND CARD BENEFITS:</Text>
             <UnorderedList items={diamondCardBenefits} />
@@ -44,7 +44,7 @@ export default function SuccessModalPopup({ isModalVisible, toggleModal }: Modal
   )
 }
 
-const styles = StyleSheet.create({
+export const successModalStyles = StyleSheet.create({
   container: {
     paddingVertical: 30, 
     paddingHorizontal: 13, 
