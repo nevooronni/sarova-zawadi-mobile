@@ -18,20 +18,21 @@ export default function Home({ navigation }){
   const membershipNumber = `Membership Number - 5674000576`
   
   return (
-    <SafeAreaView >
+    <SafeAreaView>
+      <TopNavigation 
+        color={colors?.mediumGray} 
+        paddingHorizontal={30}
+      />
       <ScrollView>
       <View style={styles.container}>
-        <TopNavigation 
-          color={colors?.mediumGray} 
-          paddingHorizontal={30}
-        />
         <View style={{ gap: 6, paddingVertical: 30, paddingHorizontal: 30 }}>
           <Image
             source={imageUrl}
             style={{
-              height: 110,
-              width: 110,
-              borderRadius: 65
+              height: 100,
+              width: 100,
+              borderRadius: 65,
+              marginBottom: 10
             }}
           />
           <Text style={{ color: colors?.red, fontSize: 28, fontWeight: 'bold' }}>
@@ -77,7 +78,7 @@ export default function Home({ navigation }){
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 3,
+    paddingTop: 40,
     paddingBottom: 55,
     backgroundColor: colors?.white,
     height: '100%'

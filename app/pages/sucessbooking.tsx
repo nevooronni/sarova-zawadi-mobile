@@ -1,5 +1,5 @@
 import React from 'react'
-import { ScrollView, StyleSheet, Text, View } from 'react-native'
+import { Dimensions, ScrollView, StyleSheet, Text, View } from 'react-native'
 import colors from '../../styles/theme'
 import TopNavigation from '../../components/Navigation/Top'
 import { useAppState } from '../../store'
@@ -9,6 +9,17 @@ import { successModalStyles } from '../../components/Modal'
 import { FontAwesome } from '@expo/vector-icons'
 import Carousel from '../../components/Carousel'
 import { carouselData2 } from '../../constants/content'
+
+function FixedCenterComponent() {
+  return (
+    <View style={styles.container}>
+      {/* Fixed center component */}
+      <View style={styles.fixedCenterComponent}>
+        <Text style={styles.centerText}>Fixed Center</Text>
+      </View>
+    </View>
+  );
+}
 
 export default function SuccessBooking() {
   // const state = useAppState()
@@ -21,20 +32,22 @@ export default function SuccessBooking() {
 
   return (
     <View style={{ flex: 1, margin: 0, padding: 0 }}>
+      <TopNavigation 
+        color={colors?.mediumGray} 
+        paddingHorizontal={30}
+        width='105%'
+        goBack
+      />
       <ScrollView>
         <View style={styles.container}>
-          <TopNavigation 
-            color={colors?.mediumGray} 
-            paddingHorizontal={30}
-            goBack
-          />
           <View style={{ width: '100%', gap: 19, paddingVertical: 30, paddingHorizontal: 30, alignItems: 'center' }}>
             <Image
               source={imageUrl}
               style={{
                 height: 100,
                 width: 100,
-                borderRadius: 65
+                borderRadius: 65,
+                marginTop: 20
               }}
             />
             <Text style={{ color: colors?.red, fontSize: 22, fontWeight: 'bold' }}>
@@ -72,7 +85,6 @@ export default function SuccessBooking() {
               paddingHorizontal={30} 
               imageWidth={160} 
               imageHeight={170}
-              borderRadius={19}
             />
           </View>
         </View>
@@ -87,5 +99,20 @@ const styles = StyleSheet.create({
     paddingBottom: 35,
     backgroundColor: colors?.white,
     height: '100%',
+  },
+  fixedCenterComponent: {
+    position: 'absolute',
+    top: Dimensions.get('window').height / 2 - 30, // Center vertically
+    left: Dimensions.get('window').width / 2 - 60, // Center horizontally
+    width: 120,
+    height: 60,
+    backgroundColor: 'lightgray',
+    justifyContent: 'center',
+    alignItems: 'center',
+    zIndex: 1, // Ensure it's above other content
+  },
+  centerText: {
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 })

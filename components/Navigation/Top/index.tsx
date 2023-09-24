@@ -12,11 +12,13 @@ export default function TopNavigation({
   paddingVertical,
   goBack,
   width,
+  backgroundColor,
  }: { 
   color: string,
   paddingHorizontal?: number,
   paddingVertical?: number,
   goBack?: boolean,
+  backgroundColor?: string;
   width?: DimensionValue | undefined,
 }) {
   const navigation = useNavigation();
@@ -28,6 +30,7 @@ export default function TopNavigation({
           width: width,
           paddingHorizontal: paddingHorizontal,
           paddingVertical: paddingVertical,
+          backgroundColor: backgroundColor || 'transparent',
           justifyContent: goBack ? 'space-between'  : 'flex-end'
         }]}
       >
@@ -55,10 +58,18 @@ export default function TopNavigation({
 
 const styles = StyleSheet.create({
   container: {
+    position: 'absolute', 
+    top: 0, 
+    left: 0, 
+    right: 0,
+    zIndex: 1,
+    // minWidth: 420,
+    paddingTop: 15,
+    paddingBottom: 15,
     width: '100%',
     backgroundColor: 'transparent',
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-  }
+  },
 })

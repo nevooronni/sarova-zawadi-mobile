@@ -79,14 +79,15 @@ export default function Scan():JSX.Element {
     <View style={{ flex: 1 }}>
       <SpinnerLoader isLoading={state.isLoading} color={colors?.red} />
       <SuccessModalPopup isModalVisible={isModalVisible} toggleModal={toggleModal} />
+      <TopNavigation 
+        color={colors?.white} 
+        paddingHorizontal={30}
+        width='110%'
+        backgroundColor={colors?.bgRed}
+        goBack
+      />
       <ScrollView contentContainerStyle={{ flex:1,  }}>
         <View style={styles.container}>
-          <TopNavigation 
-            color={colors?.white} 
-            paddingHorizontal={30}
-            width='110%'
-            goBack
-          />
           <Text style={{ color: colors?.white, fontSize: 17, marginTop: 20 }}>Scan Text Code to earn points</Text>
         </View>
         <View style={{ flexDirection: 'column', alignItems: 'center', backgroundColor: colors?.white, height: 450 }}>
@@ -142,7 +143,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '20%',
     alignItems: 'center',
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
     paddingTop: 15,
     paddingBottom: 5,
     backgroundColor: colors?.bgRed,

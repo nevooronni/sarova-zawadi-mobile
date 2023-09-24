@@ -59,7 +59,7 @@ export default function Carousel({ data, isLoading, paddingTop, paddingBottom, p
                   </View>
                   <View style={{ paddingTop: 20, paddingBottom: 25, backgroundColor: colors?.white }}>
                     <Text style={styles.text}>
-                      {item?.title ? item?.title : '-'}
+                      {item?.title ? item?.title?.slice(0,20) : '-'}
                     </Text>
                   </View>
                 </View>

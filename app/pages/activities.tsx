@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { ImageBackground, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native'
+import { ImageBackground, Pressable, SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native'
 import TopNavigation from '../../components/Navigation/Top'
 import colors from '../../styles/theme'
 import { loginStyles } from '../home';
@@ -24,72 +24,74 @@ export default function Activities() {
   }
 
   return (
-    <View style={{ flex: 1, margin: 0, padding: 0 }}>
+    <SafeAreaView style={{ height: '100%', margin: 0, padding: 0 }}>
      <SpinnerLoader isLoading={state.isLoading} color={colors?.red} />
-      <ScrollView contentContainerStyle={{ flex:1, margin: 0, padding: 0, backgroundColor: colors?.white, }}>
-        <ImageBackground
-          source={backgroundImage}
-          resizeMode="stretch"
-          style={styles.container}
-        >
-          <TopNavigation 
-            color={colors?.white} 
-            paddingHorizontal={30}
-            width='110%'
-            goBack
-          />
-        </ImageBackground> 
-        <View style={{ 
-          gap: 7,
-          marginTop: -170,
-          justifyContent: 'flex-start', 
-          alignItems: 'flex-start', 
-          paddingVertical: 10,
-          paddingHorizontal: 30 
-        }}>
-          <Text style={{ fontSize: 14, color: colors?.darkGray }}>Personal Training</Text>
-          <Text style={{ fontSize: 20, color: colors?.bgRed, fontWeight: 'bold' }}>Feel The Burn </Text>
-          <Text style={{ fontSize: 15, color: colors?.bgRed}}>Sarova Panafric, Jan 26th 2019, 8am to 10am.</Text>
-          <View style={{ marginVertical: 5, borderBottomWidth: .5, borderBottomColor: colors?.mediumGray, width: 35 }} />
-          <Text style={{ fontSize: 15, color: colors?.mediumGray }}>
-            Aerobic exercises is physical exercise of how to high intensity that depends primary on the aerobic energy generating process.
-            "Aerobic" means "relationg to, involving, or requiring free oxygen", and refers to the use of oxygen to adequately meet energy 
-            demands during exercise via aerobic metabolism.
-          </Text>
-          <View style={styles.container2}> 
-            <Pressable
-              onPress={handleBookNow}
-              style={[loginStyles.loginButton, { width: 110, borderRadius: 8 }]}
-            >
-              <Text style={loginStyles.loginText}>Book Now</Text>
-            </Pressable>
-          </View>
-          
-        </View>
-        <View style={[styles.container2, { backgroundColor: colors?.lightGray2, paddingTop: 20, paddingBottom: 50 }]}>
-          <SimpleLineIcons.Button 
-            name='share' 
-            size={14} 
-            color={colors?.white} 
-            backgroundColor={colors?.darkGray2}
-            underlayColor='transparent'
-            borderRadius={8}
-            style={{ padding: 10, width: 100, justifyContent: 'center', borderRadius: 15 }}
-            //@ts-ignore
-            // onPress={() => navigation.openDrawer()}
+      <TopNavigation 
+        color={colors?.white} 
+        paddingHorizontal={30}
+        width='110%'
+        goBack
+      />
+      <ScrollView>
+        <View style={{ height: '100%', margin: 0, padding: 0, backgroundColor: colors?.white }}>
+          <ImageBackground
+            source={backgroundImage}
+            resizeMode="stretch"
+            style={styles.container}
           >
-            Share
-          </SimpleLineIcons.Button>
+          </ImageBackground> 
+          <View style={{ 
+            gap: 7,
+            marginTop: -50,
+            justifyContent: 'flex-start', 
+            alignItems: 'flex-start', 
+            paddingVertical: 10,
+            paddingHorizontal: 30 ,
+            backgroundColor: colors?.white,
+          }}>
+            <Text style={{ fontSize: 14, color: colors?.darkGray }}>Personal Training</Text>
+            <Text style={{ fontSize: 20, color: colors?.bgRed, fontWeight: 'bold' }}>Feel The Burn </Text>
+            <Text style={{ fontSize: 15, color: colors?.bgRed}}>Sarova Panafric, Jan 26th 2019, 8am to 10am.</Text>
+            <View style={{ marginVertical: 5, borderBottomWidth: .5, borderBottomColor: colors?.mediumGray, width: 35 }} />
+            <Text style={{ fontSize: 15, color: colors?.mediumGray }}>
+              Aerobic exercises is physical exercise of how to high intensity that depends primary on the aerobic energy generating process.
+              "Aerobic" means "relationg to, involving, or requiring free oxygen", and refers to the use of oxygen to adequately meet energy 
+              demands during exercise via aerobic metabolism.
+            </Text>
+            <View style={styles.container2}> 
+              <Pressable
+                onPress={handleBookNow}
+                style={[loginStyles.loginButton, { width: 110, borderRadius: 8 }]}
+              >
+                <Text style={loginStyles.loginText}>Book Now</Text>
+              </Pressable>
+            </View>
+            </View>
+            <View style={[styles.container2, { backgroundColor: colors?.lightGray2, paddingTop: 20, paddingBottom: 50 }]}>
+              <SimpleLineIcons.Button 
+                name='share' 
+                size={14} 
+                color={colors?.white} 
+                backgroundColor={colors?.darkGray2}
+                underlayColor='transparent'
+                borderRadius={8}
+                style={{ padding: 10, width: 100, justifyContent: 'center', borderRadius: 15 }}
+                //@ts-ignore
+                // onPress={() => navigation.openDrawer()}
+              >
+                Share
+              </SimpleLineIcons.Button>
+            </View>
         </View>
       </ScrollView>
-    </View>
+    </SafeAreaView>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    height: '70%',
+    height: '90%',
     alignItems: 'center',
     justifyContent: 'flex-start',
     paddingTop: 25,
