@@ -11,6 +11,7 @@ import { DrawerDescriptorMap, DrawerNavigationHelpers } from '@react-navigation/
 import Scan from '../../app/pages/scan';
 import Activities from '../../app/pages/activities';
 import SuccessBooking from '../../app/pages/sucessbooking';
+import TellAFriend from '../../app/pages/invitefriend';
 
 function Explore({ navigation }) {
   return (
@@ -140,7 +141,7 @@ export default function Drawer() {
       show: true,
       title: 'Tell A Friend',
       drawerIcon: undefined,
-      component: Explore
+      component: TellAFriend
     },
     {
       id: 6,

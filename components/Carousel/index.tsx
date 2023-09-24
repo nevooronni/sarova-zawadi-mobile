@@ -41,14 +41,14 @@ export default function Carousel({ data, isLoading, paddingTop, paddingBottom, p
             key={index}
             //@ts-ignore
             onPress={() => navigation.navigate('Activities')}
-            style={styles.pressable}
+            style={carouselStyles.pressable}
           >
             <Shadow>
               <View style={{  alignItems: "center", justifyContent: "center", borderRadius: borderRadius || 25, }}>
                 <View style={{ backgroundColor: "#eee", borderRadius: 25, overflow: "hidden" }}>
                   <View>
                     <Image
-                      style={[styles.image, 
+                      style={[carouselStyles.image, 
                         { width: imageWidth ? imageWidth : 220, 
                           height: imageHeight ? imageHeight : 220,
                         } 
@@ -58,7 +58,7 @@ export default function Carousel({ data, isLoading, paddingTop, paddingBottom, p
                     />
                   </View>
                   <View style={{ paddingTop: 20, paddingBottom: 25, backgroundColor: colors?.white }}>
-                    <Text style={styles.text}>
+                    <Text style={carouselStyles.text}>
                       {item?.title ? item?.title?.slice(0,20) : '-'}
                     </Text>
                   </View>
@@ -73,7 +73,7 @@ export default function Carousel({ data, isLoading, paddingTop, paddingBottom, p
   );
 }
 
-const styles = StyleSheet.create({
+export const carouselStyles = StyleSheet.create({
   listContainer: {
     borderTopRightRadius: 10,
     borderTopLeftRadius: 10,
