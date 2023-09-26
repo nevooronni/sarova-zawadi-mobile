@@ -8,6 +8,7 @@ import { Image } from 'expo-image';
 import SuccessModalPopup from '../../components/Modal'
 import SpinnerLoader from '../../components/Loaders/Spinner'
 import { useAppActions, useAppState } from '../../store'
+import { IosScreenWrapper } from '../../components/ScreenWrapper'
 
 
 export default function Scan():JSX.Element {
@@ -76,13 +77,14 @@ export default function Scan():JSX.Element {
   };
 
   return (
+    <IosScreenWrapper background={colors?.bgRed}>
     <View style={{ flex: 1 }}>
       <SpinnerLoader isLoading={state.isLoading} color={colors?.red} />
       <SuccessModalPopup isModalVisible={isModalVisible} toggleModal={toggleModal} />
       <TopNavigation 
         color={colors?.white} 
-        paddingHorizontal={30}
-        width='110%'
+        paddingHorizontal={20}
+        width='105%'
         backgroundColor={colors?.bgRed}
         goBack
       />
@@ -135,6 +137,7 @@ export default function Scan():JSX.Element {
         </View>
       </ScrollView>
     </View>
+    </IosScreenWrapper>
   )
 }
 

@@ -34,8 +34,9 @@ export default function SuccessBooking() {
     <View style={{ flex: 1, margin: 0, padding: 0 }}>
       <TopNavigation 
         color={colors?.mediumGray} 
-        paddingHorizontal={30}
-        width='105%'
+        backgroundColor={colors?.white}
+        paddingHorizontal={20}
+        width='102%'
         goBack
       />
       <ScrollView>
@@ -57,25 +58,25 @@ export default function SuccessBooking() {
           <View style={[successModalStyles.container2, { borderBottomWidth: 0 }]}>
             <FontAwesome 
               name='thumbs-up' 
-              size={38} 
+              size={30} 
               color={colors?.shadeGreen2} 
               style={{ marginVertical: 20 }} 
             />
-            <Text style={{ color: colors?.shadeGreen2, fontSize: 20 }}>
+            <Text style={{ color: colors?.shadeGreen2, fontSize: 16 }}>
               {bookingMessage1}
             </Text>
-            <Text style={{ color: colors?.shadeGreen2, fontSize: 20 }}>
+            <Text style={{ color: colors?.shadeGreen2, fontSize: 16 }}>
              {bookingMessage2}
             </Text>
           </View>
-          <View style={{ borderTopWidth: 0, alignItems: 'center', paddingTop: 10, paddingBottom: 35 }}>
-            <Text style={{ color: colors?.red, fontSize: 20 }}>
+          <View style={{ borderTopWidth: 0, alignItems: 'center', paddingTop: 18, paddingBottom: 35 }}>
+            <Text style={{ color: colors?.red, fontSize: 18 }}>
               Thank You!
             </Text>
           </View>
           <View style={{ borderBottomWidth: .5, borderBottomColor: colors?.lightGray, width: '90%', alignSelf: 'center' }} />
           <View style={{ paddingVertical: 20 }}>
-            <Text style={{ fontSize: 20, color: colors?.mediumGray4, marginLeft: 30 }}>
+            <Text style={{ fontSize: 18, color: colors?.mediumGray4, marginLeft: 30 }}>
               Earn more points while at:
             </Text>
             <Carousel 
@@ -95,7 +96,7 @@ export default function SuccessBooking() {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 15,
+    paddingTop: 55,
     paddingBottom: 35,
     backgroundColor: colors?.white,
     height: '100%',

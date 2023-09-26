@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
 import { SplashScreen } from 'expo-router';
 import { useEffect } from 'react';
-import { useColorScheme } from 'react-native';
+import { Platform, View, useColorScheme } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import Home from './home';
+import { IosScreenWrapper } from '../components/ScreenWrapper';
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -48,11 +49,25 @@ export default function RootLayout() {
 function RootLayoutNav() {
   const colorScheme = useColorScheme()
 
+  // if (Platform.OS === 'ios') {
+  //   return (
+  //     <IosScreenWrapper>
+  //       <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+  //         <SafeAreaProvider>
+  //           <Home />
+  //         </SafeAreaProvider>
+  //       </ThemeProvider>
+  //     </IosScreenWrapper>
+  //   )
+  // }
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <SafeAreaProvider>
-        <Home />
-      </SafeAreaProvider>
-    </ThemeProvider>
+    <IosScreenWrapper>
+      <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+        <SafeAreaProvider>
+          <Home />
+        </SafeAreaProvider>
+      </ThemeProvider>
+    </IosScreenWrapper>
+    
   );
 }

@@ -1,11 +1,10 @@
 import React from 'react'
-import { ImageBackground, SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native'
-import SpinnerLoader from '../../components/Loaders/Spinner'
+import { ImageBackground, SafeAreaView, ScrollView, StyleSheet, View } from 'react-native'
 import TopNavigation from '../../components/Navigation/Top'
 import colors from '../../styles/theme'
-import { blurhash } from '../../constants/image'
 import Card from '../../components/Card'
 import { FontAwesome } from '@expo/vector-icons'
+import { IosScreenWrapper } from '../../components/ScreenWrapper';
 
 interface SocialProps {
   icon: JSX.Element;
@@ -18,7 +17,7 @@ export function Social({ icon, name }: SocialProps):JSX.Element {
       flexDirection: 'row', 
       alignItems: 'center',
       width: '100%',
-      paddingVertical: 10,
+      paddingVertical: 8,
       paddingHorizontal: 45,
       borderBottomWidth: name !== 'More' ? .5 : 0, 
       borderBottomColor: colors?.mediumGray2
@@ -115,52 +114,56 @@ export default function InviteFriend() {
   ]
 
   return (
-    <ScrollView>
-      <SafeAreaView style={{ height: '100%', margin: 0, padding: 0, backgroundColor: colors?.white }}>
+    <IosScreenWrapper background={colors?.bgGray}>
+      <SafeAreaView style={{ margin: 0, padding: 0, backgroundColor: colors?.white }}>
         <TopNavigation 
           color={colors?.white} 
           paddingHorizontal={30}
           width='105%'
         />
-        <View style={{ height: '100%', margin: 0, padding: 0, backgroundColor: colors?.white }}>
-          <ImageBackground
-            source={backgroundImage}
-            resizeMode="stretch"
-            style={styles.container}
-            blurRadius={25}
-          >
-            <Card 
-              title={cardData?.title}
-              desc={cardData?.desc}
-              image={cardData?.image}
-              imageWidth={290} 
-              imageHeight={200}
-            />
-          </ImageBackground> 
-        </View>
-        <View style={{ 
-          gap: 7,
-          marginTop: -190,
-          justifyContent: 'flex-start', 
-          alignItems: 'flex-start', 
-          paddingTop: 10, 
-          paddingBottom: 50,
-          paddingHorizontal: 0,
-          backgroundColor: colors?.white,
-        }}>
-          {socialData?.map(social => (
-            <Social key={social?.id} name={social.name} icon={social.icon}/>
-          ))}
-        </View>
+        <ScrollView>
+          <View style={{ height: '100%' }}>
+            <View style={{ height: '45%', margin: 0, padding: 0, backgroundColor: colors?.white }}>
+              <ImageBackground
+                source={backgroundImage}
+                resizeMode="stretch"
+                style={styles.container}
+                blurRadius={25}
+              >
+                <Card 
+                  title={cardData?.title}
+                  desc={cardData?.desc}
+                  image={cardData?.image}
+                  imageWidth={280} 
+                  imageHeight={200}
+                />
+              </ImageBackground> 
+            </View>
+            <View style={{ 
+              gap: 7,
+              marginTop: 10,
+              justifyContent: 'flex-start', 
+              alignItems: 'flex-start', 
+              paddingTop: 0, 
+              paddingBottom: 50,
+              paddingHorizontal: 0,
+              backgroundColor: colors?.white,
+            }}>
+              {socialData?.map(social => (
+                <Social key={social?.id} name={social.name} icon={social.icon}/>
+              ))}
+            </View>
+          </View>
+        </ScrollView>
       </SafeAreaView>
-    </ScrollView>
+    </IosScreenWrapper>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    height: '100%',
+    height: 380,
     alignItems: 'center',
     // justifyContent: 'center',
     paddingTop: 75,

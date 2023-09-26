@@ -1,29 +1,18 @@
 import React from 'react'
-import "react-native-gesture-handler";
-import { Text, SafeAreaView, View, Button } from 'react-native';
-import { Image } from 'expo-image';
-import colors from '../../styles/theme';
-import { DrawerNavigationState, NavigationContainer, ParamListBase } from "@react-navigation/native";
-import { DrawerItem, DrawerItemList, createDrawerNavigator } from "@react-navigation/drawer";
-import { SimpleLineIcons } from "@expo/vector-icons";
+import "react-native-gesture-handler"
+import { Text, SafeAreaView, View, Button } from 'react-native'
+import { Image } from 'expo-image'
+import colors from '../../styles/theme'
+import { DrawerNavigationState, NavigationContainer, ParamListBase } from "@react-navigation/native"
+import { DrawerItem, DrawerItemList, createDrawerNavigator } from "@react-navigation/drawer"
+import { SimpleLineIcons } from "@expo/vector-icons"
 import Home from '../../app/pages/home'
-import { DrawerDescriptorMap, DrawerNavigationHelpers } from '@react-navigation/drawer/lib/typescript/src/types';
-import Scan from '../../app/pages/scan';
-import Activities from '../../app/pages/activities';
-import SuccessBooking from '../../app/pages/sucessbooking';
-import TellAFriend from '../../app/pages/invitefriend';
-
-function Explore({ navigation }) {
-  return (
-    <View>
-      <Text>MyProfile</Text>
-      <Button
-        onPress={() => navigation.navigate('MyProfile')}
-        title="Go to My Profile"
-      />
-    </View>
-  )
-}
+import { DrawerDescriptorMap, DrawerNavigationHelpers } from '@react-navigation/drawer/lib/typescript/src/types'
+import Scan from '../../app/pages/scan'
+import Activities from '../../app/pages/activities'
+import SuccessBooking from '../../app/pages/sucessbooking'
+import TellAFriend from '../../app/pages/invitefriend'
+import Explore from '../../app/pages/explore'
 
 function MyProfile({ navigation }) {
   return (
@@ -189,11 +178,20 @@ export default function Drawer() {
       show: true,
       drawerIcon: undefined,
       component: SuccessBooking
+    },
+    {
+      id: 9,
+      name: 'Explore',
+      drawerLabel: 'Explore',
+      title: 'Explore',
+      show: true,
+      drawerIcon: undefined,
+      component: Explore
     }
-    
+  
   ];
 
-  const tabsToHide = [ 'Scan', 'Activities', 'SuccessBooking' ];
+  const tabsToHide = [ 'Scan', 'Activities', 'SuccessBooking', 'Explore' ];
 
   return (
     <NavigationContainer independent={true}>
@@ -231,7 +229,7 @@ export default function Drawer() {
                 drawerItemStyle: {
                   display: tabsToHide?.some(item => item === tab.name) ? 'none' : undefined,
                   borderBottomColor: tabs?.length - 1 === i ? colors?.bgRed : colors?.white,
-                  borderBottomWidth: 0.6,
+                  borderBottomWidth: tabs?.length === i ? 0 : 0.6,
                   width: '100%',
                   paddingVertical: 5,
                   alignSelf: 'center',

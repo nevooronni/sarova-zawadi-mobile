@@ -9,8 +9,10 @@ import Carousel from '../../components/Carousel';
 import { useRouter } from 'expo-router';
 import { imageUrl } from '../../constants/image';
 import { carouselData } from '../../constants/content';
+import { IosScreenWrapper } from '../../components/ScreenWrapper'
 
-export default function Home({ navigation }){
+export default function Home({ route, navigation }){
+  // console.log("🚀 ~ file: home.tsx:15 ~ Home ~ navigation:", route.name)
   // const state = useAppState()
   // const welcomeMessage = state?.userFullName ? `Welcome home ${state.userFullName}` : ''
   const welcomeMessage = `Welcome home Abi`
@@ -18,10 +20,12 @@ export default function Home({ navigation }){
   const membershipNumber = `Membership Number - 5674000576`
   
   return (
+    <IosScreenWrapper background={colors?.white}>
     <SafeAreaView>
       <TopNavigation 
         color={colors?.mediumGray} 
         paddingHorizontal={30}
+        width='105%'
       />
       <ScrollView>
       <View style={styles.container}>
@@ -29,8 +33,8 @@ export default function Home({ navigation }){
           <Image
             source={imageUrl}
             style={{
-              height: 100,
-              width: 100,
+              height: 80,
+              width: 80,
               borderRadius: 65,
               marginBottom: 10
             }}
@@ -65,7 +69,7 @@ export default function Home({ navigation }){
           </TouchableOpacity>
           <TouchableOpacity
               style={[loginStyles.loginButton, , { width: '90%' }]}
-              onPress={() => navigation.openDrawer()}
+              onPress={() => navigation.navigate('Explore', { screen: 'Explore' })}
               >
             <Text style={loginStyles.loginText}>Explore</Text>
           </TouchableOpacity>
@@ -73,12 +77,13 @@ export default function Home({ navigation }){
       </View>
       </ScrollView>
     </SafeAreaView>
+    </IosScreenWrapper>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 40,
+    paddingTop: 10,
     paddingBottom: 55,
     backgroundColor: colors?.white,
     height: '100%'

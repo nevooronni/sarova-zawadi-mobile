@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, SafeAreaView, View, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
+import { StatusBar, Text, SafeAreaView, View, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
 import { Image } from 'expo-image';
 import { useForm } from "react-hook-form"
 import colors from '../../styles/theme';
@@ -8,6 +8,9 @@ import WPTextInput from '../../components/Input/WPTextInput';
 import { loginStyles } from '../home';
 import { useAppActions, useAppState } from '../../store';
 import SpinnerLoader from '../../components/Loaders/Spinner';
+import { IosScreenWrapper } from '../../components/ScreenWrapper';
+
+// import { StatusBar } from 'expo-status-bar';
 // import { setIsLoading, } from '../../store';
 
 type FormData = {
@@ -36,8 +39,9 @@ export default function Login():JSX.Element {
   const imageUrl = require('../../assets/images/sarova_zawadi.png')
 
   return (
+    <IosScreenWrapper>
     <View style={{ flex: 1 }}>
-    <ScrollView contentContainerStyle={{flex:1}}>
+      <ScrollView contentContainerStyle={{flex:1}}>
       <View style={styles.container}>
         <SpinnerLoader
           isLoading={state.isLoading}
@@ -101,6 +105,7 @@ export default function Login():JSX.Element {
       </View>
       </ScrollView>
     </View>
+    </IosScreenWrapper>
   );
 }
 
@@ -108,7 +113,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: colors?.bgRed,
     justifyContent: 'flex-start', 
-    paddingTop: 70,
+    paddingTop: 120,
     paddingHorizontal: 35, 
     gap: 18, 
     height: '100%',

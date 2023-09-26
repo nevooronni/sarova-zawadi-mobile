@@ -3,6 +3,9 @@ import { Text, SafeAreaView, View, StyleSheet, TouchableOpacity, ImageBackground
 import colors from '../styles/theme';
 import { FontAwesome } from '@expo/vector-icons';
 import { useRouter } from "expo-router";
+// import { StatusBar } from 'expo-status-bar';
+import Constants from 'expo-constants';
+import { IosScreenWrapper } from '../components/ScreenWrapper';
 
 const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
@@ -98,6 +101,8 @@ export const loginStyles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'flex-end',
+    height: Constants.statusBarHeight,
+    backgroundColor: 'red'
   },
   container: {
     flex: 1,
