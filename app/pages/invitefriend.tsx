@@ -115,7 +115,7 @@ export default function InviteFriend() {
 
   return (
     <IosScreenWrapper background={colors?.bgGray}>
-      <SafeAreaView style={{ margin: 0, padding: 0, backgroundColor: colors?.white }}>
+      <SafeAreaView style={{ margin: 0, padding: 0 }}>
         <TopNavigation 
           color={colors?.white} 
           paddingHorizontal={30}
@@ -145,7 +145,7 @@ export default function InviteFriend() {
               justifyContent: 'flex-start', 
               alignItems: 'flex-start', 
               paddingTop: 0, 
-              paddingBottom: 50,
+              paddingBottom: 100,
               paddingHorizontal: 0,
               backgroundColor: colors?.white,
             }}>

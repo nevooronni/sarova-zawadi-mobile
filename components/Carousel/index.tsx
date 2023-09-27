@@ -67,10 +67,10 @@ export default function Carousel({ data, isLoading, paddingTop, paddingBottom, p
             </Shadow>
           </Pressable>
 
-        );
+        )
       }}
     />
-  );
+  )
 }
 
 export const carouselStyles = StyleSheet.create({

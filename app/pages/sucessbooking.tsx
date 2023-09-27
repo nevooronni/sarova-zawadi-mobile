@@ -9,6 +9,8 @@ import { successModalStyles } from '../../components/Modal'
 import { FontAwesome } from '@expo/vector-icons'
 import Carousel from '../../components/Carousel'
 import { carouselData2 } from '../../constants/content'
+import { IosScreenWrapper } from '../../components/ScreenWrapper'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 function FixedCenterComponent() {
   return (
@@ -31,66 +33,70 @@ export default function SuccessBooking() {
   const bookingMessage2 = `booked a ${successMessage}`
 
   return (
-    <View style={{ flex: 1, margin: 0, padding: 0 }}>
-      <TopNavigation 
-        color={colors?.mediumGray} 
-        backgroundColor={colors?.white}
-        paddingHorizontal={20}
-        width='102%'
-        goBack
-      />
-      <ScrollView>
-        <View style={styles.container}>
-          <View style={{ width: '100%', gap: 19, paddingVertical: 30, paddingHorizontal: 30, alignItems: 'center' }}>
-            <Image
-              source={imageUrl}
-              style={{
-                height: 100,
-                width: 100,
-                borderRadius: 65,
-                marginTop: 20
-              }}
-            />
-            <Text style={{ color: colors?.red, fontSize: 22, fontWeight: 'bold' }}>
-              {userName}
-            </Text>
-          </View>
-          <View style={[successModalStyles.container2, { borderBottomWidth: 0 }]}>
-            <FontAwesome 
-              name='thumbs-up' 
-              size={30} 
-              color={colors?.shadeGreen2} 
-              style={{ marginVertical: 20 }} 
-            />
-            <Text style={{ color: colors?.shadeGreen2, fontSize: 16 }}>
-              {bookingMessage1}
-            </Text>
-            <Text style={{ color: colors?.shadeGreen2, fontSize: 16 }}>
-             {bookingMessage2}
-            </Text>
-          </View>
-          <View style={{ borderTopWidth: 0, alignItems: 'center', paddingTop: 18, paddingBottom: 35 }}>
-            <Text style={{ color: colors?.red, fontSize: 18 }}>
-              Thank You!
-            </Text>
-          </View>
-          <View style={{ borderBottomWidth: .5, borderBottomColor: colors?.lightGray, width: '90%', alignSelf: 'center' }} />
-          <View style={{ paddingVertical: 20 }}>
-            <Text style={{ fontSize: 18, color: colors?.mediumGray4, marginLeft: 30 }}>
-              Earn more points while at:
-            </Text>
-            <Carousel 
-              data={carouselData2} 
-              paddingTop={30} 
-              paddingBottom={10} 
-              paddingHorizontal={30} 
-              imageWidth={160} 
-              imageHeight={170}
-            />
-          </View>
+    <IosScreenWrapper background={colors?.white}>
+      <SafeAreaView>
+        <View style={{margin: 0, padding: 0 }}>
+          <TopNavigation 
+            color={colors?.mediumGray} 
+            backgroundColor={colors?.white}
+            paddingHorizontal={20}
+            width='102%'
+            goBack
+          />
+          <ScrollView>
+            <View style={styles.container}>
+              <View style={{ width: '100%', gap: 19, paddingVertical: 30, paddingHorizontal: 30, alignItems: 'center' }}>
+                <Image
+                  source={imageUrl}
+                  style={{
+                    height: 100,
+                    width: 100,
+                    borderRadius: 65,
+                    marginTop: 20
+                  }}
+                />
+                <Text style={{ color: colors?.red, fontSize: 22, fontWeight: 'bold' }}>
+                  {userName}
+                </Text>
+              </View>
+              <View style={[successModalStyles.container2, { borderBottomWidth: 0 }]}>
+                <FontAwesome 
+                  name='thumbs-up' 
+                  size={30} 
+                  color={colors?.shadeGreen2} 
+                  style={{ marginVertical: 20 }} 
+                />
+                <Text style={{ color: colors?.shadeGreen2, fontSize: 16 }}>
+                  {bookingMessage1}
+                </Text>
+                <Text style={{ color: colors?.shadeGreen2, fontSize: 16 }}>
+                {bookingMessage2}
+                </Text>
+              </View>
+              <View style={{ borderTopWidth: 0, alignItems: 'center', paddingTop: 18, paddingBottom: 35 }}>
+                <Text style={{ color: colors?.red, fontSize: 18 }}>
+                  Thank You!
+                </Text>
+              </View>
+              <View style={{ borderBottomWidth: .5, borderBottomColor: colors?.lightGray, width: '90%', alignSelf: 'center' }} />
+              <View style={{ paddingVertical: 20 }}>
+                <Text style={{ fontSize: 18, color: colors?.mediumGray4, marginLeft: 30 }}>
+                  Earn more points while at:
+                </Text>
+                <Carousel 
+                  data={carouselData2} 
+                  paddingTop={30} 
+                  paddingBottom={10} 
+                  paddingHorizontal={30} 
+                  imageWidth={160} 
+                  imageHeight={170}
+                />
+              </View>
+            </View>
+          </ScrollView>
         </View>
-      </ScrollView>
-    </View>
+      </SafeAreaView>
+    </IosScreenWrapper>
   )
 }
 
