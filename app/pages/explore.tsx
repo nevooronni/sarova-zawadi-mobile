@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
-import { SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native'
-import { IosScreenWrapper } from '../../components/ScreenWrapper'
+import { SafeAreaView, ScrollView } from 'react-native'
 import colors from '../../styles/theme'
 import TopNavigation from '../../components/Navigation/Top'
+import { hotels, tabsData } from '../../constants/content'
+import { HotelCard } from '../../components/Card'
+import { Platform } from 'react-native';
 
 export default function Explore() {
   const [active, setActive] = useState<string>('Hotels')
@@ -13,34 +15,10 @@ export default function Explore() {
   }
   function setHandleSearchPhrase(value: string) {
     setSearchPhrase(value)
-
   }
   function setHandleClicked(value: boolean) {
     setClicked(value)
-
   }
-  const tabsData = [
-    {
-      id: 1,
-      name: 'Hotels',
-      screen: 'Hotels'
-    },
-    {
-      id: 2,
-      name: 'Restaurants',
-      screen: 'Restaurants'
-    },
-    {
-      id: 3,
-      name: 'Tulia Spa',
-      screen: 'Spa'
-    },
-    {
-      id: 4,
-      name: 'Concierge',
-      screen: 'Concierge'
-    },
-  ]
   return (
     <SafeAreaView>
       <TopNavigation 
@@ -60,13 +38,29 @@ export default function Explore() {
         showTabs
         goBack
       />
-      <ScrollView>
+      <ScrollView 
+        style={{ backgroundColor: colors?.white }} 
+        contentContainerStyle={{ 
+          gap: 20,
+          width: '100%',
+          paddingTop: 250,
+          paddingLeft: 20,
+          alignItems: 'center',
+        }}
+      >
+        {hotels?.map((hotel, i) => (
+          <HotelCard
+            key={i}
+            name={hotel.name} 
+            price={hotel.price}
+            points={hotel.points}
+            image={hotel.image}
+            imageWidth={Platform.OS === 'ios' ? 340 : 305}
+            imageHeight={330}
+            borderRadius={20}
+          />
+        ))}
       </ScrollView>
     </SafeAreaView>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-  },
-})

@@ -1,14 +1,13 @@
-import React, { useState } from 'react'
-import { DimensionValue, StyleSheet, View,  TextInput, Keyboard, Button, Pressable, Text } from 'react-native'
+import React from 'react'
+import { DimensionValue, StyleSheet, View,  TextInput, Pressable, Text, Platform } from 'react-native'
 import { SimpleLineIcons } from "@expo/vector-icons";
 import colors from '../../../styles/theme';
 import { useNavigation } from 'expo-router';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { useDrawerStatus } from '@react-navigation/drawer';
 import { Feather, Entypo } from "@expo/vector-icons";
 import { Shadow } from 'react-native-shadow-2';
 
-interface Tab {
+export interface Tab {
   id: number;
   name: string;
   screen: string;
@@ -156,7 +155,7 @@ const Tabs = ({
       }]}
       >
       <View style={{  
-          width: 340, 
+          width: Platform.OS === 'ios' ? 340 : 305, 
           flexDirection: "row",
           justifyContent: 'space-between',
           borderBottomWidth: .5,

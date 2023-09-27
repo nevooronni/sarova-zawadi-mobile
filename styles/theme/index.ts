@@ -19,6 +19,7 @@ const colors: Color = {
   mediumGray5: '#aaa6a7',
   darkGray: '#6c6666',
   darkGray2: '#adadad',
+  darkGray3: '#736d6e',
   bgGray: '#484f62',
   green: '#046465',
   lightGreen: '#3eb334',
