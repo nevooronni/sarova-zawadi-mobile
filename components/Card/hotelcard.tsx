@@ -1,6 +1,6 @@
-import { Image } from 'expo-image'
+// import { Image } from 'expo-image'
 import React from 'react'
-import { Pressable, Text, View } from 'react-native'
+import { Pressable, Text, View, Image } from 'react-native'
 import { Shadow } from 'react-native-shadow-2'
 import { carouselStyles } from '../Carousel'
 import colors from '../../styles/theme'
@@ -31,7 +31,6 @@ export default function HotelCard({
                   } 
                 ]}
                 source={image}
-                transition={1000}
               />
               
             </View>

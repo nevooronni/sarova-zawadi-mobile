@@ -33,68 +33,66 @@ export default function SuccessBooking() {
   const bookingMessage2 = `booked a ${successMessage}`
 
   return (
-    <IosScreenWrapper background={colors?.white}>
+    <IosScreenWrapper background={colors?.bgRed}>
       <SafeAreaView>
-        <View style={{margin: 0, padding: 0 }}>
-          <TopNavigation 
-            color={colors?.mediumGray} 
-            backgroundColor={colors?.white}
-            paddingHorizontal={20}
-            width='102%'
-            goBack
-          />
-          <ScrollView>
-            <View style={styles.container}>
-              <View style={{ width: '100%', gap: 19, paddingVertical: 30, paddingHorizontal: 30, alignItems: 'center' }}>
-                <Image
-                  source={imageUrl}
-                  style={{
-                    height: 100,
-                    width: 100,
-                    borderRadius: 65,
-                    marginTop: 20
-                  }}
-                />
-                <Text style={{ color: colors?.red, fontSize: 22, fontWeight: 'bold' }}>
-                  {userName}
-                </Text>
-              </View>
-              <View style={[successModalStyles.container2, { borderBottomWidth: 0 }]}>
-                <FontAwesome 
-                  name='thumbs-up' 
-                  size={30} 
-                  color={colors?.shadeGreen2} 
-                  style={{ marginVertical: 20 }} 
-                />
-                <Text style={{ color: colors?.shadeGreen2, fontSize: 16 }}>
-                  {bookingMessage1}
-                </Text>
-                <Text style={{ color: colors?.shadeGreen2, fontSize: 16 }}>
-                {bookingMessage2}
-                </Text>
-              </View>
-              <View style={{ borderTopWidth: 0, alignItems: 'center', paddingTop: 18, paddingBottom: 35 }}>
-                <Text style={{ color: colors?.red, fontSize: 18 }}>
-                  Thank You!
-                </Text>
-              </View>
-              <View style={{ borderBottomWidth: .5, borderBottomColor: colors?.lightGray, width: '90%', alignSelf: 'center' }} />
-              <View style={{ paddingVertical: 20 }}>
-                <Text style={{ fontSize: 18, color: colors?.mediumGray4, marginLeft: 30 }}>
-                  Earn more points while at:
-                </Text>
-                <Carousel 
-                  data={carouselData2} 
-                  paddingTop={30} 
-                  paddingBottom={10} 
-                  paddingHorizontal={30} 
-                  imageWidth={160} 
-                  imageHeight={170}
-                />
-              </View>
+        <TopNavigation 
+          color={colors?.mediumGray} 
+          backgroundColor={colors?.white}
+          paddingHorizontal={20}
+          width='102%'
+          goBack
+        />
+        <ScrollView>
+          <View style={styles.container}>
+            <View style={{ width: '100%', gap: 19, paddingVertical: 30, paddingHorizontal: 30, alignItems: 'center' }}>
+              <Image
+                source={imageUrl}
+                style={{
+                  height: 100,
+                  width: 100,
+                  borderRadius: 65,
+                  marginTop: 20
+                }}
+              />
+              <Text style={{ color: colors?.red, fontSize: 22, fontWeight: 'bold' }}>
+                {userName}
+              </Text>
             </View>
-          </ScrollView>
-        </View>
+            <View style={[successModalStyles.container2, { borderBottomWidth: 0 }]}>
+              <FontAwesome 
+                name='thumbs-up' 
+                size={30} 
+                color={colors?.shadeGreen2} 
+                style={{ marginVertical: 20 }} 
+              />
+              <Text style={{ color: colors?.shadeGreen2, fontSize: 16 }}>
+                {bookingMessage1}
+              </Text>
+              <Text style={{ color: colors?.shadeGreen2, fontSize: 16 }}>
+              {bookingMessage2}
+              </Text>
+            </View>
+            <View style={{ borderTopWidth: 0, alignItems: 'center', paddingTop: 18, paddingBottom: 35 }}>
+              <Text style={{ color: colors?.red, fontSize: 18 }}>
+                Thank You!
+              </Text>
+            </View>
+            <View style={{ borderBottomWidth: .5, borderBottomColor: colors?.lightGray, width: '90%', alignSelf: 'center' }} />
+            <View style={{ paddingTop: 20, paddingBottom: 100, }}>
+              <Text style={{ fontSize: 15, color: colors?.mediumGray4, marginLeft: 30 }}>
+                Earn more points while at:
+              </Text>
+              <Carousel 
+                data={carouselData2} 
+                paddingTop={20} 
+                paddingBottom={10} 
+                paddingHorizontal={30} 
+                imageWidth={170} 
+                imageHeight={170}
+              />
+            </View>
+          </View>
+        </ScrollView>
       </SafeAreaView>
     </IosScreenWrapper>
   )
@@ -102,10 +100,10 @@ export default function SuccessBooking() {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 55,
+    paddingTop: 20,
     paddingBottom: 35,
     backgroundColor: colors?.white,
-    height: '100%',
+    height: 1100
   },
   fixedCenterComponent: {
     position: 'absolute',

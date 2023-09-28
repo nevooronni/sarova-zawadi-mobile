@@ -9,6 +9,7 @@ import SuccessModalPopup from '../../components/Modal'
 import SpinnerLoader from '../../components/Loaders/Spinner'
 import { useAppActions, useAppState } from '../../store'
 import { IosScreenWrapper } from '../../components/ScreenWrapper'
+import ImageManipulator from 'expo-image-manipulator';
 
 
 export default function Scan():JSX.Element {
@@ -35,6 +36,19 @@ export default function Scan():JSX.Element {
       const { status } = await ImagePicker.requestCameraPermissionsAsync();
       if (status !== 'granted') {
         alert('Camera permission is required to take a photo.');
+      }
+    })();
+  }, []);
+
+  useEffect(() => {
+    (async () => {
+      const pendingResult = await ImagePicker.getPendingResultAsync();
+
+      if (pendingResult) {
+        // A result is available from a previous image picker operation.
+        console.log('Pending result:', pendingResult);
+
+        // You can handle the result here, e.g., update state or display the image.
       }
     })();
   }, []);
@@ -70,9 +84,14 @@ export default function Scan():JSX.Element {
       aspect: [4, 3],
       quality: 1,
     });
-
+       
     if (!result.canceled) {
-      setSelectedImage(result.assets[0].uri);
+      const manipResult = await ImageManipulator.manipulateAsync(
+        result.assets[0].uri,
+        [{resize: {height:500,  width:500}}],
+        { compress: 1, format: ImageManipulator.SaveFormat.PNG },
+      );
+      setSelectedImage(manipResult);
     }
   };
 

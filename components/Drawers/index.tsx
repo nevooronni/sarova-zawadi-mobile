@@ -224,7 +224,7 @@ export default function Drawer() {
                 drawerIcon: tab.drawerIcon,
                 drawerStyle: {
                   backgroundColor: colors?.bgRed,
-                  width: 240,
+                  width: 240, 
                 },
                 drawerItemStyle: {
                   display: tabsToHide?.some(item => item === tab.name) ? 'none' : undefined,
@@ -234,7 +234,7 @@ export default function Drawer() {
                   paddingVertical: 5,
                   alignSelf: 'center',
                 },
-                drawerActiveBackgroundColor: 'none',
+                drawerActiveBackgroundColor: 'transparent',
                 drawerActiveTintColor: colors?.white,
               }}
               component={tab.component}

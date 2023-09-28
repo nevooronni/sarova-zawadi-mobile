@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useMemo } from 'react'
 import { FlatList, SafeAreaView, ScrollView } from 'react-native'
 import colors from '../../styles/theme'
 import TopNavigation from '../../components/Navigation/Top'
@@ -20,9 +20,18 @@ export default function Explore() {
   function setHandleClicked(value: boolean) {
     setClicked(value)
   }
+  const hotelsData = useMemo(() => hotels, [hotels]);
+  //@ts-ignore
+  const keyExtractor = (item) => item.id;
+
+  const getItemLayout = (_, index: number) => ({
+    length: 350, // Total height of each item, including margins
+    offset: 350 * index, // Offset to the top of the current item
+    index,
+  });
+
   return (
     <IosScreenWrapper background={colors?.white}>
-
       <SafeAreaView>
         <TopNavigation 
           color={colors?.mediumGray} 
@@ -42,10 +51,7 @@ export default function Explore() {
           goBack
         />
         <FlatList
-          removeClippedSubviews
-          maxToRenderPerBatch={2}
-          initialNumToRender={2}
-          data={hotels}
+          data={hotelsData}
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={{ 
             // paddingTop: paddingTop, 
@@ -60,6 +66,8 @@ export default function Explore() {
             alignItems: 'center',
             backgroundColor: colors?.white
           }}      
+          keyExtractor={keyExtractor}
+          getItemLayout={getItemLayout}
           renderItem={({ item, index }) => {
             return (
               <HotelCard
@@ -68,7 +76,7 @@ export default function Explore() {
                 price={item?.price}
                 points={item?.points}
                 image={item?.image}
-                imageWidth={Platform.OS === 'ios' ? 340 : 305}
+                imageWidth={Platform.OS === 'ios' ? 330 : 300}
                 imageHeight={330}
                 borderRadius={20}
               />
