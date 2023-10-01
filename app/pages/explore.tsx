@@ -1,9 +1,8 @@
 import React, { useState, useMemo } from 'react'
-import { FlatList, SafeAreaView, ScrollView } from 'react-native'
+import { FlatList, SafeAreaView, Platform } from 'react-native'
 import colors from '../../styles/theme'
 import TopNavigation from '../../components/Navigation/Top'
 import { hotels, tabsData } from '../../constants/content'
-import { Platform } from 'react-native';
 import { IosScreenWrapper } from '../../components/ScreenWrapper'
 import HotelCard from '../../components/Card/hotelcard'
 
@@ -64,6 +63,7 @@ export default function Explore() {
           }}      
           keyExtractor={keyExtractor}
           getItemLayout={getItemLayout}
+          showsVerticalScrollIndicator={false} 
           renderItem={({ item, index }) => {
             return (
               <HotelCard

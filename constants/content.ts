@@ -1,5 +1,6 @@
 import { ImageProps } from "react-native";
 import { Tab } from "../components/Navigation/Top";
+import { RoomCard } from "../components/Card/roomcard";
 
 interface Content {
   id: number;
@@ -183,4 +184,63 @@ export const CarouselImageData: ImageProps[] = [
   require('../assets/images/Sarova_Stanley_Thorn_Tree_Cafe_11.webp'),
   require('../assets/images/Sarova_Stanley_Thai_Chi_restaurant_8.webp'),
   require('../assets/images/Sarova_Stanley_Pool_Deck_Restaurant_4.webp'),
+]
+
+export const roomsData:RoomCard[] =[
+   {
+    id: 1,
+    title: 'Stanley Themed Suites',
+    desc: 'Sarova Stanley Suites offer the most distinctive experience. Sarova Stanley Suites offer the most distinctive experience',
+    price: 'From US $150 per night',
+    image: require('../assets/images/Sarova_Stanley_Lamu_Suite_1.webp'),
+   },
+   {
+    id: 2,
+    title: 'Stanley Club Rooms',
+    desc: 'Club rooms offer a very comfortable stay featuring.Club rooms offer a very comfortable stay featuring.',
+    price: 'From US $150 per night',
+    image: require('../assets/images/Sarova_Stanley_Twin_Club_Room_2.webp'),
+  },
+  {
+    id: 3,
+    title: 'Stanley Deluxe Rooms',
+    desc: 'Deluxe rooms offer a very comfortable stay featuring.Club rooms offer a very comfortable stay featuring.',
+    price: 'From US $150 per night',
+    image: require('../assets/images/Sarova_Stanley_Karen_Blixen_Suite_2.webp'),
+  },
+  {
+    id: 4,
+    title: 'Rooms',
+    desc: 'Rooms offer a very comfortable stay featuring.Club rooms offer a very comfortable stay featuring.',
+    price: 'From US $150 per night',
+    image: require('../assets/images/Sarova_Stanley_Room_13.webp'),
+ },
+//  {
+//   id: 5,
+//   title: 'Rooms',
+//   desc: 'Rooms offer a very comfortable stay featuring.Club rooms offer a very comfortable stay featuring.',
+//   price: 'From US $150 per night',
+//   image: require('../assets/images/Sarova_Stanley_Room_13.webp'),
+// },
+//   {
+//   id: 6,
+//   title: 'Stanley Themed Suites',
+//   desc: 'Sarova Stanley Suites offer the most distinctive experience. Sarova Stanley Suites offer the most distinctive experience',
+//   price: 'From US $150 per night',
+//   image: require('../assets/images/Sarova_Stanley_Lamu_Suite_1.webp'),
+//  },
+//  {
+//   id: 7,
+//   title: 'Stanley Club Rooms',
+//   desc: 'Club rooms offer a very comfortable stay featuring.Club rooms offer a very comfortable stay featuring.',
+//   price: 'From US $150 per night',
+//   image: require('../assets/images/Sarova_Stanley_Twin_Club_Room_2.webp'),
+// },
+// {
+//   id: 8,
+//   title: 'Stanley Deluxe Rooms',
+//   desc: 'Deluxe rooms offer a very comfortable stay featuring.Club rooms offer a very comfortable stay featuring.',
+//   price: 'From US $150 per night',
+//   image: require('../assets/images/Sarova_Stanley_Karen_Blixen_Suite_2.webp'),
+// },
 ]

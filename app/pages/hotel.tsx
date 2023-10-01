@@ -1,108 +1,79 @@
-import React from 'react'
-import { StatusBar, StyleSheet, Dimensions, Text, View, Platform, ImageBackground, SafeAreaView } from 'react-native'
+import React, { useMemo, useState } from 'react'
+import { Text, View, Platform, Pressable } from 'react-native'
 import { useRoute } from '@react-navigation/native'
 import colors from '../../styles/theme'
-import Carousel from 'react-native-reanimated-carousel'
-import AnimatedDotsCarousel from 'react-native-animated-dots-carousel'
-import { Image, ImageProps } from 'react-native'
-import { CarouselImageData } from '../../constants/content'
 import TopNavigation from '../../components/Navigation/Top'
 import { IosScreenWrapper } from '../../components/ScreenWrapper'
-import Constants from 'expo-constants';
+import { CarouselImageData, roomsData } from '../../constants/content'
+import { BackgroundCarousel } from '../../components/Carousel'
+import { loginStyles } from '../home'
+import RoomCard from '../../components/Card/roomcard'
+import { ScrollView } from 'react-native-gesture-handler'
 
 export default function Hotel() {
   const route = useRoute()
   //@ts-ignore
   const { id } = route.params
-  const width = Dimensions.get('window').width;
-  const [index, setIndex] = React.useState<number>(0);
-  const LENGTH = 6;
-
-  const handleIndex = (index: number) => {
-    setIndex(index)
-  }
+  const [readmore, setReadmore] = useState<boolean>(false)
+  const desc = 'Sarova Stanley Nairobi Guest rooms at Sarova Stanley offer a blend of Victorian elegance and comfort, combined with all the practical executive amenities of the Lorem ipsum test lorem ipsum text lorem ipsum text'
+  //@ts-ignore
+  const keyExtractor = (item) => item.id;
+  const data = useMemo(() => roomsData, [roomsData]);
+  const getItemLayout = (_, index: number) => ({
+    length: 120, 
+    offset: 100 * index, 
+    index,
+  });
 
   return (
     <IosScreenWrapper 
       background={colors?.bgRed}
       hidden={Platform.OS === 'ios'}
     >   
-        <TopNavigation 
-          color={colors?.white} 
-          paddingTop={Platform.OS === 'ios' ? 35 : 15}     
-          paddingHorizontal={30}
-          width='105%'
-          goBack
-        />
-        <Carousel
-          loop
-          autoPlay
-          pagingEnabled
-          width={width}
-          height={width / 1.35}
-          data={CarouselImageData}
-          autoPlayInterval={1500}
-          scrollAnimationDuration={1700}
-          onProgressChange={(_, absoluteProgress) => {
-            handleIndex(Math.round(absoluteProgress));
-          }}
-          renderItem={({ item }: { item: ImageProps }) => (
-            <View
-              style={{
-                flex: 1,
-                justifyContent: 'center',
-              }}
-            >
-              <Image
-                style={{ width: '100%',  height: '100%' }}
-                source={item}
+      <TopNavigation 
+        color={colors?.white} 
+        paddingTop={Platform.OS === 'ios' ? 35 : 15}     
+        paddingHorizontal={30}
+        width='105%'
+        goBack
+      />
+      <BackgroundCarousel data={CarouselImageData} />
+        <ScrollView style={{ backgroundColor: colors?.white, flex: 1, marginTop: -25, paddingTop: 20 }}>
+          <View style={{ backgroundColor: colors?.white, gap: 16, flex: 1, marginTop: -25, paddingTop: 20, paddingBottom: 100, paddingHorizontal: 30 }}>
+          <View style={{ alignItems: 'flex-start' }}>
+            <Text style={{ color: colors?.bgRed, fontSize: 19, fontWeight: 'bold' }}>Sarova Stanley Nairobi</Text>
+          </View>
+          <View style={{ alignItems: 'flex-start' }}>
+          <Pressable onPress={() => setReadmore(false)}>
+            <Text style={{ color: colors?.mediumGray, }}>{desc ? readmore ? desc : `${desc?.slice(0,160)}...` : ''}{!readmore 
+              ? <Pressable onPress={() => setReadmore(true)} style={{ marginTop: -4 }}><Text style={{ color: colors?.blue, fontWeight: 'bold' }}>Read more</Text></Pressable> 
+              : null}
+            </Text>
+          </Pressable>
+          </View>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: 285 }}>
+            <Pressable style={[loginStyles.loginButton, { height: 40, paddingVertical: 10, }]}>
+              <Text style={loginStyles.loginText}>Map</Text>
+            </Pressable>
+            <Pressable style={[loginStyles.loginButton, { height: 40, paddingVertical: 10, }]}>
+              <Text style={loginStyles.loginText}>Contact Us</Text>
+            </Pressable>
+          </View>
+          <View style={{ marginVertical: 1, borderWidth: .25, borderColor: colors?.lightGray, }} />
+          <View style={{ paddingTop: 0, gap: 10, paddingBottom: 260, }}>
+            <Text style={{ color: colors?.darkGray, fontSize: 17, fontWeight: 'bold' }}>Rooms & Suites</Text>
+            {data?.map(room => (
+              <RoomCard 
+                key={room?.id}
+                image={room?.image}
+                title={room?.title}
+                desc={room?.desc}
+                price={room?.price}
               />
-            </View>
-          )}
-        />
-        <View style={{ position: 'relative', top: -30, left: '40%', width: '100%', height: 25, justifyContent: 'center', alignContent: 'center', paddingBottom: 0 }}>
-          <AnimatedDotsCarousel
-            length={LENGTH}
-            currentIndex={index}
-            maxIndicators={6}
-            interpolateOpacityAndColor={true}
-            activeIndicatorConfig={{
-              color: colors?.white,
-              margin: 3,
-              opacity: 1,
-              size: 8,
-            }}
-            inactiveIndicatorConfig={{
-              color: colors?.lightGray3,
-              margin: 3,
-              opacity: 0.5,
-              size: 8,
-            }}
-            decreasingDots={[
-              {
-                config: { 
-                  color: colors?.lightGray3, 
-                  margin: 3, 
-                  opacity: 0.5, 
-                  size: 8 
-                },
-                quantity: 1,
-              },
-              {
-                config: { 
-                  color: colors?.lightGray3, 
-                  margin: 3, 
-                  opacity: 0.5, 
-                  size: 8 
-                },
-                quantity: 1,
-              },
-            ]}
-          />
-        </View>
-        <View style={{ backgroundColor: colors?.white, flex: 1, marginTop: -25 }}>
-
-        </View>
+            ))}
+          </View>
+      </View>
+        </ScrollView>
     </IosScreenWrapper>
   )
 }

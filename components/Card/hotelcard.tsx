@@ -6,7 +6,6 @@ import { carouselStyles } from '../Carousel'
 import colors from '../../styles/theme'
 import { Hotel } from '../../constants/content'
 import { useNavigation } from '@react-navigation/native';
-import { blurhash } from '../../constants/image'
 
 export default function HotelCard({
   id,

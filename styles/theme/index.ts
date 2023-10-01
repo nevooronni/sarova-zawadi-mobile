@@ -8,6 +8,7 @@ const colors: Color = {
   // Primary
   white: '#ffffff',
   red: '#b11f27',
+  blue: '#32ade4',
   bgRed: '#b23440',
   darkRed: '#640200',
   lightGray: '#959090',

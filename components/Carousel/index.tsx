@@ -1,10 +1,92 @@
 import React from 'react'
-import { StyleSheet, View, Text, FlatList, Pressable } from 'react-native';
+import { ImageProps, StyleSheet, View, Text, FlatList, Pressable, Dimensions, } from 'react-native';
 import colors from '../../styles/theme';
 import { Image } from 'expo-image';
 import { Shadow } from 'react-native-shadow-2';
 import { useNavigation } from '@react-navigation/native';
+import ReanimatedCarousel from 'react-native-reanimated-carousel'
+import AnimatedDotsCarousel from 'react-native-animated-dots-carousel'
+import { blurhash } from '../../constants/image'
 
+export function BackgroundCarousel({ data }: { data: ImageProps[]}){
+  const width = Dimensions.get('window').width;
+  const [index, setIndex] = React.useState<number>(0);
+  const handleIndex = (index: number) => {
+    setIndex(index)
+  }
+
+  return (
+    <>
+      <ReanimatedCarousel
+        loop
+        autoPlay
+        pagingEnabled
+        width={width}
+        height={width / 1.35}
+        data={data}
+        autoPlayInterval={1500}
+        scrollAnimationDuration={1700}
+        onProgressChange={(_, absoluteProgress) => {
+          handleIndex(Math.round(absoluteProgress));
+        }}
+        renderItem={({ item }: { item: ImageProps }) => (
+          <View
+            style={{
+              flex: 1,
+              justifyContent: 'center',
+            }}
+          >
+            <Image
+              style={{ width: '100%',  height: '100%' }}
+              source={item}
+              placeholder={blurhash}
+            />
+          </View>
+        )}
+      />
+      <View style={{ position: 'relative', top: -30, left: '40%', width: '100%', height: 25, justifyContent: 'center', alignContent: 'center', paddingBottom: 0 }}>
+          <AnimatedDotsCarousel
+            length={data?.length}
+            currentIndex={index}
+            maxIndicators={6}
+            interpolateOpacityAndColor={true}
+            activeIndicatorConfig={{
+              color: colors?.white,
+              margin: 3,
+              opacity: 1,
+              size: 8,
+            }}
+            inactiveIndicatorConfig={{
+              color: colors?.lightGray3,
+              margin: 3,
+              opacity: 0.5,
+              size: 8,
+            }}
+            decreasingDots={[
+              {
+                config: { 
+                  color: colors?.lightGray3, 
+                  margin: 3, 
+                  opacity: 0.5, 
+                  size: 8 
+                },
+                quantity: 1,
+              },
+              {
+                config: { 
+                  color: colors?.lightGray3, 
+                  margin: 3, 
+                  opacity: 0.5, 
+                  size: 8 
+                },
+                quantity: 1,
+              },
+            ]}
+          />
+        </View>
+    </>
+  )
+}
 interface Data {
   id: number;
   image: string;
