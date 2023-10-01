@@ -175,3 +175,12 @@ export const hotels: Hotel[] = [
     points: 'Earn up to 2,500 points',
   },
 ]
+
+export const CarouselImageData: ImageProps[] = [
+  require('../assets/images/Sarova_Stanley_Exterior_1.webp'),
+  require('../assets/images/Sarova_Stanley_1902_Club_Lounge_6_(1).webp'),
+  require('../assets/images/Sarova_Stanley_The_Exchange_bar_6.webp'),
+  require('../assets/images/Sarova_Stanley_Thorn_Tree_Cafe_11.webp'),
+  require('../assets/images/Sarova_Stanley_Thai_Chi_restaurant_8.webp'),
+  require('../assets/images/Sarova_Stanley_Pool_Deck_Restaurant_4.webp'),
+]

@@ -14,6 +14,7 @@ export interface Tab {
 }
 interface NavProps {
   color?: string;
+  paddingTop?: number | undefined;
   paddingHorizontal?: number | undefined;
   paddingVertical?: number | undefined;
   goBack?: boolean;
@@ -36,6 +37,7 @@ const Navbar = ({
   paddingVertical,
   goBack,
   width,
+  paddingTop,
   backgroundColor,
  }: NavProps) => {
   const navigation = useNavigation();
@@ -46,6 +48,7 @@ const Navbar = ({
         width: width,
         paddingHorizontal: paddingHorizontal,
         paddingVertical: paddingVertical,
+        paddingTop: paddingTop,
         backgroundColor: backgroundColor || 'transparent',
         justifyContent: goBack ? 'space-between'  : 'flex-end'
       }]}
@@ -187,6 +190,7 @@ const Tabs = ({
 }
 export default function TopNavigation({ 
   color, 
+  paddingTop,
   paddingHorizontal,
   paddingVertical,
   goBack,
@@ -208,6 +212,7 @@ export default function TopNavigation({
     <View  style={{ zIndex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Navbar
         color={color}
+        paddingTop={paddingTop}
         paddingHorizontal={paddingHorizontal}
         paddingVertical={paddingVertical}
         goBack={goBack}
@@ -256,7 +261,7 @@ const styles = StyleSheet.create({
   },
   searchBarContainer: {
     position: 'absolute', 
-    top: 55, 
+    top: 54, 
     left: 0, 
     right: 0,
     zIndex: 1,

@@ -13,6 +13,7 @@ import Activities from '../../app/pages/activities'
 import SuccessBooking from '../../app/pages/sucessbooking'
 import TellAFriend from '../../app/pages/invitefriend'
 import Explore from '../../app/pages/explore'
+import Hotel from '../../app/pages/hotel'
 
 function MyProfile({ navigation }) {
   return (
@@ -187,8 +188,16 @@ export default function Drawer() {
       show: true,
       drawerIcon: undefined,
       component: Explore
-    }
-  
+    },
+    {
+      id: 10,
+      name: 'Hotel',
+      drawerLabel: 'Hotel',
+      title: 'Hotel',
+      show: true,
+      drawerIcon: undefined,
+      component: Hotel
+    },
   ];
 
   const tabsToHide = [ 'Scan', 'Activities', 'SuccessBooking', 'Explore' ];

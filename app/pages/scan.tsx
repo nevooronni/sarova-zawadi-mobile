@@ -88,7 +88,7 @@ export default function Scan():JSX.Element {
     if (!result.canceled) {
       const manipResult = await ImageManipulator.manipulateAsync(
         result.assets[0].uri,
-        [{resize: {height:500,  width:500}}],
+        [{resize: {height:330,  width:280}}],
         { compress: 1, format: ImageManipulator.SaveFormat.PNG },
       );
       setSelectedImage(manipResult);

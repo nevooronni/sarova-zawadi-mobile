@@ -54,10 +54,6 @@ export default function Explore() {
           data={hotelsData}
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={{ 
-            // paddingTop: paddingTop, 
-            // paddingBottom: paddingBottom,
-            // paddingHorizontal: paddingHorizontal, 
-            // paddingVertical: paddingVertical,
             gap: 20,
             width: '100%',
             paddingTop: 250,
@@ -72,6 +68,7 @@ export default function Explore() {
             return (
               <HotelCard
                 key={index}
+                id={item?.id}
                 name={item?.name} 
                 price={item?.price}
                 points={item?.points}

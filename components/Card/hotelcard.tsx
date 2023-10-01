@@ -5,8 +5,11 @@ import { Shadow } from 'react-native-shadow-2'
 import { carouselStyles } from '../Carousel'
 import colors from '../../styles/theme'
 import { Hotel } from '../../constants/content'
+import { useNavigation } from '@react-navigation/native';
+import { blurhash } from '../../constants/image'
 
 export default function HotelCard({
+  id,
   name, 
   price, 
   points,
@@ -15,10 +18,11 @@ export default function HotelCard({
   imageHeight,
   borderRadius
 }:Hotel):JSX.Element{
+  const navigation = useNavigation();
   return(
     <Pressable
       //@ts-ignore
-      // onPress={() => navigation.navigate('Activities')}
+      onPress={() => navigation.navigate('Hotel', { id: id })}
       style={[carouselStyles.pressable, { borderRadius: 25 }]}>
       <Shadow>
         <View style={{  alignItems: "center", justifyContent: "center", borderRadius: 25 }}>
@@ -32,7 +36,6 @@ export default function HotelCard({
                 ]}
                 source={image}
               />
-              
             </View>
             <View style={{ paddingTop: 20, paddingBottom: 10, paddingHorizontal: 20, backgroundColor: colors?.white }}>
               <Text style={{ color: colors?.bgRed, fontWeight: 'bold', fontSize: 18 }}>

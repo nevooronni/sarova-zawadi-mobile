@@ -12,6 +12,7 @@ const colors: Color = {
   darkRed: '#640200',
   lightGray: '#959090',
   lightGray2: '#f2f2f2',
+  lightGray3: '#d8cfc4',
   mediumGray: '#575051',
   mediumGray2: '#787273',
   mediumGray3: '#707070',
