@@ -1,13 +1,14 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { Pressable, StyleSheet, Text, View } from 'react-native'
 import { Image } from 'expo-image'
 import { blurhash } from '../../constants/image'
 import { ImageProps } from "react-native";
 import colors from '../../styles/theme';
 import { Shadow } from 'react-native-shadow-2'
+import { useNavigation } from '@react-navigation/native';
 
 export interface RoomCard {
-  id?: number;
+  id: number;
   title: string;
   desc: string;
   price: string;
@@ -17,6 +18,7 @@ export interface RoomCard {
 }
 
 export default function RoomCard({ 
+  id,
   image, 
   title, 
   desc, 
@@ -24,10 +26,14 @@ export default function RoomCard({
   imageWidth,
   imageHeight,
 }:RoomCard):JSX.Element {
+  const navigation = useNavigation();
   return (
     <Shadow offset={[0,10]} paintInside={false} style={{ borderRadius: 10 }}>
-    <View style={[roomCardStyles?.box, {  height: imageHeight ? imageHeight : 100, }]}
-    >
+      <Pressable 
+        //@ts-ignore
+        onPress={() => navigation.navigate('Room', { id: id })} 
+        style={[roomCardStyles?.box, {  height: imageHeight ? imageHeight : 100, }]}
+      >
         <View>
           <Image
             style={ 
@@ -47,8 +53,8 @@ export default function RoomCard({
           <Text style={{ width: 169, color: colors?.mediumGray, fontSize: 12 }}>{desc?.length > 50 ? `${desc?.slice(0,50)}...` : desc}</Text>
           <Text style={{ fontSize: 13, color: colors?.mediumGray, fontWeight: 'normal' }}>{price}</Text>
         </View>
-    </View>
-      </Shadow>
+      </Pressable>
+    </Shadow>
   )
 }
 

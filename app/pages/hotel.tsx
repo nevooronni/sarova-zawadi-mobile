@@ -11,7 +11,7 @@ import RoomCard from '../../components/Card/roomcard'
 import { ScrollView } from 'react-native-gesture-handler'
 
 export default function Hotel() {
-  const route = useRoute()
+  const route = useRoute() 
   //@ts-ignore
   const { id } = route.params
   const [readmore, setReadmore] = useState<boolean>(false)
@@ -19,8 +19,10 @@ export default function Hotel() {
   //@ts-ignore
   const keyExtractor = (item) => item.id;
   const data = useMemo(() => roomsData, [roomsData]);
-  const getItemLayout = (_, index: number) => ({
+  const getItemLayout = (_, index: number) => ({  
     length: 120, 
+
+
     offset: 100 * index, 
     index,
   });
@@ -38,18 +40,21 @@ export default function Hotel() {
         goBack
       />
       <BackgroundCarousel data={CarouselImageData} />
-        <ScrollView style={{ backgroundColor: colors?.white, flex: 1, marginTop: -25, paddingTop: 20 }}>
+        <ScrollView 
+          style={{ backgroundColor: colors?.white, flex: 1, marginTop: -25, paddingTop: 20 }}
+          showsVerticalScrollIndicator={false} 
+        >
           <View style={{ backgroundColor: colors?.white, gap: 16, flex: 1, marginTop: -25, paddingTop: 20, paddingBottom: 100, paddingHorizontal: 30 }}>
-          <View style={{ alignItems: 'flex-start' }}>
-            <Text style={{ color: colors?.bgRed, fontSize: 19, fontWeight: 'bold' }}>Sarova Stanley Nairobi</Text>
-          </View>
-          <View style={{ alignItems: 'flex-start' }}>
-          <Pressable onPress={() => setReadmore(false)}>
-            <Text style={{ color: colors?.mediumGray, }}>{desc ? readmore ? desc : `${desc?.slice(0,160)}...` : ''}{!readmore 
-              ? <Pressable onPress={() => setReadmore(true)} style={{ marginTop: -4 }}><Text style={{ color: colors?.blue, fontWeight: 'bold' }}>Read more</Text></Pressable> 
-              : null}
-            </Text>
-          </Pressable>
+            <View style={{ alignItems: 'flex-start' }}>
+              <Text style={{ color: colors?.bgRed, fontSize: 19, fontWeight: 'bold' }}>Sarova Stanley Nairobi</Text>
+            </View>
+            <View style={{ alignItems: 'flex-start' }}>
+            <Pressable onPress={() => setReadmore(false)}>
+              <Text style={{ color: colors?.mediumGray, }}>{desc ? readmore ? desc : `${desc?.slice(0,160)}...` : ''}{!readmore 
+                ? <Pressable onPress={() => setReadmore(true)}><Text style={{ color: colors?.blue, fontWeight: 'bold', marginBottom: Platform.OS === 'ios' ? -3 : -5 }}>Read more</Text></Pressable> 
+                : null}
+              </Text>
+            </Pressable>
           </View>
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: 285 }}>
             <Pressable style={[loginStyles.loginButton, { height: 40, paddingVertical: 10, }]}>
@@ -64,6 +69,7 @@ export default function Hotel() {
             <Text style={{ color: colors?.darkGray, fontSize: 17, fontWeight: 'bold' }}>Rooms & Suites</Text>
             {data?.map(room => (
               <RoomCard 
+                id={room?.id}
                 key={room?.id}
                 image={room?.image}
                 title={room?.title}
@@ -72,15 +78,8 @@ export default function Hotel() {
               />
             ))}
           </View>
-      </View>
-        </ScrollView>
+        </View>
+      </ScrollView>
     </IosScreenWrapper>
   )
 }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: colors?.white,
-//   },
-// });

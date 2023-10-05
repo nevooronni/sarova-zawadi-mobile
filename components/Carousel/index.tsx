@@ -22,7 +22,7 @@ export function BackgroundCarousel({ data }: { data: ImageProps[]}){
         autoPlay
         pagingEnabled
         width={width}
-        height={width / 1.35}
+        height={width / 1.5}
         data={data}
         autoPlayInterval={1500}
         scrollAnimationDuration={1700}

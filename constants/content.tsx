@@ -1,6 +1,9 @@
+import React from 'react';
+import { FontAwesome } from '@expo/vector-icons';
 import { ImageProps } from "react-native";
 import { Tab } from "../components/Navigation/Top";
 import { RoomCard } from "../components/Card/roomcard";
+import colors from '../styles/theme';
 
 interface Content {
   id: number;
@@ -243,4 +246,55 @@ export const roomsData:RoomCard[] =[
 //   price: 'From US $150 per night',
 //   image: require('../assets/images/Sarova_Stanley_Karen_Blixen_Suite_2.webp'),
 // },
+]
+
+export const roomCarouselData: ImageProps[] = [
+  require('../assets/images/Sarova_Stanley_Lamu_Suite_1.webp'),
+  require('../assets/images/Sarova_Stanley_Twin_Club_Room_2.webp'),
+  require('../assets/images/Sarova_Stanley_Karen_Blixen_Suite_2.webp'),
+  require('../assets/images/Sarova_Stanley_Room_13.webp'),
+]
+
+interface RoomFeature {
+  id: number;
+  icon: React.ReactNode;
+  desc: string;
+}
+export const roomFeatures: RoomFeature[] = [
+  {
+    id: 1,
+    icon:  (
+      <FontAwesome 
+        name='users' 
+        size={28} 
+        color={colors?.darkGray} 
+        // style={{ marginBottom: 10, marginTop: -15, color: '#71716F', }} 
+      />
+    ),
+    desc: '2 People'
+  },
+  {
+    id: 2,
+    icon: (
+      <FontAwesome 
+        name='bed' 
+        size={29} 
+        color={colors?.darkGray} 
+        // style={{ marginBottom: 10, marginTop: -15, color: '#71716F', }} 
+      />
+    ),
+    desc: 'Queen size & 2 Twin Bedding'
+  },
+  {
+    id: 3,
+    icon: (
+      <FontAwesome 
+        name='eye' 
+        size={29} 
+        color={colors?.darkGray} 
+        // style={{ marginBottom: 10, marginTop: -15, color: '#71716F', }} 
+      />
+    ),
+    desc: 'City Views'
+  },
 ]
