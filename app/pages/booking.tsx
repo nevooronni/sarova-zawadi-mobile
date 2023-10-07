@@ -23,15 +23,19 @@ export default function Booking() {
     <IosScreenWrapper background={colors?.white}>
       <SafeAreaView>
         <TopNavigation 
+          backgroundColor={colors?.white}
           color={colors?.mediumGray} 
           paddingHorizontal={30}
           width='105%'
           goBack
         />
-        <ScrollView>
+        <ScrollView 
+          showsVerticalScrollIndicator={false}
+          
+        >
           <View style={styles.container}>
             <View>
-              <Text style={{ color: colors?.bgRed, fontSize: 22 }}>
+              <Text style={{ color: colors?.bgRed, fontSize: 20 }}>
                 Stanley Themed Suites Booking
               </Text>
             </View>
@@ -193,7 +197,7 @@ export default function Booking() {
 const styles = StyleSheet.create({
   container: {
     paddingTop: 70,
-    paddingBottom: 55,
+    paddingBottom: 355,
     backgroundColor: colors?.white,
     height: '100%',
     alignItems: 'center'
