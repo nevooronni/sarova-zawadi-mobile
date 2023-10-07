@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useRoute } from '@react-navigation/native'
+import { useRoute, useNavigation } from '@react-navigation/native'
 import { IosScreenWrapper } from '../../components/ScreenWrapper'
 import colors from '../../styles/theme'
 import { Platform, Pressable, ScrollView, View } from 'react-native'
@@ -11,6 +11,7 @@ import { FontAwesome } from '@expo/vector-icons'
 import { loginStyles } from '../home'
 
 export default function Room() {
+  const navigation = useNavigation();
   const [readmore, setReadmore] = useState<boolean>(false)
   const desc = 'The Stanley Suite is the official presidential suite of the hotel and is named after the explorer Henry Morton Stanley Lorem ipsum test lorem ipsum text lorem ipsum text Lorem ipsum test lorem ipsum text lorem ipsum text Lorem ipsum test lorem ipsum text lorem ipsum text'
 
@@ -150,6 +151,8 @@ export default function Room() {
               style={[loginStyles.loginButton, 
               { height: 40, width: 125, paddingVertical: 10, 
               }]}
+              //@ts-ignore
+              onPress={() => navigation.navigate('Booking', { id: routeId })} 
             >
               <Text style={loginStyles.loginText}>Book Now</Text>
               </Pressable>

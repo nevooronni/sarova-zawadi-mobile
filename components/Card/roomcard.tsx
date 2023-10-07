@@ -5,7 +5,7 @@ import { blurhash } from '../../constants/image'
 import { ImageProps } from "react-native";
 import colors from '../../styles/theme';
 import { Shadow } from 'react-native-shadow-2'
-import { useNavigation } from '@react-navigation/native';
+import { useRoute, useNavigation } from '@react-navigation/native';
 
 export interface RoomCard {
   id: number;
@@ -26,6 +26,10 @@ export default function RoomCard({
   imageWidth,
   imageHeight,
 }:RoomCard):JSX.Element {
+  const route = useRoute() 
+  //@ts-ignore
+  const routeId = route?.params?.id
+  console.log("🚀 ~ file: roomcard.tsx:32 ~ routeId:", routeId)
   const navigation = useNavigation();
   return (
     <Shadow offset={[0,10]} paintInside={false} style={{ borderRadius: 10 }}>

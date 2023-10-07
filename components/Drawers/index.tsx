@@ -15,6 +15,7 @@ import TellAFriend from '../../app/pages/invitefriend'
 import Explore from '../../app/pages/explore'
 import Hotel from '../../app/pages/hotel'
 import Room from '../../app/pages/room'
+import Booking from '../../app/pages/booking'
 
 function MyProfile({ navigation }) {
   return (
@@ -208,9 +209,18 @@ export default function Drawer() {
       drawerIcon: undefined,
       component: Room
     },
+    {
+      id: 11,
+      name: 'Booking',
+      drawerLabel: 'Booking',
+      title: 'Booking',
+      show: true,
+      drawerIcon: undefined,
+      component: Booking
+    },
   ];
 
-  const tabsToHide = [ 'Scan', 'Activities', 'SuccessBooking', 'Explore', 'Hotel', 'Room' ];
+  const tabsToHide = [ 'Scan', 'Activities', 'SuccessBooking', 'Explore', 'Hotel', 'Room', 'Booking' ];
 
   return (
     <NavigationContainer independent={true}>

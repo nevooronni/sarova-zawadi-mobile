@@ -3854,6 +3854,13 @@ expo-constants@~14.4.2:
     "@expo/config" "~8.1.0"
     uuid "^3.3.2"
 
+expo-device@~5.4.0:
+  version "5.4.0"
+  resolved "https://registry.yarnpkg.com/expo-device/-/expo-device-5.4.0.tgz#4dc4db4b2265d1f5c9d7c2be6548c375882be437"
+  integrity sha512-TQxSVPrC6njCbzZ9Cqpc1lGLIjPmO1zBIbqW7CTqBPD1dOIMrgQvt7lZZhkHh3pWzoZznH283sSYqCvy3XcURw==
+  dependencies:
+    ua-parser-js "^0.7.33"
+
 expo-file-system@~15.4.0, expo-file-system@~15.4.4:
   version "15.4.4"
   resolved "https://registry.yarnpkg.com/expo-file-system/-/expo-file-system-15.4.4.tgz#b29e0507b57ee0cc7173cf8844aaf992e411f518"
@@ -6080,6 +6087,11 @@ mkdirp@^1.0.3, mkdirp@^1.0.4:
   resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-1.0.4.tgz#3eb5ed62622756d79a5f0e2a221dfebad75c2f7e"
   integrity sha512-vVqVZQyf3WLx2Shd0qJ9xuvqgAyKPLAiqITEtqW0oIUjzo3PePDd6fW9iFz30ef7Ysp/oiWqbhszeGWW2T6Gzw==
 
+moment@^2.29.1:
+  version "2.29.4"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.4.tgz#3dbe052889fe7c1b2ed966fcb3a77328964ef108"
+  integrity sha512-5LC9SOxjSc2HF6vO2CyuTDNivEdoz2IvyJJGj6X8DJ0eFyfszE0QiEd+iXmBvUP3WHxSjFH/vIsA0EN00cgr8w==
+
 ms@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
@@ -7184,6 +7196,13 @@ rimraf@~2.6.2:
   dependencies:
     glob "^7.1.3"
 
+rn-select-date-range@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/rn-select-date-range/-/rn-select-date-range-5.0.0.tgz#1d87ab834b75622d213e43ee601e927e2861775b"
+  integrity sha512-KeCPevdxSjhIKMrIcsogklbeQZDFpTzK1onNwQR0dDCU29xR8m90We/sXnxG4mZtLn096QnsG5cKSFy4uEiizA==
+  dependencies:
+    moment "^2.29.1"
+
 run-parallel@^1.1.9:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/run-parallel/-/run-parallel-1.2.0.tgz#66d1368da7bdf921eb9d95bd1a9229e7f21a43ee"
@@ -7936,6 +7955,11 @@ typescript@^5.1.3:
   version "5.2.2"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.2.2.tgz#5ebb5e5a5b75f085f22bc3f8460fba308310fa78"
   integrity sha512-mI4WrpHsbCIcwT9cF4FZvr80QUeKvsUsUvKDoR+X/7XHQH98xYD8YHZg7ANtz2GtZt/CBq2QJ0thkGJMHfqc1w==
+
+ua-parser-js@^0.7.33:
+  version "0.7.36"
+  resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.36.tgz#382c5d6fc09141b6541be2cae446ecfcec284db2"
+  integrity sha512-CPPLoCts2p7D8VbybttE3P2ylv0OBZEAy7a12DsulIEcAiMtWJy+PBgMXgWDI80D5UwqE8oQPHYnk13tm38M2Q==
 
 ua-parser-js@^1.0.35:
   version "1.0.36"
