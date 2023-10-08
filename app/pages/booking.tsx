@@ -9,11 +9,26 @@ import { StyleSheet } from 'react-native'
 import moment from "moment";
 import { FontAwesome } from '@expo/vector-icons'
 import { loginStyles } from '../home'
-import { useRoute } from '@react-navigation/native'
+import { useRoute, useNavigation } from '@react-navigation/native'
+
+interface DateRange {
+  firstDate: string;
+  secondDate: string;
+}
 
 export default function Booking() {
   // const iOSVersion = Device.osVersion
-  const [selectedRange, setRange] = useState({});
+  const navigation = useNavigation();
+  const [selectedRange, setRange] = useState<DateRange>({
+    firstDate: '',
+    secondDate: '',
+  });
+  const parseDateToday = moment() 
+  const parsedFirstDate = selectedRange?.firstDate ? moment(selectedRange?.firstDate) : parseDateToday
+  const formattedFirstDate = parsedFirstDate.format("ddd, DD MMM")
+  const parsedSecondDate = selectedRange?.secondDate ? moment(selectedRange?.secondDate) : parseDateToday
+  const formattedSecondDate = parsedSecondDate.format("ddd, DD MMM")
+
   const [adults, setAdults] = useState<number>(0);
   const [children, setChildren] = useState<number>(0);
   const route = useRoute() 
@@ -58,7 +73,7 @@ export default function Booking() {
                   Check In
                 </Text>
                 <Text style={{ color: colors?.bgRed, fontSize: 21 }}>
-                  Tue, 6 Nov 
+                  {formattedFirstDate}
                 </Text>
               </View>
               <View style={{ 
@@ -73,7 +88,7 @@ export default function Booking() {
                   Check Out
                 </Text>
                 <Text style={{ color: colors?.bgRed, fontSize: 21 }}>
-                  Tue, 29 Nov 
+                  {formattedSecondDate}
                 </Text>
               </View>
             </View>

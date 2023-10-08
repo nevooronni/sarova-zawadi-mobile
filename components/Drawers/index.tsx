@@ -16,6 +16,7 @@ import Explore from '../../app/pages/explore'
 import Hotel from '../../app/pages/hotel'
 import Room from '../../app/pages/room'
 import Booking from '../../app/pages/booking'
+import SecureCheckout from '../../app/pages/securecheckout'
 
 function MyProfile({ navigation }) {
   return (
@@ -210,7 +211,7 @@ export default function Drawer() {
       component: Room
     },
     {
-      id: 11,
+      id: 12,
       name: 'Booking',
       drawerLabel: 'Booking',
       title: 'Booking',
@@ -218,9 +219,27 @@ export default function Drawer() {
       drawerIcon: undefined,
       component: Booking
     },
+    {
+      id: 13,
+      name: 'SecureCheckout',
+      drawerLabel: 'SecureCheckout',
+      title: 'SecureCheckout',
+      show: true,
+      drawerIcon: undefined,
+      component: SecureCheckout
+    },
   ];
 
-  const tabsToHide = [ 'Scan', 'Activities', 'SuccessBooking', 'Explore', 'Hotel', 'Room', 'Booking' ];
+  const tabsToHide = [ 
+    'Scan', 
+    'Activities', 
+    'SuccessBooking', 
+    'Explore', 
+    'Hotel', 
+    'Room', 
+    'Booking',
+    'SecureCheckout', 
+  ];
 
   return (
     <NavigationContainer independent={true}>
