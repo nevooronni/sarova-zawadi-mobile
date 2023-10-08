@@ -66,6 +66,7 @@ export default function WPTextInput({
   placeholderTextColor,
   secureTextEntry,
   defaultValue,
+  labelStyles,
 }: InputText):JSX.Element {
   const [secure, setSecure] = React.useState(true)
   const selectStyles = customStyles ? [styles.inputStyle, customStyles] : styles.inputStyle
@@ -73,7 +74,7 @@ export default function WPTextInput({
   return (
     //@ts-ignore
     <View style={{ width: width }}>
-      {label ? <Text style={{ color: colors?.red, fontSize: 15, marginBottom: 10 }}>{label}</Text> : null}
+      {label ? <Text style={[{ color: colors?.red, fontSize: 15, marginBottom: 10 }, labelStyles]}>{label}</Text> : null}
        <Controller
           control={control}
           rules={{

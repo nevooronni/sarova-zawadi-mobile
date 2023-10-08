@@ -1,5 +1,5 @@
 import React from 'react'
-import { Dimensions, ScrollView, StyleSheet, Text, View } from 'react-native'
+import { Dimensions, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native'
 import colors from '../../styles/theme'
 import TopNavigation from '../../components/Navigation/Top'
 import { useAppState } from '../../store'
@@ -11,6 +11,8 @@ import Carousel from '../../components/Carousel'
 import { carouselData2 } from '../../constants/content'
 import { IosScreenWrapper } from '../../components/ScreenWrapper'
 import { SafeAreaView } from 'react-native-safe-area-context'
+import { useRoute } from '@react-navigation/native'
+import { loginStyles } from '../home'
 
 function FixedCenterComponent() {
   return (
@@ -27,24 +29,31 @@ export default function SuccessBooking() {
   // const state = useAppState()
   // const userName = state?.userFullName ? state?.userFullName : ''
   // const successMessage = state?.bookingSuccessMessage
+  const route = useRoute() 
+  //@ts-ignore
+  const message1 = route?.params?.message1
+  //@ts-ignore
+  const message2 = route?.params?.message2
+  //@ts-ignore
+  const checkIn = route?.params?.checkIn
   const successMessage = 'Feel the burn session.'
   const userName = 'Abi Applessed' 
-  const bookingMessage1 = 'You have successfully'
-  const bookingMessage2 = `booked a ${successMessage}`
+  const bookingMessage1 = message1 || 'You have successfully'
+  const bookingMessage2 = message2 || `booked a ${successMessage}`
 
   return (
     <IosScreenWrapper background={colors?.bgRed}>
-      <SafeAreaView>
         <TopNavigation 
           color={colors?.mediumGray} 
           backgroundColor={colors?.white}
+          paddingVertical={10}
           paddingHorizontal={20}
           width='102%'
           goBack
         />
         <ScrollView>
           <View style={styles.container}>
-            <View style={{ width: '100%', gap: 19, paddingVertical: 30, paddingHorizontal: 30, alignItems: 'center' }}>
+            <View style={{ width: '100%', gap: 19, paddingTop: 30, paddingBottom: 0, paddingHorizontal: 30, alignItems: 'center' }}>
               <Image
                 source={imageUrl}
                 style={{
@@ -58,7 +67,7 @@ export default function SuccessBooking() {
                 {userName}
               </Text>
             </View>
-            <View style={[successModalStyles.container2, { borderBottomWidth: 0 }]}>
+            <View style={[successModalStyles.container2, { borderBottomWidth: 0, paddingBottom: 0 }]}>
               <FontAwesome 
                 name='thumbs-up' 
                 size={30} 
@@ -72,10 +81,18 @@ export default function SuccessBooking() {
               {bookingMessage2}
               </Text>
             </View>
-            <View style={{ borderTopWidth: 0, alignItems: 'center', paddingTop: 18, paddingBottom: 35 }}>
-              <Text style={{ color: colors?.red, fontSize: 18 }}>
+            <View style={{ borderTopWidth: 0, alignItems: 'center', paddingTop: 18, paddingBottom: 35, gap: 20 }}>
+              <Text style={{ color: colors?.red, fontSize: 17 }}>
                 Thank You!
               </Text>
+              {checkIn && <Pressable 
+                  style={[loginStyles.loginButton, 
+                    { height: 45, width: 125, paddingVertical: 13, 
+                  }]}
+
+                >
+                <Text style={[loginStyles.loginText,  { fontSize: 13 }]}>Online Check-in</Text>
+              </Pressable>}
             </View>
             <View style={{ borderBottomWidth: .5, borderBottomColor: colors?.lightGray, width: '90%', alignSelf: 'center' }} />
             <View style={{ paddingTop: 20, paddingBottom: 100, }}>
@@ -93,7 +110,6 @@ export default function SuccessBooking() {
             </View>
           </View>
         </ScrollView>
-      </SafeAreaView>
     </IosScreenWrapper>
   )
 }

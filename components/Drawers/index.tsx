@@ -17,6 +17,7 @@ import Hotel from '../../app/pages/hotel'
 import Room from '../../app/pages/room'
 import Booking from '../../app/pages/booking'
 import SecureCheckout from '../../app/pages/securecheckout'
+import SecureCheckoutPayment from '../../app/pages/securecheckoutpayment'
 
 function MyProfile({ navigation }) {
   return (
@@ -228,6 +229,15 @@ export default function Drawer() {
       drawerIcon: undefined,
       component: SecureCheckout
     },
+    {
+      id: 14,
+      name: 'SecureCheckoutPayment',
+      drawerLabel: 'SecureCheckoutPayment',
+      title: 'SecureCheckoutPayment',
+      show: true,
+      drawerIcon: undefined,
+      component: SecureCheckoutPayment
+    },
   ];
 
   const tabsToHide = [ 
@@ -239,6 +249,7 @@ export default function Drawer() {
     'Room', 
     'Booking',
     'SecureCheckout', 
+    'SecureCheckoutPayment',
   ];
 
   return (

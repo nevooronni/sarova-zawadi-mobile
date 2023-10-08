@@ -298,3 +298,34 @@ export const roomFeatures: RoomFeature[] = [
     desc: 'City Views'
   },
 ]
+export interface Card {
+  id?: number;
+  src: ImageProps | Readonly<ImageProps>;
+}
+
+export const cards: Card[] = [
+  {
+    id: 1,
+    src: require('../assets/images/VISA_logo.png')
+  },
+  {
+    id: 2,
+    src: require('../assets/images/American-Express.png')
+  },
+  {
+    id: 3,
+    src: require('../assets/images/Mastercard.webp')
+  },
+  {
+    id: 4,
+    src: require('../assets/images/paypal-logo-.webp')
+  },
+  {
+    id: 5,
+    src: require('../assets/images/visa.png')
+  },
+  {
+    id: 6,
+    src: require('../assets/images/mpesa.png')
+  }
+]

@@ -20,7 +20,13 @@ export interface InputText {
   placeholder?: string;
   customStyles?: any;
   customRequiredStyles?: any;
+  labelStyles?: any;
   secureTextEntry?: boolean | undefined;
   placeholderTextColor?: string | undefined;
   defaultValue?: string | undefined;
+  searchPlaceHolder?: string | undefined;
+  searchPlaceHolderColor?: string | undefined;
+  renderDropdownIcon?: React.ReactNode | undefined;
+  dropdownIconPosition?: "left" | "right" | undefined;
+  data?: any;
 }

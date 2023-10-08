@@ -179,7 +179,7 @@ export default function SecureCheckout() {
                   { height: 45, width: 130, paddingVertical: 13, 
                 }]}
                   //@ts-ignore
-                onPress={() => navigation.navigate('Booking', { id: routeId })} 
+                onPress={() => navigation.navigate('SecureCheckoutPayment', { id: routeId })} 
               >
                 <Text style={[loginStyles.loginText,  { fontSize: 13 }]}>Online Payments</Text>
               </Pressable>
