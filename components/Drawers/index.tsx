@@ -18,6 +18,7 @@ import Room from '../../app/pages/room'
 import Booking from '../../app/pages/booking'
 import SecureCheckout from '../../app/pages/securecheckout'
 import SecureCheckoutPayment from '../../app/pages/securecheckoutpayment'
+import Inbox from '../../app/pages/inbox'
 
 function MyProfile({ navigation }) {
   return (
@@ -155,7 +156,7 @@ export default function Drawer() {
           }} 
         />
       ),
-      component: Explore
+      component: Inbox
     },
     {
       id: 7,

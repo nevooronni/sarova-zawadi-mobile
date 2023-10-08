@@ -10,6 +10,7 @@ import { useForm } from 'react-hook-form'
 import { loginStyles } from '../home'
 import WPSelectInput from '../../components/Input/WPSelectInput'
 import { useAppActions, useAppState } from '../../store'
+import SpinnerLoader from '../../components/Loaders/Spinner'
 
 type CheckoutFormData = {
   name: string;
@@ -44,6 +45,7 @@ export default function SecureCheckoutPayment() {
   return (
     <IosScreenWrapper background={colors?.white}>
       <SafeAreaView>
+        <SpinnerLoader isLoading={state.isLoading} color={colors?.red} />
         <TopNavigation 
           backgroundColor={colors?.white}
           color={colors?.mediumGray} 

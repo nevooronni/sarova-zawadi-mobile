@@ -42,11 +42,12 @@ export default function SuccessBooking() {
   const bookingMessage2 = message2 || `booked a ${successMessage}`
 
   return (
-    <IosScreenWrapper background={colors?.bgRed}>
+    <IosScreenWrapper background={colors?.white}>
+      <SafeAreaView>
         <TopNavigation 
           color={colors?.mediumGray} 
           backgroundColor={colors?.white}
-          paddingVertical={10}
+          paddingTop={-20}
           paddingHorizontal={20}
           width='102%'
           goBack
@@ -95,7 +96,7 @@ export default function SuccessBooking() {
               </Pressable>}
             </View>
             <View style={{ borderBottomWidth: .5, borderBottomColor: colors?.lightGray, width: '90%', alignSelf: 'center' }} />
-            <View style={{ paddingTop: 20, paddingBottom: 100, }}>
+            <View style={{ paddingTop: 20, paddingBottom: 50, }}>
               <Text style={{ fontSize: 15, color: colors?.mediumGray4, marginLeft: 30 }}>
                 Earn more points while at:
               </Text>
@@ -104,12 +105,17 @@ export default function SuccessBooking() {
                 paddingTop={20} 
                 paddingBottom={10} 
                 paddingHorizontal={30} 
-                imageWidth={170} 
-                imageHeight={170}
+                imageWidth={150} 
+                imageHeight={160}
+                borderRadius={15}
+                fontSize={12}
+                paddingTopCard={10}
+                paddingBottomCard={20}
               />
             </View>
           </View>
         </ScrollView>
+      </SafeAreaView>
     </IosScreenWrapper>
   )
 }

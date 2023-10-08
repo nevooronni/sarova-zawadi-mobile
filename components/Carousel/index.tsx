@@ -93,7 +93,7 @@ interface Data {
   title: string;
 }
 
-export default function Carousel({ data, isLoading, paddingTop, paddingBottom, paddingHorizontal, paddingVertical, imageWidth, imageHeight, borderRadius }: {
+export default function Carousel({ data, isLoading, paddingTop, paddingBottom, paddingHorizontal, paddingVertical, imageWidth, imageHeight, borderRadius, fontSize, paddingTopCard, paddingBottomCard }: {
   data: Data[],
   isLoading?: boolean,
   paddingHorizontal?: number,
@@ -102,7 +102,10 @@ export default function Carousel({ data, isLoading, paddingTop, paddingBottom, p
   paddingBottom?: number,
   imageWidth?: number | undefined,
   imageHeight?: number | undefined,
-  borderRadius?: number | undefined
+  borderRadius?: number | undefined,
+  fontSize?: number | undefined;
+  paddingTopCard?: number | undefined;
+  paddingBottomCard?: number | undefined;
 }) {
   const navigation = useNavigation();
   return (
@@ -127,7 +130,7 @@ export default function Carousel({ data, isLoading, paddingTop, paddingBottom, p
           >
             <Shadow>
               <View style={{  alignItems: "center", justifyContent: "center", borderRadius: borderRadius || 25, }}>
-                <View style={{ backgroundColor: "#eee", borderRadius: 25, overflow: "hidden" }}>
+                <View style={{ backgroundColor: "#eee", borderRadius: borderRadius || 25, overflow: "hidden" }}>
                   <View>
                     <Image
                       style={[carouselStyles.image, 
@@ -139,8 +142,8 @@ export default function Carousel({ data, isLoading, paddingTop, paddingBottom, p
                       transition={1000}
                     />
                   </View>
-                  <View style={{ paddingTop: 20, paddingBottom: 25, backgroundColor: colors?.white }}>
-                    <Text style={carouselStyles.text}>
+                  <View style={{ paddingTop: paddingTopCard || 20, paddingBottom: paddingBottomCard || 25, backgroundColor: colors?.white }}>
+                    <Text style={[carouselStyles.text, { fontSize: fontSize }]}>
                       {item?.title ? item?.title?.slice(0,20) : '-'}
                     </Text>
                   </View>
