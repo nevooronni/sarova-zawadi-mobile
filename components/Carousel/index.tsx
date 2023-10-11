@@ -1,5 +1,5 @@
-import React from 'react'
-import { ImageProps, StyleSheet, View, Text, FlatList, Pressable, Dimensions, } from 'react-native';
+import React, { useState } from 'react'
+import { ImageProps, StyleSheet, View, Text, FlatList, Pressable, Dimensions, FlexAlignType, Platform, } from 'react-native';
 import colors from '../../styles/theme';
 import { Image } from 'expo-image';
 import { Shadow } from 'react-native-shadow-2';
@@ -87,13 +87,33 @@ export function BackgroundCarousel({ data }: { data: ImageProps[]}){
     </>
   )
 }
+
 interface Data {
   id: number;
   image: string;
   title: string;
+  desc: string;
 }
 
-export default function Carousel({ data, isLoading, paddingTop, paddingBottom, paddingHorizontal, paddingVertical, imageWidth, imageHeight, borderRadius, fontSize, paddingTopCard, paddingBottomCard }: {
+export default function Carousel({ 
+  data, 
+  onPress,
+  descWidth,
+  isLoading, 
+  paddingTop, 
+  paddingBottom, 
+  paddingHorizontal, 
+  paddingVertical, 
+  imageWidth, 
+  imageHeight, 
+  borderRadius, 
+  fontSize, 
+  paddingTopCard, 
+  paddingBottomCard, 
+  alignSelfBottomCardText, 
+  bottomTextTitleColor,
+  paddingHorizontalBottomCard, 
+}: {
   data: Data[],
   isLoading?: boolean,
   paddingHorizontal?: number,
@@ -106,8 +126,14 @@ export default function Carousel({ data, isLoading, paddingTop, paddingBottom, p
   fontSize?: number | undefined;
   paddingTopCard?: number | undefined;
   paddingBottomCard?: number | undefined;
+  alignSelfBottomCardText?: FlexAlignType | undefined;
+  bottomTextTitleColor?: string | undefined;
+  paddingHorizontalBottomCard: number | undefined;
+  descWidth: number | string | undefined;
+  onPress?: (() => void | undefined);
 }) {
   const navigation = useNavigation();
+  const [readmore, setReadmore] = useState<boolean>(false)
   return (
     <FlatList
       horizontal
@@ -125,7 +151,7 @@ export default function Carousel({ data, isLoading, paddingTop, paddingBottom, p
           <Pressable
             key={index}
             //@ts-ignore
-            onPress={() => navigation.navigate('Activities')}
+            onPress={onPress ? () => onPress() : () => navigation.navigate('Activities')}
             style={carouselStyles.pressable}
           >
             <Shadow>
@@ -142,10 +168,22 @@ export default function Carousel({ data, isLoading, paddingTop, paddingBottom, p
                       transition={1000}
                     />
                   </View>
-                  <View style={{ paddingTop: paddingTopCard || 20, paddingBottom: paddingBottomCard || 25, backgroundColor: colors?.white }}>
-                    <Text style={[carouselStyles.text, { fontSize: fontSize }]}>
+                  <View style={{ paddingTop: paddingTopCard || 20, paddingBottom: paddingBottomCard || 25, paddingHorizontal: paddingHorizontalBottomCard, backgroundColor: colors?.white }}>
+                    <Text style={[carouselStyles.text, { fontSize: fontSize, alignSelf: alignSelfBottomCardText || 'center', color: bottomTextTitleColor  || colors?.lightGray }]}>
                       {item?.title ? item?.title?.slice(0,20) : '-'}
                     </Text>
+                    {item?.desc && <Pressable onPress={() => setReadmore(false)} style={{ width: '100%', marginTop: 5 }}>
+                      <Text style={{ color: colors?.mediumGray4, flexWrap: 'wrap', width: descWidth, fontSize: 12 }}>{item?.desc ? readmore ? item?.desc : `${item?.desc?.slice(0,55)}...` : ''}{!readmore 
+                        ? <Pressable 
+                            // onPress={() => setReadmore(true)} 
+                          >
+                            <Text style={{ fontSize: 12, color: colors?.blue, fontWeight: 'bold', marginBottom: Platform.OS === 'ios' ? -3 : -4 }}>
+                              Read more
+                            </Text>
+                          </Pressable> 
+                        : null}
+                      </Text>
+                    </Pressable>}
                   </View>
                 </View>
               </View>

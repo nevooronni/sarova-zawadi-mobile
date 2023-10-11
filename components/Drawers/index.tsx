@@ -19,6 +19,8 @@ import Booking from '../../app/pages/booking'
 import SecureCheckout from '../../app/pages/securecheckout'
 import SecureCheckoutPayment from '../../app/pages/securecheckoutpayment'
 import Inbox from '../../app/pages/inbox'
+import Restaurant from '../../app/pages/restaurant'
+import RestaurantBooking from '../../app/pages/restaurantbooking'
 
 function MyProfile({ navigation }) {
   return (
@@ -239,6 +241,24 @@ export default function Drawer() {
       drawerIcon: undefined,
       component: SecureCheckoutPayment
     },
+    {
+      id: 15,
+      name: 'Restaurant',
+      drawerLabel: 'Restaurant',
+      title: 'Restaurant',
+      show: true,
+      drawerIcon: undefined,
+      component: Restaurant
+    },
+    {
+      id: 16,
+      name: 'RestaurantBooking',
+      drawerLabel: 'RestaurantBooking',
+      title: 'RestaurantBooking',
+      show: true,
+      drawerIcon: undefined,
+      component: RestaurantBooking
+    },
   ];
 
   const tabsToHide = [ 
@@ -251,6 +271,8 @@ export default function Drawer() {
     'Booking',
     'SecureCheckout', 
     'SecureCheckoutPayment',
+    'Restaurant',
+    'RestaurantBooking',
   ];
 
   return (

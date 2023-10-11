@@ -1,23 +1,20 @@
 import React, { useState } from 'react'
 import DateRangePicker from "rn-select-date-range"
 import { IosScreenWrapper } from '../../components/ScreenWrapper'
-import { Pressable, SafeAreaView, ScrollView, Text, View } from 'react-native'
+import { SafeAreaView, StyleSheet, Text } from 'react-native'
 import TopNavigation from '../../components/Navigation/Top'
+import { ScrollView } from 'react-native'
+import { View } from 'react-native'
 import colors from '../../styles/theme'
-import { StyleSheet } from 'react-native'
-// import * as Device from 'expo-device';
 import moment from "moment";
 import { FontAwesome } from '@expo/vector-icons'
 import { loginStyles } from '../home'
 import { useRoute, useNavigation } from '@react-navigation/native'
+import { Pressable } from 'react-native'
+import { DateRange } from './booking'
 
-export interface DateRange {
-  firstDate: string;
-  secondDate: string;
-}
-
-export default function Booking() {
-  // const iOSVersion = Device.osVersion
+export default function RestaurantBooking() {
+  
   const navigation = useNavigation();
   const [selectedRange, setRange] = useState<DateRange>({
     firstDate: '',
@@ -46,51 +43,12 @@ export default function Booking() {
         />
         <ScrollView 
           showsVerticalScrollIndicator={false}
-          
         >
-          <View style={styles.container}>
+          <View style={[styles.container, { gap: 20 }]}>
             <View>
               <Text style={{ color: colors?.bgRed, fontSize: 20 }}>
-                Stanley Themed Suites Booking
+                Thorn Tree Cafe Booking
               </Text>
-            </View>
-            <View style={{ 
-                flexDirection: 'row', 
-                justifyContent: 'space-between', 
-                paddingVertical: 25 
-              }}
-            >
-              <View style={{ 
-                  gap: 9, 
-                  borderWidth: .5, 
-                  borderColor: colors?.mediumGray, 
-                  padding: 15,
-                  borderRadius: 8,
-                  marginRight: 25
-                }}
-              >
-                <Text style={{ fontSize: 17, color: colors?.darkGray, fontWeight: 'bold' }}>
-                  Check In
-                </Text>
-                <Text style={{ color: colors?.bgRed, fontSize: 21 }}>
-                  {formattedFirstDate}
-                </Text>
-              </View>
-              <View style={{ 
-                  gap: 9, 
-                  borderWidth: .5, 
-                  borderColor: colors?.mediumGray, 
-                  padding: 15,
-                  borderRadius: 8
-                }}
-              >
-                <Text style={{ fontSize: 17, color: colors?.darkGray, fontWeight: 'bold' }}>
-                  Check Out
-                </Text>
-                <Text style={{ color: colors?.bgRed, fontSize: 21 }}>
-                  {formattedSecondDate}
-                </Text>
-              </View>
             </View>
             <View style={{ 
                 width: '100%', 
