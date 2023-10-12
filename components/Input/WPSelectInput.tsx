@@ -31,14 +31,16 @@ export default function WPSelectInput({
   dropdownIconPosition,
   data,
   labelStyles,
+  iconColor,
 }: InputText):JSX.Element {
-  const selectStyles = customStyles ? [styles.inputStyle, customStyles] : styles.inputStyle
+  const selectStyles = customStyles ? [styles.inputStyle, { ...customStyles}] : styles.inputStyle
+  console.log("🚀 ~ file: WPSelectInput.tsx:36 ~ customStyles:", customStyles)
   const selectRequiredStyles = customRequiredStyles ? [styles.requiredStyle, customRequiredStyles] : styles.requiredStyle
   const Icon = () => (
     <FontAwesome 
       name='chevron-down' 
       size={15} 
-      color={colors?.lightGray}
+      color={iconColor || colors?.lightGray}
     />
   )
   return (

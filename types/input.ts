@@ -8,6 +8,7 @@ export interface InputText {
   value?: string;
   label?: string;
   width?: string | number;
+  height?: string | number;
   errors?: any;
   control?: any; 
   errorMessage?: string;
@@ -29,4 +30,5 @@ export interface InputText {
   renderDropdownIcon?: React.ReactNode | undefined;
   dropdownIconPosition?: "left" | "right" | undefined;
   data?: any;
+  iconColor?: string | undefined;
 }

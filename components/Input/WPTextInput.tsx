@@ -50,6 +50,7 @@ export function WPTextInputUncontrolled({
 export default function WPTextInput({ 
   name,
   label,
+  height,
   width,
   control,
   errors,
@@ -69,11 +70,11 @@ export default function WPTextInput({
   labelStyles,
 }: InputText):JSX.Element {
   const [secure, setSecure] = React.useState(true)
-  const selectStyles = customStyles ? [styles.inputStyle, customStyles] : styles.inputStyle
+  const selectStyles = customStyles ? [styles.inputStyle, { ...customStyles}] : styles.inputStyle
   const selectRequiredStyles = customRequiredStyles ? [styles.requiredStyle, customRequiredStyles] : styles.requiredStyle
   return (
     //@ts-ignore
-    <View style={{ width: width }}>
+    <View style={{ width: width, }}>
       {label ? <Text style={[{ color: colors?.red, fontSize: 15, marginBottom: 10 }, labelStyles]}>{label}</Text> : null}
        <Controller
           control={control}
@@ -91,6 +92,7 @@ export default function WPTextInput({
               keyboardType={keyboardType}
               placeholder={placeholder}
               style={selectStyles}
+              height={height}
               defaultValue={defaultValue}
               secureTextEntry={secureTextEntry}
               placeholderTextColor={placeholderTextColor}

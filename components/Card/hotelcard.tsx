@@ -15,13 +15,16 @@ export default function HotelCard({
   image,
   imageWidth, 
   imageHeight,
-  borderRadius
+  borderRadius,
+  pointsColor,
+  pointsFontSize,
+  navigateTo,
 }:Hotel):JSX.Element{
   const navigation = useNavigation();
   return(
     <Pressable
       //@ts-ignore
-      onPress={() => navigation.navigate('Hotel', { id: id })}
+      onPress={() => navigation.navigate(navigateTo || 'Hotel', { id: id })}
       style={[carouselStyles.pressable, { borderRadius: 25 }]}>
       <Shadow>
         <View style={{  alignItems: "center", justifyContent: "center", borderRadius: 25 }}>
@@ -50,13 +53,13 @@ export default function HotelCard({
                 backgroundColor: colors?.white 
               }}
             >
-              <Text style={[carouselStyles.text, { color: colors?.darkGray3, fontSize: 12, }]}>
-                {price ? price : '-'}
-              </Text> 
-              <Text style={[carouselStyles.text, { fontSize: 12 }]}>
+              {price ?<Text style={[carouselStyles.text, { color: colors?.darkGray3, fontSize: 12, }]}>
+                {price}
+              </Text>  : null}
+              {price ? <Text style={[carouselStyles.text, { fontSize: 12 }]}>
                 |
-              </Text>
-              <Text style={[carouselStyles.text, { fontSize: 12, color: colors?.bgRed, fontWeight: 'normal' }]}>
+              </Text> : null}
+              <Text style={[carouselStyles.text, { fontSize: pointsFontSize || 12,  color: pointsColor || colors?.bgRed, fontWeight: 'normal' }]}>
                 {points ? points : '-'}
               </Text>
             </View>

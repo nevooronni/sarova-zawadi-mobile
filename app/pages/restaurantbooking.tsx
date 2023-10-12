@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import DateRangePicker from "rn-select-date-range"
 import { IosScreenWrapper } from '../../components/ScreenWrapper'
 import { SafeAreaView, StyleSheet, Text } from 'react-native'
@@ -12,9 +12,22 @@ import { loginStyles } from '../home'
 import { useRoute, useNavigation } from '@react-navigation/native'
 import { Pressable } from 'react-native'
 import { DateRange } from './booking'
+import WPTextInput from '../../components/Input/WPTextInput'
+import { useForm } from 'react-hook-form'
+import WPSelectInput from '../../components/Input/WPSelectInput'
+import SuccessModalPopup from '../../components/Modal'
+import { useAppActions, useAppState } from '../../store'
+import SpinnerLoader from '../../components/Loaders/Spinner'
+
+type CheckoutFormData = {
+  time: string;
+  additional_details: number;
+}
 
 export default function RestaurantBooking() {
-  
+  const state = useAppState()
+  const { setIsLoading } = useAppActions()
+  const { control, handleSubmit, formState: { errors }} = useForm<CheckoutFormData>()
   const navigation = useNavigation();
   const [selectedRange, setRange] = useState<DateRange>({
     firstDate: '',
@@ -31,9 +44,30 @@ export default function RestaurantBooking() {
   const route = useRoute() 
   //@ts-ignore
   const routeId = route?.params?.id
+  const time: string[] = ["8.00am", "9.00am", "10.00am", "11.00am", "12.00a.m", "13.00a.m", "14.00a.m", "15.00a.m", "16.00a.m", "17.00a.m", "18.00a.m", "19.00a.m"]
+  const [isModalVisible, setModalVisible] = useState<boolean>(false);
+
+  const toggleModal = () => {
+    setModalVisible(!isModalVisible);
+  };
+
+  useEffect(() => {
+    if (state.isLoading) {
+      setTimeout(() => {
+        setIsLoading(false)
+        toggleModal()
+      }, 3500)
+      setTimeout(() => {
+        navigation.navigate('Home')
+      }, 2500)
+    }
+  }, [state.isLoading]);
+
   return (
     <IosScreenWrapper background={colors?.white}>
       <SafeAreaView>
+        <SpinnerLoader isLoading={state.isLoading} color={colors?.red} />
+        <SuccessModalPopup isModalVisible={isModalVisible} toggleModal={toggleModal} />
         <TopNavigation 
           backgroundColor={colors?.white}
           color={colors?.mediumGray} 
@@ -78,6 +112,35 @@ export default function RestaurantBooking() {
                   selectedDateStyle={styles.selectedDateStyle}
                 /> 
               </View>
+            </View>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between', }}>
+              <WPSelectInput 
+                name='time'
+                isRequired
+                width={300}
+                data={time}
+                searchPlaceHolder='Time'
+                errorMessage='Expiry month is required'
+                iconColor={colors?.lightGray3}
+                labelStyles={{ color: colors?.mediumGray, fontWeight: 'bold' }}
+                customStyles={{ height: 50, color: colors?.lightGray3, borderColor:  colors?.lightGray3 }}
+              />
+            </View>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between', }}>
+              <WPTextInput
+                name='additional_details'
+                placeholder='Additional details'
+                control={control}
+                errors={errors}
+                errorMessage='card no is required'
+                isRequired
+                width={300}
+                height={80}
+                labelStyles={{ color: colors?.mediumGray, fontWeight: 'bold' }}
+                customStyles={{ height: 50, color: colors?.mediumGray, borderColor: colors?.lightGray3 }}
+                customRequiredStyles={{ color: colors?.bgRed }}
+                placeholderTextColor={colors?.mediumGray}
+              />
             </View>
             <View style={{ 
                 gap: 20,
@@ -155,7 +218,7 @@ export default function RestaurantBooking() {
                   { height: 45, width: 175, paddingVertical: 14, 
                 }]}
                  //@ts-ignore
-                onPress={() => navigation.navigate('SecureCheckout', { id: routeId })} 
+                onPress={() => setIsLoading(true)} 
               >
                 <Text style={[loginStyles.loginText, { fontWeight: 'bold' }]}>Confirm Booking</Text>
               </Pressable>

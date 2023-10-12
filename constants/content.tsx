@@ -112,13 +112,17 @@ export const tabsData: Tab[] = [
 
 export interface Hotel {
   id?: number;
-  price: string;
-  name: string;
+  price?: string | undefined;
+  name?: string | undefined;
+  spa?: string | undefined;
   image: ImageProps | Readonly<ImageProps>;
   points: string;
   imageWidth?: number | undefined;
   imageHeight?: number | undefined;
   borderRadius?: number | undefined;
+  pointsColor?: string | undefined;
+  pointsFontSize?: number | undefined;
+  navigateTo?: string | undefined;
 }
 
 export const hotels: Hotel[] = [
@@ -126,6 +130,7 @@ export const hotels: Hotel[] = [
     id: 1,
     price: 'From US $150 per night',
     name: 'Sarova Stanley Nairobi',
+    spa: 'Tulia Spa | The Stanley',
     image: require('../assets/images/Sarova_Stanley_Exterior_1.webp'),
     points: 'Earn up to 2,500 points',
   },
@@ -133,6 +138,7 @@ export const hotels: Hotel[] = [
     id: 2,
     price: 'From US $150 per night',
     name: 'Sarova Panafric Nairobi',
+    spa: 'Health Club | The Stanley',
     image: require('../assets/images/Sarova_Panafric_exterior_1.webp'),
     points: 'Earn up to 2,500 points',
   },
@@ -140,6 +146,7 @@ export const hotels: Hotel[] = [
     id: 3,
     price: 'From US $150 per night',
     name: 'Sarova Woodlands Hotel',
+    spa: 'Tulia Spa | The Stanley',
     image: require('../assets/images/Sarova_Woodlands_Exterior_5.webp'),
     points: 'Earn up to 2,500 points',
   },
@@ -147,6 +154,7 @@ export const hotels: Hotel[] = [
     id: 4,
     price: 'From US $150 per night',
     name: 'Sarova Whitesands Beach Resort',
+    spa: 'Tulia Spa | The Stanley',
     image: require('../assets/images/Sarova_Whitesands_Exteriors_11.webp'),
     points: 'Earn up to 2,500 points',
   },
@@ -154,6 +162,7 @@ export const hotels: Hotel[] = [
     id: 5,
     price: 'From US $150 per night',
     name: 'Sarova Lion Hill Game Lodge',
+    spa: 'Tulia Spa | The Stanley',
     image: require('../assets/images/Sarova_Lion_Hill_Exteriors_11.webp'),
     points: 'Earn up to 2,500 points',
   },
@@ -161,6 +170,7 @@ export const hotels: Hotel[] = [
     id: 6,
     price: 'From US $150 per night',
     name: 'Sarova Mara Game Camp',
+    spa: 'Tulia Spa | The Stanley',
     image: require('../assets/images/Sarova_Mara_Game_Camp_Lobby.webp'),
     points: 'Earn up to 2,500 points',
   },
@@ -168,6 +178,7 @@ export const hotels: Hotel[] = [
     id: 7,
     price: 'From US $150 per night',
     name: 'Sarova Shaba Game Lodge',
+    spa: 'Tulia Spa | The Stanley',
     image: require('../assets/images/Sarova_Shaba_Game_Lodge_Exterior_10.webp'),
     points: 'Earn up to 2,500 points',
   },
@@ -175,6 +186,7 @@ export const hotels: Hotel[] = [
     id: 8,
     price: 'From US $150 per night',
     name: 'Sarova Imperial, Kisumu',
+    spa: 'Tulia Spa | The Stanley',
     image: require('../assets/images/Sarova_Imperial_Exteriors_4.webp'),
     points: 'Earn up to 2,500 points',
   },

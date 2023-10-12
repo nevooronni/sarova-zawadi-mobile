@@ -17,7 +17,7 @@ export default function SuccessModalPopup({ isModalVisible, toggleModal }: Modal
        <Pressable onPress={toggleModal}>
         <View style={successModalStyles.container}>
           <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-            <Text style={{ color: colors?.bgRed, fontSize: 20, fontWeight: 'bold' }}>
+            <Text style={{ color: colors?.bgRed, fontSize: 18, fontWeight: 'bold' }}>
               CONGRATULATIONS!
             </Text>
           </View>
