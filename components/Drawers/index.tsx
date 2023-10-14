@@ -21,6 +21,7 @@ import SecureCheckoutPayment from '../../app/pages/securecheckoutpayment'
 import Inbox from '../../app/pages/inbox'
 import Restaurant from '../../app/pages/restaurant'
 import RestaurantBooking from '../../app/pages/restaurantbooking'
+import SpaBooking from '../../app/pages/spabooking'
 
 function MyProfile({ navigation }) {
   return (
@@ -259,6 +260,15 @@ export default function Drawer() {
       drawerIcon: undefined,
       component: RestaurantBooking
     },
+    {
+      id: 16,
+      name: 'SpaBooking',
+      drawerLabel: 'SpaBooking',
+      title: 'SpaBooking',
+      show: true,
+      drawerIcon: undefined,
+      component: SpaBooking
+    },
   ];
 
   const tabsToHide = [ 
@@ -273,6 +283,7 @@ export default function Drawer() {
     'SecureCheckoutPayment',
     'Restaurant',
     'RestaurantBooking',
+    'SpaBooking',
   ];
 
   return (

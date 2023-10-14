@@ -341,3 +341,207 @@ export const cards: Card[] = [
     src: require('../assets/images/mpesa.png')
   }
 ]
+
+
+interface SpaTypes {
+  id: number;
+  type: string;
+  time: string;
+  price: string;
+  points: string;
+}
+
+export interface Spa {
+  id: number;
+  name: string;
+  spa: SpaTypes[]
+}
+
+export const spas = [
+  {
+    id: 1,
+    name: 'TULIA JOURNEYS ',
+    spa: [
+      {
+        id: 1,
+        type: 'Hot Stone Therapy',
+        time: '1 hour 30 minutes',
+        price: 'Kshs 4,300.00',
+        amount: 4300,
+        points: 'Earn 430 points'
+      },
+      {
+        id: 2,
+        type: 'Classic Swedish Body',
+        time: '1 hour',
+        price: ' Kshs 3,700.00',
+        amount: 3700,
+        points: 'Earn 370 points'
+      },
+      {
+        id: 3,
+        type: 'Absolute Tulia Ritual',
+        time: ' 1 hour',
+        price: ' Kshs 7,200.00 Earn',
+        amount: 7200,
+        points: '720 points'
+      },
+    ]
+  },
+  {
+    id: 2,
+    name: 'BODY SKIN REJUVENATION',
+    spa: [
+      {
+        id: 1,
+        type: 'Hot Stone Therapy',
+        time: '1 hour 30 minutes',
+        price: 'Kshs 4,300.00',
+        amount: 4300,
+        points: 'Earn 430 points'
+      },
+    ]
+  },
+  {
+    id: 3,
+    name: 'BEAUTY TREATMENT',
+    spa: [
+      {
+        id: 1,
+        type: 'Hot Stone Therapy',
+        time: '1 hour 30 minutes',
+        price: 'Kshs 4,300.00',
+        amount: 4300,
+        points: 'Earn 430 points'
+      },
+    ]
+  },
+  {
+    id: 4,
+    name: 'WAXING',
+    spa: [
+      {
+        id: 1,
+        type: 'Hot Stone Therapy',
+        time: '1 hour 30 minutes',
+        price: 'Kshs 4,300.00',
+        amount: 4300,
+        points: 'Earn 430 points'
+      },
+    ]
+  },
+  {
+    id: 5,
+    name: 'TULIA JOURNEYS ',
+    spa: [
+      {
+        id: 1,
+        type: 'Hot Stone Therapy',
+        time: '1 hour 30 minutes',
+        price: 'Kshs 4,300.00',
+        amount: 4300,
+        points: 'Earn 430 points'
+      },
+      {
+        id: 2,
+        type: 'Classic Swedish Body',
+        time: '1 hour',
+        price: ' Kshs 3,700.00',
+        amount: 3700,
+        points: 'Earn 370 points'
+      },
+      {
+        id: 3,
+        type: 'Absolute Tulia Ritual',
+        time: ' 1 hour',
+        price: ' Kshs 7,200.00 Earn',
+        amount: 4720,
+        points: '720 points'
+      },
+    ]
+  },
+  {
+    id: 6,
+    name: 'BODY SKIN REJUVENATION',
+    spa: [
+      {
+        id: 1,
+        type: 'Hot Stone Therapy',
+        time: '1 hour 30 minutes',
+        price: 'Kshs 4,300.00',
+        amount: 4300,
+        points: 'Earn 430 points'
+      },
+    ]
+  },
+  {
+    id: 7,
+    name: 'BEAUTY TREATMENT',
+    spa: [
+      {
+        id: 1,
+        type: 'Hot Stone Therapy',
+        time: '1 hour 30 minutes',
+        price: 'Kshs 4,300.00',
+        amount: 4300,
+        points: 'Earn 430 points'
+      },
+    ]
+  },
+  {
+    id: 6,
+    name: 'BODY SKIN REJUVENATION',
+    spa: [
+      {
+        id: 1,
+        type: 'Hot Stone Therapy',
+        time: '1 hour 30 minutes',
+        price: 'Kshs 4,300.00',
+        amount: 4300,
+        points: 'Earn 430 points'
+      },
+    ]
+  },
+  {
+    id: 7,
+    name: 'BEAUTY TREATMENT',
+    spa: [
+      {
+        id: 1,
+        type: 'Hot Stone Therapy',
+        time: '1 hour 30 minutes',
+        price: 'Kshs 4,300.00',
+        amount: 4300,
+        points: 'Earn 430 points'
+      },
+    ]
+  },
+  {
+    id: 7,
+    name: 'BODY SKIN REJUVENATION',
+    spa: [
+      {
+        id: 1,
+        type: 'Hot Stone Therapy',
+        time: '1 hour 30 minutes',
+        price: 'Kshs 4,300.00',
+        amount: 4300,
+        points: 'Earn 430 points'
+      },
+    ]
+  },
+  {
+    id: 8,
+    name: 'BEAUTY TREATMENT',
+    spa: [
+      {
+        id: 1,
+        type: 'Hot Stone Therapy',
+        time: '1 hour 30 minutes',
+        price: 'Kshs 4,300.00',
+        amount: 4300,
+        points: 'Earn 430 points'
+      },
+    ]
+  },
+]
