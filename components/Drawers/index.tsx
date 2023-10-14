@@ -22,6 +22,7 @@ import Inbox from '../../app/pages/inbox'
 import Restaurant from '../../app/pages/restaurant'
 import RestaurantBooking from '../../app/pages/restaurantbooking'
 import SpaBooking from '../../app/pages/spabooking'
+import MyStays from '../../app/pages/mystays'
 
 function MyProfile({ navigation }) {
   return (
@@ -121,7 +122,7 @@ export default function Drawer() {
       title: 'My Stays',
       show: true,
       drawerIcon: undefined,
-      component: Explore
+      component: MyStays
     },
     {
       id: 4,

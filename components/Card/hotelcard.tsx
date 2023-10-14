@@ -6,6 +6,7 @@ import { carouselStyles } from '../Carousel'
 import colors from '../../styles/theme'
 import { Hotel } from '../../constants/content'
 import { useNavigation } from '@react-navigation/native';
+import { TouchableOpacity } from 'react-native-gesture-handler'
 
 export default function HotelCard({
   id,
@@ -17,6 +18,8 @@ export default function HotelCard({
   imageHeight,
   borderRadius,
   pointsColor,
+  button,
+  namePaddingBottom,
   pointsFontSize,
   navigateTo,
 }:Hotel):JSX.Element{
@@ -39,21 +42,22 @@ export default function HotelCard({
                 source={image}
               />
             </View>
-            <View style={{ paddingTop: 20, paddingBottom: 10, paddingHorizontal: 20, backgroundColor: colors?.white }}>
+            <View style={{ paddingTop: 20, paddingBottom: namePaddingBottom || 10, paddingHorizontal: 20, backgroundColor: colors?.white }}>
               <Text style={{ color: colors?.bgRed, fontWeight: 'bold', fontSize: 18 }}>
                 {name ? name : '-'}
               </Text>
             </View>
-            <View style={{ 
+            <View 
+              style={{ 
                 flexDirection: 'row',
                 justifyContent: 'space-between',
                 paddingHorizontal: 20,
                 paddingTop: 0, 
-                paddingBottom: 25, 
+                paddingBottom: 15, 
                 backgroundColor: colors?.white 
               }}
             >
-              {price ?<Text style={[carouselStyles.text, { color: colors?.darkGray3, fontSize: 12, }]}>
+              {price ? <Text style={[carouselStyles.text, { color: colors?.darkGray3, fontSize: 12, }]}>
                 {price}
               </Text>  : null}
               {price ? <Text style={[carouselStyles.text, { fontSize: 12 }]}>
@@ -64,6 +68,24 @@ export default function HotelCard({
               </Text>
             </View>
           </View>
+          {button && 
+            <View 
+            style={{ 
+              marginTop: -10,
+                paddingTop: 0,
+                paddingBottom: 15, 
+                backgroundColor: colors?.white,
+                paddingHorizontal: 15, 
+                width: '95%',
+                flexDirection: 'row',
+                justifyContent: 'flex-end',
+                borderRadius: 25
+              }}
+            >
+            <TouchableOpacity style={{ paddingVertical: 5, backgroundColor: colors?.bgRed, borderRadius: 8, width: 100, height: 30, alignItems: 'center' }}>
+              <Text style={{ color: colors?.white, fontSize: 13 }}>{button}</Text>
+            </TouchableOpacity>
+          </View>}
         </View>
       </Shadow>
     </Pressable>

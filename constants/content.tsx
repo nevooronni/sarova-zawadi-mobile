@@ -116,13 +116,15 @@ export interface Hotel {
   name?: string | undefined;
   spa?: string | undefined;
   image: ImageProps | Readonly<ImageProps>;
-  points: string;
+  points?: string | undefined;
   imageWidth?: number | undefined;
   imageHeight?: number | undefined;
   borderRadius?: number | undefined;
   pointsColor?: string | undefined;
   pointsFontSize?: number | undefined;
   navigateTo?: string | undefined;
+  button?: string | undefined;
+  namePaddingBottom?: number | undefined;
 }
 
 export const hotels: Hotel[] = [
@@ -543,5 +545,36 @@ export const spas = [
         points: 'Earn 430 points'
       },
     ]
+  },
+]
+
+export const concierge: Hotel[] = [
+  {
+    id: 1,
+    price: 'Complimentary Service',
+    name: 'Transfers',
+    button: 'Contact',
+    image: require('../assets/images/Sarova_Whitesands_Fleet.webp'),
+  },
+  {
+    id: 2,
+    name: 'Transfers',
+    price: 'Complimentary Service',
+    button: 'Contact',
+    image: require('../assets/images/Sarova_Stanley_Lobby_Area.webp'),
+  },
+  {
+    id: 3,
+    name: 'Transfers',
+    price: 'Complimentary Service',
+    button: 'Contact',
+    image: require('../assets/images/Sarova_Stanley_Concierge.webp'),
+  },
+  {
+    id: 4,
+    name: 'Transfers',
+    price: 'Complimentary Service',
+    button: 'Contact',
+    image: require('../assets/images/Sarova_Panafric_Reception.webp'),
   },
 ]

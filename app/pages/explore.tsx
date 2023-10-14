@@ -7,6 +7,7 @@ import { IosScreenWrapper } from '../../components/ScreenWrapper'
 import HotelCard from '../../components/Card/hotelcard'
 import RestaurantTab from './restaurants'
 import SpaTab from './spa'
+import ConciergeTab from './concierge'
 import { ScrollView } from 'react-native-gesture-handler'
 
 function HotelTab() {
@@ -92,6 +93,7 @@ export default function Explore() {
         {active === 'Hotels' ? <HotelTab/> : null}
         {active === 'Restaurants' ? <RestaurantTab/> : null}
         {active === 'Tulia Spa' ? <SpaTab /> : null}
+        {active === 'Concierge' ? <ConciergeTab /> : null}        
       </SafeAreaView>
     </IosScreenWrapper>
   )
