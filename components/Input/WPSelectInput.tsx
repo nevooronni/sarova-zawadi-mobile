@@ -34,7 +34,6 @@ export default function WPSelectInput({
   iconColor,
 }: InputText):JSX.Element {
   const selectStyles = customStyles ? [styles.inputStyle, { ...customStyles}] : styles.inputStyle
-  console.log("🚀 ~ file: WPSelectInput.tsx:36 ~ customStyles:", customStyles)
   const selectRequiredStyles = customRequiredStyles ? [styles.requiredStyle, customRequiredStyles] : styles.requiredStyle
   const Icon = () => (
     <FontAwesome 

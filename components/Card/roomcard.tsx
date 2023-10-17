@@ -29,7 +29,6 @@ export default function RoomCard({
   const route = useRoute() 
   //@ts-ignore
   const routeId = route?.params?.id
-  console.log("🚀 ~ file: roomcard.tsx:32 ~ routeId:", routeId)
   const navigation = useNavigation();
   return (
     <Shadow offset={[0,10]} paintInside={false} style={{ borderRadius: 10 }}>

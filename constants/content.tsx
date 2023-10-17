@@ -123,8 +123,8 @@ export const profileTabsData: Tab[] = [
   },
   {
     id: 1,
-    name: 'Points History',
-    screen: 'Preference'
+    name: 'Preferences',
+    screen: 'Preferences'
   },
 ]
 

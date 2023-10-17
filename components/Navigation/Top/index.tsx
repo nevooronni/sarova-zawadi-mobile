@@ -14,7 +14,11 @@ export interface Tab {
 }
 interface NavProps {
   color?: string;
+  tabsColor?: string | undefined;
+  tabsPosition?: string | undefined;
+  tabsTop?: number | undefined;
   paddingTop?: number | undefined;
+  tabPaddingBottom?: number | undefined;
   paddingHorizontal?: number | undefined;
   paddingVertical?: number | undefined;
   goBack?: boolean;
@@ -149,13 +153,19 @@ const SearchBar = ({
 const Tabs = ({ 
   activeTab, 
   setActiveTab, 
-  tabsData 
+  tabsData,
+  tabsPosition,
+  tabsTop,
+  tabsColor,
+  tabPaddingBottom,
 }: NavProps) => { 
-  console.log("🚀 ~ file: index.tsx:154 ~ tabsData:", tabsData)
   return (
     <View style={[styles.tabsContainer, 
       { 
         backgroundColor: colors?.white || 'transparent',
+        position: tabsPosition,
+        top: tabsTop,
+        paddingBottom: tabPaddingBottom,
       }]}
       >
       <View style={{  
@@ -163,7 +173,7 @@ const Tabs = ({
           flexDirection: "row",
           justifyContent: 'space-between',
           borderBottomWidth: .5,
-          borderBottomColor: colors?.bgRed
+          borderBottomColor: tabsColor || colors?.bgRed
         }}
       >
         {tabsData?.map((tab, i) => (
@@ -172,13 +182,13 @@ const Tabs = ({
             style={{ 
               paddingVertical: 15,
               borderBottomWidth: activeTab === tab?.name ? 2.5 : 0, 
-              borderBottomColor: activeTab === tab?.name ? colors?.bgRed : 'none',
+              borderBottomColor: activeTab === tab?.name ? tabsColor || colors?.bgRed : 'none',
            }}
             onPress={() => setActiveTab && setActiveTab(tab?.name)}
           >
             <Text 
               style={{ 
-                color: colors?.bgRed, fontWeight: activeTab === tab?.name ? 'bold' : 'normal' 
+                color: tabsColor || colors?.bgRed, fontWeight: activeTab === tab?.name ? 'bold' : 'normal' 
               }}
               >
                 {tab?.name}
@@ -206,7 +216,11 @@ export default function TopNavigation({
   showTabs, 
   tabsData,
   activeTab,
+  tabsPosition,
+  tabsTop,
+  tabsColor,
   setActiveTab,
+  tabPaddingBottom,
  }: NavProps) {
   
   return (
@@ -239,6 +253,8 @@ export default function TopNavigation({
           activeTab={activeTab}
           tabsData={tabsData}
           setActiveTab={setActiveTab}
+          tabsColor={tabsColor}
+          tabPaddingBottom={tabPaddingBottom}
         />
       }
     </View>
