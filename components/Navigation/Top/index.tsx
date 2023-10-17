@@ -14,11 +14,13 @@ export interface Tab {
 }
 interface NavProps {
   color?: string;
+  noNavbar?: boolean | undefined;
   tabsColor?: string | undefined;
-  tabsPosition?: string | undefined;
+  tabsPosition?: "static" | "relative" | "absolute" | "fixed" | "sticky" | undefined;
   tabsTop?: number | undefined;
   paddingTop?: number | undefined;
   tabPaddingBottom?: number | undefined;
+  tabPaddingTop?: number | undefined;
   paddingHorizontal?: number | undefined;
   paddingVertical?: number | undefined;
   goBack?: boolean;
@@ -157,15 +159,17 @@ const Tabs = ({
   tabsPosition,
   tabsTop,
   tabsColor,
+  tabPaddingTop,
   tabPaddingBottom,
 }: NavProps) => { 
   return (
     <View style={[styles.tabsContainer, 
       { 
         backgroundColor: colors?.white || 'transparent',
-        position: tabsPosition,
-        top: tabsTop,
-        paddingBottom: tabPaddingBottom,
+        position: tabsPosition || 'absolute',
+        top: tabsTop || 135,
+        paddingTop: tabPaddingTop || 20,
+        paddingBottom: tabPaddingBottom || 30,
       }]}
       >
       <View style={{  
@@ -221,11 +225,13 @@ export default function TopNavigation({
   tabsColor,
   setActiveTab,
   tabPaddingBottom,
+  noNavbar, 
+  tabPaddingTop,
  }: NavProps) {
   
   return (
     <View  style={{ zIndex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Navbar
+      {noNavbar ? null : <Navbar
         color={color}
         paddingTop={paddingTop}
         paddingHorizontal={paddingHorizontal}
@@ -233,7 +239,7 @@ export default function TopNavigation({
         goBack={goBack}
         width={width}
         backgroundColor={backgroundColor}
-      />
+      />}
       {showSearchBar && 
         <SearchBar
           paddingHorizontal={paddingHorizontal}
@@ -254,6 +260,9 @@ export default function TopNavigation({
           tabsData={tabsData}
           setActiveTab={setActiveTab}
           tabsColor={tabsColor}
+          tabsPosition={tabsPosition}
+          tabsTop={tabsTop}
+          tabPaddingTop={tabPaddingTop}
           tabPaddingBottom={tabPaddingBottom}
         />
       }

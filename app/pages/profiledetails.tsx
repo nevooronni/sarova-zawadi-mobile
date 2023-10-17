@@ -70,10 +70,11 @@ export default function ProfileDetails() {
             activeTab={active}
             tabsColor={colors?.shadeGreen}
             setActiveTab={setHandleActiveTab}
-            tabPaddingBottom={0}
-            // tabsPosition='relative'
-            // tabsTop={15}
+            tabPaddingBottom={5}
+            tabsPosition='relative'
+            tabsTop={15}
             showTabs
+            noNavbar
           />
           {active === 'Points History' ? <PointsHistory /> : null}
           {active === 'My Details' ? <MyDetails /> : null}
