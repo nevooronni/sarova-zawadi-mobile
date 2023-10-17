@@ -151,6 +151,7 @@ const Tabs = ({
   setActiveTab, 
   tabsData 
 }: NavProps) => { 
+  console.log("🚀 ~ file: index.tsx:154 ~ tabsData:", tabsData)
   return (
     <View style={[styles.tabsContainer, 
       { 

@@ -4,7 +4,7 @@ import { Text, SafeAreaView, View, Button } from 'react-native'
 import { Image } from 'expo-image'
 import colors from '../../styles/theme'
 import { DrawerNavigationState, NavigationContainer, ParamListBase } from "@react-navigation/native"
-import { DrawerItem, DrawerItemList, createDrawerNavigator } from "@react-navigation/drawer"
+import { DrawerItemList, createDrawerNavigator } from "@react-navigation/drawer"
 import { SimpleLineIcons } from "@expo/vector-icons"
 import Home from '../../app/pages/home'
 import { DrawerDescriptorMap, DrawerNavigationHelpers } from '@react-navigation/drawer/lib/typescript/src/types'
@@ -23,15 +23,9 @@ import Restaurant from '../../app/pages/restaurant'
 import RestaurantBooking from '../../app/pages/restaurantbooking'
 import SpaBooking from '../../app/pages/spabooking'
 import MyStays from '../../app/pages/mystays'
-
-function MyProfile({ navigation }) {
-  return (
-    <View>
-      <Text>MyProfile</Text>
-      <Button onPress={() => navigation.goBack()} title="Go back home" />
-    </View>
-  )
-}
+import Rewards from '../../app/pages/rewards'
+import MyProfile from '../../app/pages/myprofile'
+import ProfileDetails from '../../app/pages/profiledetails'
 
 type Props = {
   props: {
@@ -116,6 +110,15 @@ export default function Drawer() {
       component: MyProfile
     },
     {
+      id: 2,
+      name: 'ProfileDetails',
+      drawerLabel: 'Profile Details',
+      title: 'Profil Details',
+      show: true,
+      drawerIcon: undefined,
+      component: ProfileDetails
+    },
+    {
       id: 3,
       name: 'MyStays',
       drawerLabel: 'My Stays',
@@ -131,7 +134,7 @@ export default function Drawer() {
       title: 'Rewards',
       show: true,
       drawerIcon: undefined,
-      component: Explore
+      component: Rewards
     },
     {
       id: 5,
@@ -285,6 +288,7 @@ export default function Drawer() {
     'Restaurant',
     'RestaurantBooking',
     'SpaBooking',
+    'ProfileDetails'
   ];
 
   return (

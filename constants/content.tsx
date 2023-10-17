@@ -110,6 +110,24 @@ export const tabsData: Tab[] = [
   },
 ]
 
+export const profileTabsData: Tab[] = [
+  {
+    id: 1,
+    name: 'Points History',
+    screen: 'Points'
+  },
+  {
+    id: 1,
+    name: 'My Details',
+    screen: 'Details'
+  },
+  {
+    id: 1,
+    name: 'Points History',
+    screen: 'Preference'
+  },
+]
+
 export interface Hotel {
   id?: number;
   price?: string | undefined;

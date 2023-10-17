@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
-import { ImageProps, StyleSheet, View, Text, FlatList, Pressable, Dimensions, FlexAlignType, Platform, } from 'react-native';
-import colors from '../../styles/theme';
-import { Image } from 'expo-image';
-import { Shadow } from 'react-native-shadow-2';
+import { Image, ImageProps, StyleSheet, View, Text, FlatList, Pressable, Dimensions, FlexAlignType, Platform, } from 'react-native'
+import colors from '../../styles/theme'
+// import { Image } from 'expo-image';
+import { Shadow } from 'react-native-shadow-2'
 import { useNavigation } from '@react-navigation/native';
 import ReanimatedCarousel from 'react-native-reanimated-carousel'
 import AnimatedDotsCarousel from 'react-native-animated-dots-carousel'
 import { blurhash } from '../../constants/image'
+import { FontAwesome } from '@expo/vector-icons'
+import SuccessModalPopup from '../Modal';
 
 export function BackgroundCarousel({ data }: { data: ImageProps[]}){
   const width = Dimensions.get('window').width;
@@ -93,6 +95,9 @@ interface Data {
   image: string;
   title: string;
   desc: string;
+  singlePoints?: string | undefined;
+  doublePoints?: string | undefined;
+  isLocked?: boolean | undefined;
 }
 
 export default function Carousel({ 
@@ -113,6 +118,7 @@ export default function Carousel({
   alignSelfBottomCardText, 
   bottomTextTitleColor,
   paddingHorizontalBottomCard, 
+  toggleModal,
 }: {
   data: Data[],
   isLoading?: boolean,
@@ -131,9 +137,11 @@ export default function Carousel({
   paddingHorizontalBottomCard: number | undefined;
   descWidth: number | string | undefined;
   onPress?: (() => void | undefined);
+  toggleModal?: () => void;
 }) {
   const navigation = useNavigation();
   const [readmore, setReadmore] = useState<boolean>(false)
+
   return (
     <FlatList
       horizontal
@@ -147,49 +155,66 @@ export default function Carousel({
       }]}      
       renderItem={({ item, index }) => {
         return (
-          
-          <Pressable
-            key={index}
-            //@ts-ignore
-            onPress={onPress ? () => onPress() : () => navigation.navigate('Activities')}
-            style={carouselStyles.pressable}
-          >
-            <Shadow>
-              <View style={{  alignItems: "center", justifyContent: "center", borderRadius: borderRadius || 25, }}>
-                <View style={{ backgroundColor: "#eee", borderRadius: borderRadius || 25, overflow: "hidden" }}>
-                  <View>
-                    <Image
-                      style={[carouselStyles.image, 
-                        { width: imageWidth ? imageWidth : 220, 
-                          height: imageHeight ? imageHeight : 220,
-                        } 
-                      ]}
-                      source={item?.image}
-                      transition={1000}
-                    />
-                  </View>
-                  <View style={{ paddingTop: paddingTopCard || 20, paddingBottom: paddingBottomCard || 25, paddingHorizontal: paddingHorizontalBottomCard, backgroundColor: colors?.white }}>
-                    <Text style={[carouselStyles.text, { fontSize: fontSize, alignSelf: alignSelfBottomCardText || 'center', color: bottomTextTitleColor  || colors?.lightGray }]}>
-                      {item?.title ? item?.title?.slice(0,20) : '-'}
-                    </Text>
-                    {item?.desc && <Pressable onPress={() => setReadmore(false)} style={{ width: '100%', marginTop: 5 }}>
-                      <Text style={{ color: colors?.mediumGray4, flexWrap: 'wrap', width: descWidth, fontSize: 12 }}>{item?.desc ? readmore ? item?.desc : `${item?.desc?.slice(0,55)}...` : ''}{!readmore 
-                        ? <Pressable 
-                            // onPress={() => setReadmore(true)} 
-                          >
-                            <Text style={{ fontSize: 12, color: colors?.blue, fontWeight: 'bold', marginBottom: Platform.OS === 'ios' ? -3 : -4 }}>
-                              Read more
-                            </Text>
-                          </Pressable> 
+          <>
+            <Pressable
+              key={index}
+              //@ts-ignore
+              onPress={onPress && !item?.isLocked ? () => onPress() : !item?.isLocked ? () => navigation.navigate('Activities') : () => toggleModal()}
+              style={carouselStyles.pressable}
+            >
+              <Shadow>
+                <View style={{  alignItems: "center", justifyContent: "center", borderRadius: borderRadius || 25, }}>
+                  <View style={{ backgroundColor: "#eee", borderRadius: borderRadius || 25, overflow: "hidden" }}>
+                    <View>
+                      <Image
+                        style={[carouselStyles.image, 
+                          { width: imageWidth ? imageWidth : 220, 
+                            height: imageHeight ? imageHeight : 220,
+                          } 
+                        ]}
+                        source={item?.image}
+                        transition={1000}
+                      />
+                    {item?.isLocked 
+                        ? <FontAwesome
+                            name='lock' 
+                            size={85} 
+                            color={colors?.white}
+                            style={{ position: 'relative', top: '-60%', right: '-40%', zIndex: 1, marginBottom: -85 }} 
+                          /> 
                         : null}
+                    </View>
+                    <View style={{ paddingTop: paddingTopCard || 20, paddingBottom: paddingBottomCard || 25, paddingHorizontal: paddingHorizontalBottomCard, backgroundColor: colors?.white }}>
+                      <Text style={[carouselStyles.text, { fontSize: fontSize, alignSelf: alignSelfBottomCardText || 'center', color: bottomTextTitleColor  || colors?.lightGray }]}>
+                        {item?.title ? item?.title?.slice(0,20) : '-'}
                       </Text>
-                    </Pressable>}
+                      {item?.desc && <Pressable onPress={() => setReadmore(false)} style={{ width: '100%', marginTop: 5 }}>
+                        <Text style={{ color: colors?.mediumGray4, flexWrap: 'wrap', width: descWidth, fontSize: 12 }}>{item?.desc ? readmore ? item?.desc : `${item?.desc?.slice(0,55)}...` : ''}{!readmore 
+                          ? <Pressable 
+                              // onPress={() => setReadmore(true)} 
+                            >
+                              <Text style={{ fontSize: 12, color: colors?.blue, fontWeight: 'bold', marginBottom: Platform.OS === 'ios' ? -3 : -4 }}>
+                                Read more
+                              </Text>
+                            </Pressable> 
+                          : null}
+                        </Text>
+                      </Pressable>}
+                      {item?.singlePoints && 
+                        <View style={{ flexDirection: 'row', alignItems: 'center', paddingVertical: 10 }}>
+                          <View style={{ borderLeftWidth: .5, borderLeftColor: colors?.bgRed, marginRight: 10, height: 25 }} />
+                          <View>
+                            <Text style={{ color: colors?.bgRed, fontSize: 13 }}>Single Room for 2,100 points</Text>
+                            <Text style={{ color: colors?.bgRed, fontSize: 13 }}>Double Room for 2,500 points</Text>
+                          </View>
+                        </View>
+                      }
+                    </View>
                   </View>
                 </View>
-              </View>
-            </Shadow>
-          </Pressable>
-
+              </Shadow>
+            </Pressable>
+          </>
         )
       }}
     />

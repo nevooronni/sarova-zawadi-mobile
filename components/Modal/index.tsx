@@ -2,16 +2,36 @@ import React from 'react'
 import Modal from "react-native-modal";
 import UnorderedList from '../../components/List'
 import { diamondCardBenefits } from '../../constants/content'
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View, Image } from 'react-native';
 import colors from '../../styles/theme';
 import { FontAwesome } from '@expo/vector-icons';
 
 interface ModalProps {
   isModalVisible: boolean;
   toggleModal: () => void;
+  isPointsModal?: boolean | undefined;
 }
 
-export default function SuccessModalPopup({ isModalVisible, toggleModal }: ModalProps):JSX.Element {
+export default function SuccessModalPopup({ isModalVisible, toggleModal, isPointsModal }: ModalProps):JSX.Element {
+  if (isPointsModal) {
+    return (
+      <Modal isVisible={isModalVisible}>
+       <Pressable onPress={toggleModal}>
+        <View style={successModalStyles.container}>
+          <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+          <Image
+            style={{ width: 120, height: 120, }}
+            source={require('../../assets/images/sarova_red_logo.webp')}
+          />
+          </View>
+          <View style={[successModalStyles.container2, { borderBottomWidth: 0 }]}>
+            <Text style={{ textAlign: 'center' }}>COLLECT MORE POINTS TO UNLOCK THESE & MORE DIAMONG CARD BENEFITS</Text>
+          </View>
+        </View>
+        </Pressable>
+      </Modal>
+    )
+  }
   return (
     <Modal isVisible={isModalVisible}>
        <Pressable onPress={toggleModal}>
@@ -50,7 +70,7 @@ export const successModalStyles = StyleSheet.create({
     paddingHorizontal: 13, 
     backgroundColor: colors?.white, 
     borderRadius: 15,
-    gap: 15
+    gap: 15,
   },
   container2: {
     justifyContent: 'center', 

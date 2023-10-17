@@ -91,7 +91,7 @@ export default function Explore() {
           goBack
         />
         {active === 'Hotels' ? <HotelTab/> : null}
-        {active === 'Restaurants' ? <RestaurantTab/> : null}
+        {active === 'Restaurants' ? <RestaurantTab /> : null}
         {active === 'Tulia Spa' ? <SpaTab /> : null}
         {active === 'Concierge' ? <ConciergeTab /> : null}        
       </SafeAreaView>
