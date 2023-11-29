@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
-import { Text, SafeAreaView, View, StyleSheet, TouchableOpacity, ImageBackground, Dimensions, Modal, Pressable, ScrollView } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity, ImageBackground, Dimensions, Modal, Pressable } from 'react-native';
+import { Image } from 'expo-image';
 import colors from '../styles/theme';
 import { FontAwesome } from '@expo/vector-icons';
 import { useRouter } from "expo-router";
 // import { StatusBar } from 'expo-status-bar';
 import Constants from 'expo-constants';
-import { IosScreenWrapper } from '../components/ScreenWrapper';
+// import { IosScreenWrapper } from '../components/ScreenWrapper';
 
 const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
-const backgroundImage = require('../assets/images/sarova-background.png/')
+const backgroundImage = require('../assets/images/sarova_exterior_home.jpeg')
 
 export default function Home():JSX.Element {
   const router = useRouter()
@@ -19,13 +20,22 @@ export default function Home():JSX.Element {
     <View style={loginStyles.backgroundContainer}>
       <ImageBackground
         source={backgroundImage}
-        resizeMode="stretch"
+        resizeMode='cover'
         style={loginStyles.container}
+        // imageStyle={{ resizeMode: 'cover', alignSelf: "flex-start" }}
       > 
         <WhyJoinModal modalVisible={modalVisible} setModalVisible={setModalVisible} />
         {!modalVisible ? 
           <>
-            <View style={{ flexDirection: 'row', justifyContent: 'space-around', width: '100%', paddingTop: '120%' }}>
+            <Image
+              source={require('../assets/images/sarova-hotels-logo_white.png')}
+              style={{
+                height: 90,
+                width: 170,
+                marginTop: '0%'
+              }}
+            />
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between', width: '45%', paddingTop: '45%', paddingHorizontal: 25 }}>
               <TouchableOpacity
                 style={loginStyles.joinButton}
                 onPress={() => router.replace('/auth/join')}
@@ -41,6 +51,7 @@ export default function Home():JSX.Element {
             </View>
             <TouchableOpacity
               onPress={() => setModalVisible(true)}
+              style={{ marginTop: '10%' }}
             >
               <Text style={loginStyles.whyText}>Why Join?</Text>
             </TouchableOpacity> 
@@ -100,18 +111,23 @@ export const loginStyles = StyleSheet.create({
   backgroundContainer: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'flex-end',
+    justifyContent: 'flex-start',
     height: Constants.statusBarHeight,
-    backgroundColor: 'red'
+    backgroundColor: 'red',
   },
   container: {
     flex: 1,
     position: 'absolute',
-    top: 0,
-    left: 0,
-    width: '100%',
-    height: '100%',
-    // resizeMode: 'cover',
+    // top: -5,
+    // top: 0,
+    // width: 1340,
+    // height: 870,
+    // width: 400,
+    width: '215%',
+    height: 860,
+    transform: [{ scaleX: 1 }],
+    // backgroundPositionY: 110,
+    // backgroundPositionX: 110,
     justifyContent: 'center',
     alignItems: 'center',
   },

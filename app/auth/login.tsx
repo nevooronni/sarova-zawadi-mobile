@@ -36,7 +36,7 @@ export default function Login():JSX.Element {
       router.replace('/pages/landing')
     }, 3000)
   }
-  const imageUrl = require('../../assets/images/sarova_zawadi.png')
+  const imageUrl = require('../../assets/images/sarova-hotels-logo_white.png')
 
   return (
     <IosScreenWrapper>

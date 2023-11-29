@@ -8,7 +8,7 @@
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "splash": {
-      "image": "./assets/images/spalsh_background.png",
+      "image": "./assets/images/sarova_splash_screen.jpeg",
       "resizeMode": "cover",
       "backgroundColor": "#ffffff"
     },
