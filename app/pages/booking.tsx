@@ -43,6 +43,7 @@ export default function Booking() {
           paddingHorizontal={30}
           width='105%'
           goBack
+          noMenu
         />
         <ScrollView 
           showsVerticalScrollIndicator={false}

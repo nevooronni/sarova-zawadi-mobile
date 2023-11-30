@@ -6,6 +6,7 @@ import { IosScreenWrapper } from '../../components/ScreenWrapper'
 import { Platform, Text, View, FlatList } from 'react-native'
 import Carousel from '../../components/Carousel'
 import SuccessModalPopup from '../../components/Modal'
+import MainBottomNavbar from '../../components/Navigation/MainBottomNavbar'
 
 export default function Rewards() {
   const navigation = useNavigation();
@@ -131,6 +132,7 @@ export default function Rewards() {
         paddingHorizontal={30}
         width='105%'
         goBack
+        noMenu
       />
       <View style={{ 
           paddingTop: 100, 
@@ -148,7 +150,7 @@ export default function Rewards() {
       <View style={{ 
         gap: 0, 
         paddingHorizontal: 0,
-        paddingBottom: Platform.OS === 'ios' ? 350 : 420, 
+        paddingBottom: Platform.OS === 'ios' ? 450 : 520, 
       }}
       >
         <FlatList
@@ -165,6 +167,7 @@ export default function Rewards() {
           renderItem={renderSection}
         />
       </View>
+      <MainBottomNavbar />
     </IosScreenWrapper>
   )
 }

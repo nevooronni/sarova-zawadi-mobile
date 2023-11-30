@@ -4,6 +4,7 @@ import { IosScreenWrapper } from '../../components/ScreenWrapper'
 import colors from '../../styles/theme'
 import TopNavigation from '../../components/Navigation/Top'
 import { useNavigation } from '@react-navigation/native'
+import MainBottomNavbar from '../../components/Navigation/MainBottomNavbar'
 
 export default function MyStays() {
   const navigation = useNavigation();
@@ -54,6 +55,7 @@ export default function MyStays() {
           <Text style={{ color: colors?.white }}>Explore</Text>
         </TouchableOpacity>
       </View>
+      <MainBottomNavbar />
     </IosScreenWrapper>
   )
 }

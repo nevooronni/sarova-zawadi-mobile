@@ -137,6 +137,7 @@ export default function SecureCheckout() {
           paddingHorizontal={30}
           width='105%'
           goBack
+          noMenu
         />
         <ScrollView 
           showsVerticalScrollIndicator={false}

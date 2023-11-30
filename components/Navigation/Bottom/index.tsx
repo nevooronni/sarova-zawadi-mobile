@@ -97,7 +97,7 @@ export default function BottomNavigation({ }) {
 const styles = StyleSheet.create({
   container: {
     position: 'absolute', 
-    bottom: '30%', 
+    bottom: '22.5%', 
     left: 0, 
     right: 0,
     zIndex: 1,

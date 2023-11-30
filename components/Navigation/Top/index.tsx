@@ -15,6 +15,7 @@ export interface Tab {
 interface NavProps {
   color?: string;
   noNavbar?: boolean | undefined;
+  noMenu?: boolean | undefined;
   tabsColor?: string | undefined;
   tabsPosition?: "static" | "relative" | "absolute" | "fixed" | "sticky" | undefined;
   tabsTop?: number | undefined;
@@ -45,6 +46,7 @@ const Navbar = ({
   width,
   paddingTop,
   backgroundColor,
+  noMenu,
  }: NavProps) => {
   const navigation = useNavigation();
   const navStatus = useDrawerStatus();
@@ -56,7 +58,7 @@ const Navbar = ({
         paddingVertical: paddingVertical,
         paddingTop: paddingTop,
         backgroundColor: backgroundColor || 'transparent',
-        justifyContent: goBack ? 'space-between'  : 'flex-end'
+        justifyContent: goBack ? 'space-between' : 'flex-end'
       }]}
     >
       {goBack && <SimpleLineIcons.Button 
@@ -69,7 +71,7 @@ const Navbar = ({
         //@ts-ignore
         onPress={() => navigation.goBack()}
       />}
-      {navStatus === 'closed' ? <SimpleLineIcons.Button 
+      {navStatus === 'closed' && !noMenu ? <SimpleLineIcons.Button 
         name='menu' 
         size={22} 
         color={color} 
@@ -167,7 +169,7 @@ const Tabs = ({
       { 
         backgroundColor: colors?.white || 'transparent',
         position: tabsPosition || 'absolute',
-        top: tabsTop || 135,
+        top: tabsTop || 133,
         paddingTop: tabPaddingTop || 20,
         paddingBottom: tabPaddingBottom || 30,
       }]}
@@ -226,6 +228,7 @@ export default function TopNavigation({
   setActiveTab,
   tabPaddingBottom,
   noNavbar, 
+  noMenu,
   tabPaddingTop,
  }: NavProps) {
   
@@ -238,6 +241,7 @@ export default function TopNavigation({
         paddingVertical={paddingVertical}
         goBack={goBack}
         width={width}
+        noMenu={noMenu}
         backgroundColor={backgroundColor}
       />}
       {showSearchBar && 
@@ -287,7 +291,7 @@ const styles = StyleSheet.create({
   },
   searchBarContainer: {
     position: 'absolute', 
-    top: 54, 
+    top: 53, 
     left: 0, 
     right: 0,
     zIndex: 1,

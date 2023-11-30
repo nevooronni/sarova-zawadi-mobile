@@ -8,6 +8,7 @@ import { loginStyles } from '../home';
 import { ScrollView } from 'react-native-gesture-handler';
 import { useAppActions, useAppState } from '../../store';
 import SpinnerLoader from '../../components/Loaders/Spinner';
+import MainBottomNavbar from '../../components/Navigation/MainBottomNavbar';
 
 type FormData = {
   first_name: string

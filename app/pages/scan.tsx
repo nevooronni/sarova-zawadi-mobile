@@ -10,6 +10,7 @@ import SpinnerLoader from '../../components/Loaders/Spinner'
 import { useAppActions, useAppState } from '../../store'
 import { IosScreenWrapper } from '../../components/ScreenWrapper'
 import ImageManipulator from 'expo-image-manipulator';
+import MainBottomNavbar from '../../components/Navigation/MainBottomNavbar'
 
 
 export default function Scan():JSX.Element {
@@ -97,7 +98,7 @@ export default function Scan():JSX.Element {
 
   return (
     <IosScreenWrapper background={colors?.bgRed}>
-      <SafeAreaView>
+      <SafeAreaView style={{ paddingBottom: 550 }}>
         <SpinnerLoader isLoading={state.isLoading} color={colors?.red} />
         <SuccessModalPopup isModalVisible={isModalVisible} toggleModal={toggleModal} />
         <TopNavigation 
@@ -106,6 +107,7 @@ export default function Scan():JSX.Element {
           width='105%'
           backgroundColor={colors?.bgRed}
           goBack
+          noMenu
         />
         <ScrollView>
           <View style={styles.container}>
@@ -156,6 +158,7 @@ export default function Scan():JSX.Element {
           </View>
         </ScrollView>
       </SafeAreaView>
+      <MainBottomNavbar />
     </IosScreenWrapper>
   )
 }

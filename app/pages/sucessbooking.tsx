@@ -51,6 +51,7 @@ export default function SuccessBooking() {
           paddingHorizontal={20}
           width='102%'
           goBack
+          noMenu
         />
         <ScrollView>
           <View style={styles.container}>

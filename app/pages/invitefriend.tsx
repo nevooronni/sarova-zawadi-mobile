@@ -5,6 +5,7 @@ import colors from '../../styles/theme'
 import Card from '../../components/Card'
 import { FontAwesome } from '@expo/vector-icons'
 import { IosScreenWrapper } from '../../components/ScreenWrapper';
+import MainBottomNavbar from '../../components/Navigation/MainBottomNavbar'
 
 interface SocialProps {
   icon: JSX.Element;
@@ -120,9 +121,10 @@ export default function InviteFriend() {
           color={colors?.white} 
           paddingHorizontal={30}
           width='105%'
+          noMenu
         />
         <ScrollView>
-          <View style={{ height: '100%' }}>
+          <View style={{ height: '100%', paddingBottom: 250 }}>
             <View style={{ height: '45%', margin: 0, padding: 0, backgroundColor: colors?.white }}>
               <ImageBackground
                 source={backgroundImage}
@@ -140,8 +142,9 @@ export default function InviteFriend() {
               </ImageBackground> 
             </View>
             <View style={{ 
+              zIndex: 1,
               gap: 7,
-              marginTop: 10,
+              marginTop: 0,
               justifyContent: 'flex-start', 
               alignItems: 'flex-start', 
               paddingTop: 0, 
@@ -156,6 +159,7 @@ export default function InviteFriend() {
           </View>
         </ScrollView>
       </SafeAreaView>
+      <MainBottomNavbar />
     </IosScreenWrapper>
   )
 }
@@ -163,10 +167,10 @@ export default function InviteFriend() {
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    height: 380,
+    height: 350,
     alignItems: 'center',
     // justifyContent: 'center',
-    paddingTop: 75,
+    paddingTop: 60,
     backgroundColor: colors?.white,
   },
   image: {

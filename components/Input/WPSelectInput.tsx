@@ -32,6 +32,7 @@ export default function WPSelectInput({
   data,
   labelStyles,
   iconColor,
+  onChange,
 }: InputText):JSX.Element {
   const selectStyles = customStyles ? [styles.inputStyle, { ...customStyles}] : styles.inputStyle
   const selectRequiredStyles = customRequiredStyles ? [styles.requiredStyle, customRequiredStyles] : styles.requiredStyle
@@ -48,9 +49,8 @@ export default function WPSelectInput({
       {label ? <Text style={[{ color: colors?.red, fontSize: 15, marginBottom: 10 }, labelStyles]}>{label}</Text> : null}
       <SelectDropdown
         data={data}
-        onSelect={(selectedItem, index) => {
-          console.log(selectedItem, index)
-        }}
+        defaultValue={defaultValue}
+        onSelect={onChange}
         buttonTextAfterSelection={(selectedItem, index) => {
           // text represented after item is selected
           // if data array is an array of objects then return selectedItem.property to render after item is selected

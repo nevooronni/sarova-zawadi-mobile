@@ -13,6 +13,7 @@ import { successModalStyles } from '../../components/Modal'
 import UnorderedList from '../../components/List'
 import { diamondCardBenefits } from '../../constants/content'
 import { useNavigation } from '@react-navigation/native'
+import MainBottomNavbar from '../../components/Navigation/MainBottomNavbar'
 
 export default function MyProfile() {
   const navigation = useNavigation();
@@ -28,6 +29,7 @@ export default function MyProfile() {
           paddingHorizontal={20}
           width='102%'
           goBack
+          noMenu
         />
         <ScrollView showsVerticalScrollIndicator={false}>
           <View style={styles.container}>
@@ -92,6 +94,7 @@ export default function MyProfile() {
           </View>
         </ScrollView>
       </SafeAreaView>
+      <MainBottomNavbar />
     </IosScreenWrapper>
   )
 }

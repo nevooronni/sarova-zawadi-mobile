@@ -9,6 +9,7 @@ import RestaurantTab from './restaurants'
 import SpaTab from './spa'
 import ConciergeTab from './concierge'
 import { ScrollView } from 'react-native-gesture-handler'
+import MainBottomNavbar from '../../components/Navigation/MainBottomNavbar'
 
 function HotelTab() {
   const hotelsData = useMemo(() => hotels, [hotels]);
@@ -89,12 +90,14 @@ export default function Explore() {
           showSearchBar
           showTabs
           goBack
+          noMenu
         />
         {active === 'Hotels' ? <HotelTab/> : null}
         {active === 'Restaurants' ? <RestaurantTab /> : null}
         {active === 'Tulia Spa' ? <SpaTab /> : null}
         {active === 'Concierge' ? <ConciergeTab /> : null}        
       </SafeAreaView>
+      <MainBottomNavbar />
     </IosScreenWrapper>
   )
 }

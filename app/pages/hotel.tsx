@@ -9,6 +9,7 @@ import { BackgroundCarousel } from '../../components/Carousel'
 import { loginStyles } from '../home'
 import RoomCard from '../../components/Card/roomcard'
 import { ScrollView } from 'react-native-gesture-handler'
+import MainBottomNavbar from '../../components/Navigation/MainBottomNavbar';
 
 export default function Hotel() {
   const route = useRoute() 
@@ -38,6 +39,7 @@ export default function Hotel() {
         paddingHorizontal={30}
         width='105%'
         goBack
+        noMenu
       />
       <BackgroundCarousel data={CarouselImageData} />
         <ScrollView 
@@ -80,6 +82,7 @@ export default function Hotel() {
           </View>
         </View>
       </ScrollView>
+      <MainBottomNavbar />
     </IosScreenWrapper>
   )
 }

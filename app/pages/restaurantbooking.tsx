@@ -18,6 +18,7 @@ import WPSelectInput from '../../components/Input/WPSelectInput'
 import SuccessModalPopup from '../../components/Modal'
 import { useAppActions, useAppState } from '../../store'
 import SpinnerLoader from '../../components/Loaders/Spinner'
+import axios from 'axios';
 
 type CheckoutFormData = {
   time: string;
@@ -27,7 +28,8 @@ type CheckoutFormData = {
 export default function RestaurantBooking() {
   const state = useAppState()
   const { setIsLoading } = useAppActions()
-  const { control, handleSubmit, formState: { errors }} = useForm<CheckoutFormData>()
+  const { control, handleSubmit, watch, formState: { errors }} = useForm<CheckoutFormData>()
+  console.log("🚀 ~ file: restaurantbooking.tsx:32 ~ RestaurantBooking ~ watch:", watch())
   const navigation = useNavigation();
   const [selectedRange, setRange] = useState<DateRange>({
     firstDate: '',
@@ -39,8 +41,11 @@ export default function RestaurantBooking() {
   const parsedSecondDate = selectedRange?.secondDate ? moment(selectedRange?.secondDate) : parseDateToday
   const formattedSecondDate = parsedSecondDate.format("ddd, DD MMM")
 
-  const [adults, setAdults] = useState<number>(0);
-  const [children, setChildren] = useState<number>(0);
+  const [adults, setAdults] = useState<number>(0)
+  const [children, setChildren] = useState<number>(0)
+  const [scheduledTime, setTime] = useState('')
+  const [additionalDetails, setAdditionalTime] = useState('')
+  // console.log("🚀 ~ file: restaurantbooking.tsx:48 ~ RestaurantBooking ~ scheduledTime:", scheduledTime)
   const route = useRoute() 
   //@ts-ignore
   const routeId = route?.params?.id
@@ -51,18 +56,73 @@ export default function RestaurantBooking() {
     setModalVisible(!isModalVisible);
   };
 
-  useEffect(() => {
-    if (state.isLoading) {
-      setTimeout(() => {
+  const sendReservationEmail = async () => {
+    setIsLoading(true)
+    const restaurantName = 'Thorn Tree Cafe'
+    const userFullName = state?.userFullName
+    console.log("🚀 ~ file: restaurantbooking.tsx:63 ~ sendReservationEmail ~ userFullName:", userFullName)
+    const hotelName = 'Sarova Stanley Hotels & Resort Kenya'
+    const emailHeading = 'Sarova Hotels & Resorts head office'
+    const hotelManager = 'Andrew Kibe'
+    const serviceId = process.env.EXPO_PUBLIC_EMAILJS_SERVICE_ID
+    const templateId = process.env.EXPO_PUBLIC_EMAILJS_TEMPLATE_ID
+    const publicKey = process.env.EXPO_PUBLIC_EMAILJS_PUBLIC_KEY
+    const privateKey = process.env.EXPO_PUBLIC_EMAILJS_PRIVATE_KEY
+    const baseUrl = process.env.EXPO_PUBLIC_EMAILJS_BASE_URL
+    const messageBody = `
+
+    Please find the attached templates, confirming the booking at the restaurant:
+
+    Subject: Reservation Confirmation for ${userFullName} at ${restaurantName}
+    
+    Dear ${hotelManager},
+    
+    We are delighted to confirm the reservation at ${restaurantName} for the following details:
+    
+    Name: ${userFullName}
+    Date: ${formattedSecondDate}
+    Time: ${scheduledTime}
+    Number of Guests: ${adults + ' adults'}  ${children + 'children'}
+    
+    Please provide them with the best possible experience!
+    
+    Best regards,
+    
+    ${hotelManager}
+    Hotel Manager
+    ${restaurantName}
+    +2547 712 345 678
+    `
+    const payload = {
+      service_id: serviceId,
+      template_id: templateId,
+      user_id: publicKey,
+      accessToken: privateKey,
+      template_params: {
+        from_name: emailHeading,
+        to_name: hotelManager,
+        message: messageBody,
+      }
+    }
+    console.log("🚀 ~ file: restaurantbooking.tsx:107 ~ sendReservationEmail ~ payload.template_params.messageBody:", messageBody)
+
+    try {
+      const headers = { "Content-Type": "application/json" }
+      const { status } = await axios.post(`${baseUrl}/email/send`, payload, { headers });
+      if(status === 200) {
         setIsLoading(false)
         toggleModal()
-      }, 3500)
-      setTimeout(() => {
-        navigation.navigate('Home')
-      }, 2500)
-    }
-  }, [state.isLoading]);
+        setTimeout(() => {
+          navigation.navigate('Home')
+        }, 500)
+      }
+    } catch (error) {
+      console.error('error in axios Post-->', error?.response?.data)
+      setIsLoading(false)
+    }    
+  }
 
+  
   return (
     <IosScreenWrapper background={colors?.white}>
       <SafeAreaView>
@@ -74,6 +134,7 @@ export default function RestaurantBooking() {
           paddingHorizontal={30}
           width='105%'
           goBack
+          noMenu
         />
         <ScrollView 
           showsVerticalScrollIndicator={false}
@@ -119,6 +180,9 @@ export default function RestaurantBooking() {
                 isRequired
                 width={300}
                 data={time}
+                control={control}
+                errors={errors}
+                onChange={setTime}
                 searchPlaceHolder='Time'
                 errorMessage='Expiry month is required'
                 iconColor={colors?.lightGray3}
@@ -136,6 +200,7 @@ export default function RestaurantBooking() {
                 isRequired
                 width={300}
                 height={80}
+                onChange={(e) => setAdditionalTime(e)}
                 labelStyles={{ color: colors?.mediumGray, fontWeight: 'bold' }}
                 customStyles={{ height: 50, color: colors?.mediumGray, borderColor: colors?.lightGray3 }}
                 customRequiredStyles={{ color: colors?.bgRed }}
@@ -218,7 +283,7 @@ export default function RestaurantBooking() {
                   { height: 45, width: 175, paddingVertical: 14, 
                 }]}
                  //@ts-ignore
-                onPress={() => setIsLoading(true)} 
+                onPress={sendReservationEmail} 
               >
                 <Text style={[loginStyles.loginText, { fontWeight: 'bold' }]}>Confirm Booking</Text>
               </Pressable>

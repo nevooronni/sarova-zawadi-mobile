@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, StyleSheet, SafeAreaView, TouchableOpacity, ScrollView } from 'react-native';
+import { Text, View, StyleSheet, SafeAreaView, ScrollView } from 'react-native';
 import { Image } from 'expo-image';
 import colors from '../../styles/theme';
 import { useAppState } from '../../store';
@@ -10,6 +10,7 @@ import { useRouter } from 'expo-router';
 import { imageUrl } from '../../constants/image';
 import { carouselData } from '../../constants/content';
 import { IosScreenWrapper } from '../../components/ScreenWrapper'
+import MainBottomNavbar from '../../components/Navigation/MainBottomNavbar';
 
 export default function Home({ route, navigation }){
   // console.log("🚀 ~ file: home.tsx:15 ~ Home ~ navigation:", route.name)
@@ -21,13 +22,14 @@ export default function Home({ route, navigation }){
   
   return (
     <IosScreenWrapper background={colors?.white}>
-    <SafeAreaView>
+      <SafeAreaView>
+      <ScrollView>
       <TopNavigation 
         color={colors?.mediumGray} 
         paddingHorizontal={30}
         width='105%'
-      />
-      <ScrollView>
+        noNavbar
+        />
       <View style={styles.container}>
         <View style={{ gap: 6, paddingVertical: 30, paddingHorizontal: 30 }}>
           <Image
@@ -60,7 +62,18 @@ export default function Home({ route, navigation }){
           paddingBottom={10} 
           paddingHorizontal={30} 
         />
-        <View style={{ gap: 18, paddingHorizontal: 30, paddingVertical: 0 }}>
+        <View style={{ gap: 6, paddingHorizontal: 30 }}>
+          <Text style={{ color: colors?.mediumGray, fontSize: 18, fontWeight: 'bold' }}>
+            Promotions and offers
+          </Text>
+        </View>
+        <Carousel 
+          data={carouselData} 
+          paddingTop={30} 
+          paddingBottom={10} 
+          paddingHorizontal={30} 
+        />
+        {/* <View style={{ gap: 18, paddingHorizontal: 30, paddingVertical: 0 }}>
           <TouchableOpacity
               style={[loginStyles.loginButton, { width: '90%' }]}
               onPress={() => navigation.navigate('Scan', { screen: 'Scan' })}
@@ -73,18 +86,19 @@ export default function Home({ route, navigation }){
               >
             <Text style={loginStyles.loginText}>Explore</Text>
           </TouchableOpacity>
-        </View>
+        </View> */}
       </View>
       </ScrollView>
-    </SafeAreaView>
+     </SafeAreaView>
+      <MainBottomNavbar />
     </IosScreenWrapper>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 10,
-    paddingBottom: 55,
+    paddingTop: 0,
+    paddingBottom: 300,
     backgroundColor: colors?.white,
     height: '100%'
   },

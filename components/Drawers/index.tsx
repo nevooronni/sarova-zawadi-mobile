@@ -26,6 +26,7 @@ import MyStays from '../../app/pages/mystays'
 import Rewards from '../../app/pages/rewards'
 import MyProfile from '../../app/pages/myprofile'
 import ProfileDetails from '../../app/pages/profiledetails'
+import Accounts from '../../app/pages/accounts'
 
 type Props = {
   props: {
@@ -272,6 +273,15 @@ export default function Drawer() {
       show: true,
       drawerIcon: undefined,
       component: SpaBooking
+    },
+    {
+      id: 17,
+      name: 'Accounts',
+      drawerLabel: 'Accounts',
+      title: 'Accounts',
+      show: true,
+      drawerIcon: undefined,
+      component: Accounts
     },
   ];
 

@@ -7,6 +7,7 @@ import { CarouselImageData, roomsData } from '../../constants/content'
 import { BackgroundCarousel } from '../../components/Carousel'
 import { loginStyles } from '../home'
 import { useRoute, useNavigation } from '@react-navigation/native';
+import MainBottomNavbar from '../../components/Navigation/MainBottomNavbar'
 
 
 export default function Restaurant() {
@@ -25,6 +26,7 @@ export default function Restaurant() {
         paddingHorizontal={30}
         width='105%'
         goBack
+        noMenu
       />
       <BackgroundCarousel data={CarouselImageData} />
       <View style={{ backgroundColor: colors?.white, flex: 1, marginTop: -25, paddingTop: 20 }}>
@@ -48,6 +50,7 @@ export default function Restaurant() {
           </View>
         </View>
       </View>
+      <MainBottomNavbar />
     </IosScreenWrapper>
   )
 }

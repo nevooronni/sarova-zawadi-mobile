@@ -29,6 +29,7 @@ export default function Room() {
         paddingHorizontal={30}
         width='105%'
         goBack
+        noMenu
       /> 
       <BackgroundCarousel data={roomCarouselData} />
       <ScrollView style={{ 

@@ -8,6 +8,7 @@ import SpinnerLoader from '../../components/Loaders/Spinner';
 import { useAppActions, useAppState } from '../../store'
 import { useNavigation } from '@react-navigation/native';
 import { IosScreenWrapper } from '../../components/ScreenWrapper';
+import MainBottomNavbar from '../../components/Navigation/MainBottomNavbar';
 
 export default function Activities() {
   const state = useAppState()
@@ -33,6 +34,7 @@ export default function Activities() {
           paddingHorizontal={30}
           width='110%'
           goBack
+          noMenu
         />
         <ImageBackground
           source={backgroundImage}
@@ -86,6 +88,7 @@ export default function Activities() {
             </View> 
         </View> 
       </SafeAreaView>
+      <MainBottomNavbar />
     </IosScreenWrapper>
   )
 }
