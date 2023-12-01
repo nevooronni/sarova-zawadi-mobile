@@ -29,7 +29,6 @@ export default function RestaurantBooking() {
   const state = useAppState()
   const { setIsLoading } = useAppActions()
   const { control, handleSubmit, watch, formState: { errors }} = useForm<CheckoutFormData>()
-  console.log("🚀 ~ file: restaurantbooking.tsx:32 ~ RestaurantBooking ~ watch:", watch())
   const navigation = useNavigation();
   const [selectedRange, setRange] = useState<DateRange>({
     firstDate: '',
@@ -115,7 +114,7 @@ export default function RestaurantBooking() {
         }, 500)
       }
     } catch (error) {
-      console.error('error in axios Post-->', error?.response?.data)
+      // console.error('error in axios Post-->', error?.response?.data)
       setIsLoading(false)
     }    
   }

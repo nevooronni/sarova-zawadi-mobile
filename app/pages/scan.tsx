@@ -47,8 +47,6 @@ export default function Scan():JSX.Element {
 
       if (pendingResult) {
         // A result is available from a previous image picker operation.
-        console.log('Pending result:', pendingResult);
-
         // You can handle the result here, e.g., update state or display the image.
       }
     })();
