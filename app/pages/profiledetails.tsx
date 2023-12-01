@@ -38,7 +38,7 @@ export default function ProfileDetails() {
         color={colors?.mediumGray} 
         paddingHorizontal={30}
         width='105%'
-        goBack
+        // goBack
         noMenu
       />
       <ScrollView>
@@ -94,7 +94,7 @@ export default function ProfileDetails() {
 const styles = StyleSheet.create({
   container: {
     paddingTop: 10,
-    paddingBottom: 65,
+    paddingBottom: 140,
     backgroundColor: colors?.white,
     height: '100%'
   },

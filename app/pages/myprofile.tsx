@@ -22,7 +22,7 @@ export default function MyProfile() {
   return (
     <IosScreenWrapper background={colors?.white}>
       <SafeAreaView>
-        <TopNavigation 
+        {/* <TopNavigation 
           color={colors?.mediumGray} 
           backgroundColor={colors?.white}
           paddingTop={-20}
@@ -30,7 +30,7 @@ export default function MyProfile() {
           width='102%'
           goBack
           noMenu
-        />
+        /> */}
         <ScrollView showsVerticalScrollIndicator={false}>
           <View style={styles.container}>
             <View style={{ width: '100%', gap: 17, paddingTop: 30, paddingBottom: 0, paddingHorizontal: 30, alignItems: 'center' }}>
@@ -102,7 +102,7 @@ export default function MyProfile() {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 20,
+    paddingTop: 0,
     paddingBottom: 35,
     backgroundColor: colors?.white,
     height: 1150,
