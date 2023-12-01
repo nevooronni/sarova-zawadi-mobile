@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { ScrollView, StyleSheet, View, Text, Pressable, SafeAreaView } from 'react-native'
+import { ScrollView, StyleSheet, View, Text, Pressable, SafeAreaView, Platform } from 'react-native'
 import TopNavigation from '../../components/Navigation/Top'
 import colors from '../../styles/theme'
 import * as ImagePicker from 'expo-image-picker'
@@ -59,7 +59,7 @@ export default function Scan():JSX.Element {
       setIsLoading(true)
       setTimeout(() => {
         setIsLoading(false)
-        toggleModal()
+        setModalVisible(true)
         setSelectedImage(null)
       }, 3500)
     }
@@ -98,22 +98,24 @@ export default function Scan():JSX.Element {
 
   return (
     <IosScreenWrapper background={colors?.bgRed}>
-      <SafeAreaView style={{ paddingBottom: 550 }}>
         <SpinnerLoader isLoading={state.isLoading} color={colors?.red} />
         <SuccessModalPopup isModalVisible={isModalVisible} toggleModal={toggleModal} />
-        <TopNavigation 
-          color={colors?.white} 
-          paddingHorizontal={20}
-          width='105%'
-          backgroundColor={colors?.bgRed}
-          goBack
-          noMenu
-        />
+        
         <ScrollView>
+          <SafeAreaView style={{ paddingBottom: Platform.OS === 'ios' ? 0 : 250 }}>
+          <TopNavigation 
+            color={colors?.white} 
+            paddingHorizontal={20}
+            paddingVertical={Platform.OS === 'ios' ? 5 : 20}
+            width='105%'
+            backgroundColor={colors?.bgRed}
+            goBack
+            noMenu
+          />
           <View style={styles.container}>
             <Text style={{ color: colors?.white, fontSize: 17, marginTop: 20 }}>Scan Text Code to earn points</Text>
           </View>
-          <View style={{ flexDirection: 'column', alignItems: 'center', backgroundColor: colors?.white, height: 450 }}>
+          <View style={{ flexDirection: 'column', alignItems: 'center', backgroundColor: colors?.white, height: 350 }}>
             <View style={{ flexDirection: 'row', justifyContent: 'space-around', width: '80%', paddingTop: 20 }}>
               <Pressable
                 style={[loginStyles.loginButton, { alignSelf: 'center', marginTop: 5 }]}
@@ -132,7 +134,7 @@ export default function Scan():JSX.Element {
               <Image
                 source={selectedImage}
                 style={{
-                  height:330,
+                  height: 350,
                   width: 280,
                   borderRadius: 5
                 }}
@@ -143,7 +145,7 @@ export default function Scan():JSX.Element {
             backgroundColor: colors?.white, 
             borderTopWidth: .5, 
             paddingTop: 20,
-            paddingBottom: 250,
+            paddingBottom: Platform.OS === 'ios' ? 510 : 350,
             borderColor: colors?.mediumGray,
             justifyContent: 'center',
             alignItems: 'center',
@@ -156,8 +158,8 @@ export default function Scan():JSX.Element {
               <Text style={{ marginTop: 30, color: colors?.bgRed, fontSize: 15, fontWeight: 'bold' }}>Exit</Text>
             </Pressable>
           </View>
-        </ScrollView>
       </SafeAreaView>
+        </ScrollView>
       <MainBottomNavbar />
     </IosScreenWrapper>
   )

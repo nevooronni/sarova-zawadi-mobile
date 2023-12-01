@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { StyleSheet, TouchableOpacity, View, Dimensions, Image } from "react-native"
+import { Platform, StyleSheet, TouchableOpacity, View, Dimensions, Image } from "react-native"
 import { loginStyles } from "../../../app/home"
 import { FontAwesome } from "@expo/vector-icons"
 import colors from "../../../styles/theme";
@@ -8,6 +8,8 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import { useAppActions, useAppState } from "../../../store";
 import SuccessModalPopup from "../../Modal";
 import { navigationMenu } from "../../../constants/navigation";
+
+const screenHeight = Dimensions.get('window').height;
 
 export default function MainBottomNavbar({ }) {
   const navigation = useNavigation();
@@ -48,7 +50,7 @@ export default function MainBottomNavbar({ }) {
 const styles = StyleSheet.create({
   container: {
     position: 'absolute', 
-    bottom: '22%', 
+    bottom: Platform.OS === 'ios' ? (110 * 2) : (110 * 2.5), 
     left: 0, 
     right: 0,
     zIndex: 1,

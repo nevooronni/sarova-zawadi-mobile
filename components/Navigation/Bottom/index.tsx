@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { StyleSheet, TouchableOpacity, View, Dimensions} from "react-native"
+import { StyleSheet, TouchableOpacity, View, Platform } from "react-native"
 import { loginStyles } from "../../../app/home"
 import { FontAwesome } from "@expo/vector-icons"
 import colors from "../../../styles/theme";
@@ -97,14 +97,15 @@ export default function BottomNavigation({ }) {
 const styles = StyleSheet.create({
   container: {
     position: 'absolute', 
-    bottom: '22.5%', 
+    bottom: Platform.OS === 'ios' ? (110 * 2.05) : (110 * 2.5), 
     left: 0, 
     right: 0,
     zIndex: 1,
     paddingTop: 15,
-    paddingBottom: 15,
+    paddingBottom: 45,
     paddingHorizontal: 15,
     width: '100%',
+    height: 110,
     backgroundColor: colors?.white,
     flexDirection: 'row',
     justifyContent: 'space-between',

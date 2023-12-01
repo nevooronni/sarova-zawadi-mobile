@@ -2,7 +2,6 @@ import React from 'react'
 import { Dimensions, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native'
 import colors from '../../styles/theme'
 import TopNavigation from '../../components/Navigation/Top'
-import { useAppState } from '../../store'
 import { Image } from 'expo-image';
 import { imageUrl } from '../../constants/image'
 import { successModalStyles } from '../../components/Modal'

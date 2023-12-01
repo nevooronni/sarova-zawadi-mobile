@@ -49,7 +49,7 @@ export default function RestaurantBooking() {
   const route = useRoute() 
   //@ts-ignore
   const routeId = route?.params?.id
-  const time: string[] = ["8.00am", "9.00am", "10.00am", "11.00am", "12.00a.m", "13.00a.m", "14.00a.m", "15.00a.m", "16.00a.m", "17.00a.m", "18.00a.m", "19.00a.m"]
+  const time: string[] = ["8.00am", "9.00am", "10.00am", "11.00am", "12.00p.m", "13.00p.m", "14.00p.m", "15.00p.m", "16.00p.m", "17.00p.m", "18.00p.m", "19.00p.m"]
   const [isModalVisible, setModalVisible] = useState<boolean>(false);
 
   const toggleModal = () => {
@@ -60,7 +60,6 @@ export default function RestaurantBooking() {
     setIsLoading(true)
     const restaurantName = 'Thorn Tree Cafe'
     const userFullName = state?.userFullName
-    console.log("🚀 ~ file: restaurantbooking.tsx:63 ~ sendReservationEmail ~ userFullName:", userFullName)
     const hotelName = 'Sarova Stanley Hotels & Resort Kenya'
     const emailHeading = 'Sarova Hotels & Resorts head office'
     const hotelManager = 'Andrew Kibe'
@@ -104,7 +103,6 @@ export default function RestaurantBooking() {
         message: messageBody,
       }
     }
-    console.log("🚀 ~ file: restaurantbooking.tsx:107 ~ sendReservationEmail ~ payload.template_params.messageBody:", messageBody)
 
     try {
       const headers = { "Content-Type": "application/json" }
@@ -122,7 +120,6 @@ export default function RestaurantBooking() {
     }    
   }
 
-  
   return (
     <IosScreenWrapper background={colors?.white}>
       <SafeAreaView>

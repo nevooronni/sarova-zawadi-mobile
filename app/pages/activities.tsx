@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { ImageBackground, Pressable, SafeAreaView, StyleSheet, Text, View } from 'react-native'
+import React from 'react'
+import { ImageBackground, Pressable, SafeAreaView, ScrollView, StyleSheet, Text, View, Platform } from 'react-native'
 import TopNavigation from '../../components/Navigation/Top'
 import colors from '../../styles/theme'
 import { loginStyles } from '../home';
@@ -27,6 +27,7 @@ export default function Activities() {
 
   return (
     <IosScreenWrapper background={colors?.bgGray}>
+      <ScrollView>
       <SafeAreaView>
         <SpinnerLoader isLoading={state.isLoading} color={colors?.red} />
         <TopNavigation 
@@ -42,7 +43,7 @@ export default function Activities() {
           style={styles.container}
         />
         
-        <View style={{ height: '100%', margin: 0, padding: 0, backgroundColor: colors?.white }}>
+        <View style={{ height: '100%', margin: 0, padding: 0, backgroundColor: colors?.white, paddingBottom: Platform.OS === 'ios' ? 300 : 350, }}>
             <View style={{ 
               gap: 7,
               marginTop: -50,
@@ -88,6 +89,7 @@ export default function Activities() {
             </View> 
         </View> 
       </SafeAreaView>
+        </ScrollView>
       <MainBottomNavbar />
     </IosScreenWrapper>
   )

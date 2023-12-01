@@ -64,7 +64,7 @@ export default function RestaurantTab() {
   //@ts-ignore
   const renderSection = ({ item, index }) => {
     return (
-     <View key={index} style={{ width: '100%', paddingLeft: 15 }}>
+     <View key={index} style={{ width: '100%', paddingLeft: 15, }}>
       <Text style={{ color: colors?.mediumGray3, fontSize: 15, fontWeight: 'bold', marginLeft: 12, marginBottom: -10 }}>
         {item?.title}
       </Text>
@@ -102,7 +102,7 @@ export default function RestaurantTab() {
         gap: 0, 
         paddingHorizontal: 0,
         paddingTop: 240,
-        paddingBottom: Platform.OS === 'ios' ? 250 : 320, 
+        paddingBottom: Platform.OS === 'ios' ? 320 : 420, 
       }}
     >
       <FlatList

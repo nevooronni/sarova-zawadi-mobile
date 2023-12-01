@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, StyleSheet, SafeAreaView, ScrollView } from 'react-native';
+import { Text, View, StyleSheet, SafeAreaView, ScrollView, Platform } from 'react-native';
 import { Image } from 'expo-image';
 import colors from '../../styles/theme';
 import { useAppState } from '../../store';
@@ -98,7 +98,7 @@ export default function Home({ route, navigation }){
 const styles = StyleSheet.create({
   container: {
     paddingTop: 0,
-    paddingBottom: 300,
+    paddingBottom: Platform.OS === 'ios' ? 300 : 400,
     backgroundColor: colors?.white,
     height: '100%'
   },

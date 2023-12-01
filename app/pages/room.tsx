@@ -21,7 +21,7 @@ export default function Room() {
   return (
     <IosScreenWrapper 
       background={colors?.bgRed}
-      hidden={Platform.OS === 'ios'}
+      // hidden={Platform.OS === 'ios'}
     >  
       <TopNavigation 
         color={colors?.white} 

@@ -24,7 +24,7 @@ export default function SpaTab() {
         gap: 20,
         width: '100%',
         paddingTop: 250,
-        paddingBottom: Platform.OS === 'ios' ? 250 : 320,
+        paddingBottom: Platform.OS === 'ios' ? 320 : 420,
         paddingLeft: 20,
         alignItems: 'center',
         backgroundColor: colors?.white

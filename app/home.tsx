@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, View, StyleSheet, TouchableOpacity, ImageBackground, Dimensions, Modal, Pressable } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity, ImageBackground, Dimensions, Modal, Pressable, Platform } from 'react-native';
 import { Image } from 'expo-image';
 import colors from '../styles/theme';
 import { FontAwesome } from '@expo/vector-icons';
@@ -51,7 +51,7 @@ export default function Home():JSX.Element {
             </View>
             <TouchableOpacity
               onPress={() => setModalVisible(true)}
-              style={{ marginTop: '10%' }}
+              style={{ marginTop: Platform.OS === 'ios' ? '10%' : '5%' }}
             >
               <Text style={loginStyles.whyText}>Why Join?</Text>
             </TouchableOpacity> 
@@ -65,11 +65,11 @@ export default function Home():JSX.Element {
 function WhyJoinModal({ modalVisible, setModalVisible }:
    { 
     modalVisible: boolean;
-    setModalVisible: React.Dispatch<React.SetStateAction<boolean>>;
+    setModalVisible: React.Dispatch<React.SetStateAction<boolean>>
    }):JSX.Element {
     const router = useRouter()
     const iconsSize = 18
-    const iconColor = 'gray'
+    const iconColor = colors?.lightGray
   return (
     <Modal
       animationType='slide'
@@ -86,7 +86,7 @@ function WhyJoinModal({ modalVisible, setModalVisible }:
             name='close' 
             size={iconsSize} 
             color={iconColor} 
-            style={{ marginBottom: 10, marginTop: -15, color: '#71716F', }} 
+            style={{ marginBottom: 10, marginTop: -15, color: colors?.mediumGray, }} 
             // onPress={() => setModalVisible(!modalVisible)}
           />
           <Text style={loginStyles.modalHeader}>Experience More Benefits, </Text>

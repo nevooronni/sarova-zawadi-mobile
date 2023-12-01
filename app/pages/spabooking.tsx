@@ -107,7 +107,7 @@ export default function Room() {
   return (
     <IosScreenWrapper 
       background={colors?.bgRed}
-      hidden={Platform.OS === 'ios'}
+      // hidden={Platform.OS === 'ios'}
     >  
       <SpinnerLoader isLoading={state.isLoading} color={colors?.red} />
       <TopNavigation 
@@ -123,7 +123,7 @@ export default function Room() {
         style={{ backgroundColor: colors?.white, flex: 1, marginTop: -25, paddingTop: 20 }}
         showsVerticalScrollIndicator={false} 
       >
-         <View style={{ backgroundColor: colors?.white, gap: 16, flex: 1, marginTop: -25, paddingTop: 20, paddingBottom: 100, paddingHorizontal: 30 }}>
+         <View style={{ backgroundColor: colors?.white, gap: 16, flex: 1, marginTop: -25, paddingTop: 20, paddingBottom: 450, paddingHorizontal: 30 }}>
           <View style={{ alignItems: 'flex-start' }}>
             <Text style={{ color: colors?.bgRed, fontSize: 19, fontWeight: 'bold' }}>Tulia Spa | Sarova Stanley</Text>
           </View>    

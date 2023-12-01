@@ -30,7 +30,7 @@ function HotelTab() {
         gap: 20,
         width: '100%',
         paddingTop: 250,
-        paddingBottom: Platform.OS === 'ios' ? 250 : 320,
+        paddingBottom: Platform.OS === 'ios' ? 325 : 420,
         paddingLeft: 20,
         alignItems: 'center',
         backgroundColor: colors?.white

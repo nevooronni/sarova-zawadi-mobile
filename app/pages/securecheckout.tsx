@@ -160,12 +160,12 @@ export default function SecureCheckout() {
               nights='24 nights'
               routeId={routeId}
             />
-            <View>
+            <View style={{ paddingLeft: 10 }}>
               <Text style={styles?.text2}>
                 Hello Abi, you currently have 5,000 points in your account. You can pay for this stay by redeeming 3,000 points.
               </Text>
             </View>
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between', width: '100%' }}>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between', width: '100%', paddingLeft: 10 }}>
               <Pressable 
               style={[loginStyles.loginButton, 
                 { height: 45, width: 130, paddingVertical: 13, 
