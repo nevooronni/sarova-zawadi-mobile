@@ -19,6 +19,7 @@ export default function MyStays() {
         paddingHorizontal={30}
         width='105%'
         goBack
+        noMenu
       />
       <View style={{ 
           paddingTop: 120, 

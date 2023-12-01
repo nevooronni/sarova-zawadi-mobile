@@ -165,7 +165,7 @@ export default function SecureCheckout() {
                 Hello Abi, you currently have 5,000 points in your account. You can pay for this stay by redeeming 3,000 points.
               </Text>
             </View>
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between', width: '100%', paddingLeft: 10 }}>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between', width: '100%', paddingLeft: 10, maxWidth: 325 }}>
               <Pressable 
               style={[loginStyles.loginButton, 
                 { height: 45, width: 130, paddingVertical: 13, 
@@ -208,6 +208,7 @@ const styles = StyleSheet.create({
   },
   text2: {
     color: colors?.mediumGray,
-    fontSize: 13
+    fontSize: 13,
+    maxWidth: 325
   }
 })

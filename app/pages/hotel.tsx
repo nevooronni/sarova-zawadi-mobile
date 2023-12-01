@@ -67,7 +67,7 @@ export default function Hotel() {
             </Pressable>
           </View>
           <View style={{ marginVertical: 1, borderWidth: .25, borderColor: colors?.lightGray, }} />
-          <View style={{ paddingTop: 0, gap: 10, paddingBottom: Platform.OS === 'ios' ? 260 : 320 }}>
+          <View style={{ paddingTop: 0, gap: 10, paddingBottom: Platform.OS === 'ios' ? 280 : 320 }}>
             <Text style={{ color: colors?.darkGray, fontSize: 17, fontWeight: 'bold' }}>Rooms & Suites</Text>
             {data?.map(room => (
               <RoomCard 

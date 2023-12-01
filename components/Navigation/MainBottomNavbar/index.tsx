@@ -37,7 +37,7 @@ export default function MainBottomNavbar({ }) {
                 ? menu?.logoActive
                 : menu?.logoInactive}
             />
-            <Text style={{ fontSize: 12, color: colors?.mediumGray}}>
+            <Text style={{ fontSize: 11, color: colors?.mediumGray}}>
               {menu?.name}
             </Text>
           </TouchableOpacity>
@@ -50,11 +50,11 @@ export default function MainBottomNavbar({ }) {
 const styles = StyleSheet.create({
   container: {
     position: 'absolute', 
-    bottom: Platform.OS === 'ios' ? (110 * 2) : (110 * 2.5), 
+    bottom: Platform.OS === 'ios' ? (110 * 2.19) : (110 * 2.5), 
     left: 0, 
     right: 0,
     zIndex: 1,
-    paddingTop: 20,
+    paddingTop: Platform.OS === 'ios' ? 12 : 20,
     paddingBottom: 45,
     paddingHorizontal: 15,
     width: '100%',
@@ -67,8 +67,8 @@ const styles = StyleSheet.create({
     borderTopColor: colors?.lightGray3,
   },
   image: {
-    height: 25,
-    width: 25,
+    height: 23,
+    width: 23,
     marginBottom: 6,
   },
   iconButton: {

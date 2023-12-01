@@ -124,7 +124,7 @@ export const loginStyles = StyleSheet.create({
     // height: 870,
     // width: 400,
     width: '215%',
-    height: 860,
+    height: '100%',
     transform: [{ scaleX: 1 }],
     // backgroundPositionY: 110,
     // backgroundPositionX: 110,

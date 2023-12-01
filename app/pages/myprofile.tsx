@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
     paddingTop: 20,
     paddingBottom: 35,
     backgroundColor: colors?.white,
-    height: 1050,
+    height: 1150,
     alignItems: 'center',
   }
 })

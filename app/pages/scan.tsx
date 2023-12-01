@@ -145,7 +145,7 @@ export default function Scan():JSX.Element {
             backgroundColor: colors?.white, 
             borderTopWidth: .5, 
             paddingTop: 20,
-            paddingBottom: Platform.OS === 'ios' ? 510 : 350,
+            paddingBottom: Platform.OS === 'ios' ? 535 : 350,
             borderColor: colors?.mediumGray,
             justifyContent: 'center',
             alignItems: 'center',

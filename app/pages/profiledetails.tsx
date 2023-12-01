@@ -11,6 +11,7 @@ import { profileTabsData, tabsData } from '../../constants/content'
 import PointsHistory from './pointshistory'
 import MyDetails from './mydetails'
 import Preferences from './preferences'
+import MainBottomNavbar from '../../components/Navigation/MainBottomNavbar'
 
 export default function ProfileDetails() {
   const [active, setActive] = useState<string>('Points History')
@@ -37,6 +38,8 @@ export default function ProfileDetails() {
         color={colors?.mediumGray} 
         paddingHorizontal={30}
         width='105%'
+        goBack
+        noMenu
       />
       <ScrollView>
       <View style={styles.container}>
@@ -83,6 +86,7 @@ export default function ProfileDetails() {
       </View>
     </ScrollView>
   </SafeAreaView>
+  <MainBottomNavbar />
   </IosScreenWrapper>
   )
 }
@@ -90,7 +94,7 @@ export default function ProfileDetails() {
 const styles = StyleSheet.create({
   container: {
     paddingTop: 10,
-    paddingBottom: 55,
+    paddingBottom: 65,
     backgroundColor: colors?.white,
     height: '100%'
   },

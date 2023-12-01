@@ -4,7 +4,7 @@ import { View } from '../../components/Themed'
 import { SimpleLineIcons } from '@expo/vector-icons'
 import colors from '../../styles/theme'
 import { Image } from 'expo-image'
-import { Text } from 'react-native'
+import { Text, Platform } from 'react-native'
 import TopNavigation from '../../components/Navigation/Top'
 import { IosScreenWrapper } from '../../components/ScreenWrapper'
 import MainBottomNavbar from '../../components/Navigation/MainBottomNavbar'
@@ -23,30 +23,36 @@ export default function Accounts() {
   const tabs = [
     {
       id: 1,
+      name: 'My Profile',
+      link: 'MyProfile',
+      show: true,
+    },
+    {
+      id: 2,
       name: 'My Stays',
       link: 'MyStays',
       show: true,
     },
     {
-      id: 2,
+      id: 3,
       name: 'Tell A Friend',
       link: 'TellAFriend',
       show: true,
     },
     {
-      id: 3,
+      id: 4,
       name: 'FAQs',
       link: 'Accounts',
       show: true,
     },
     {
-      id: 4,
+      id: 5,
       name: 'Settings',
       link: 'Accounts',
       show: true,
     },
     {
-      id: 5,
+      id: 6,
       name: 'Sign Out',
       link: '',
       show: true,
@@ -71,23 +77,15 @@ export default function Accounts() {
         isLoading={state.isLoading}
         color={colors?.red}
       />
-      <View style={{ paddingHorizontal: 15, paddingTop: 25 }}>
-        <TopNavigation 
-          color={colors?.lightGray} 
-          paddingHorizontal={20}
-          width='105%'
-          backgroundColor={colors?.white}
-          goBack
-          noMenu
-        />
-        <SimpleLineIcons.Button 
-          name='menu' 
-          size={20} 
-          color={colors?.white} 
-          backgroundColor='white'
-          underlayColor='white'
-          // onPress={() => props.navigation.closeDrawer()}
-        />
+      <TopNavigation 
+        color={colors?.lightGray} 
+        paddingHorizontal={20}
+        width='105%'
+        // backgroundColor={colors?.white}
+        goBack
+        noMenu
+      />
+      <View style={{ paddingHorizontal: 15, paddingTop: 25, backgroundColor: colors?.white }}>
       </View>
       <View
         style={{
@@ -99,7 +97,8 @@ export default function Accounts() {
           borderBottomWidth: 0.6,
           paddingHorizontal: 35,
           paddingTop: 20,
-          gap: 10 
+          gap: 10, 
+          backgroundColor: Platform.OS !== 'ios' && colors?.white,
         }}
       >
         <Image
