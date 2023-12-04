@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Sarova",
-    "slug": "Sarova",
+    "slug": "saraova-zawadi",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/app_logo_2.png",
@@ -20,7 +20,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "foregroundImage": "./assets/images/app_logo_2.png",
         "backgroundColor": "#ffffff"
       },
       "package": "com.nyasi01.saraovazawadi"

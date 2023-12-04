@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
     paddingHorizontal: 15,
     width: '100%',
-    height: Platform.OS === 'ios' ? '20%' : 110,
+    height: Platform.OS === 'ios' ? '20%' : 125,
     backgroundColor: colors?.white,
     flexDirection: 'row',
     justifyContent: 'space-between',
