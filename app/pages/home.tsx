@@ -97,8 +97,9 @@ export default function Home({ route, navigation }){
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     paddingTop: 0,
-    paddingBottom: Platform.OS === 'ios' ? 350 : 400,
+    paddingBottom: Platform.OS === 'ios' ? 100 : 400,
     backgroundColor: colors?.white,
     height: '100%'
   },

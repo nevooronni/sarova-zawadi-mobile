@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "saraova-zawadi",
-    "slug": "saraova-zawadi",
+    "name": "Sarova",
+    "slug": "Sarova",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/app_logo_2.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "splash": {

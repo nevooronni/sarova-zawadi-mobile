@@ -18,7 +18,9 @@ export function IosScreenWrapper({ children, background, hidden, top }:Wrapper):
  return(
   <View  style={{
     width: "100%",
-    height: '120%', // For all devices, even X, XS Max
+    // height: isExcluded ? '120%' : '100%', // For all devices, even X, XS Max
+    // height: isExcluded ? '120%' : '100%', // For all devices, even X, XS Max
+    height: '120%',
     position: 'absolute',
     top: Platform.OS === 'ios' || isExcluded ? top || 0 : top || 15,    
     left: 0,
