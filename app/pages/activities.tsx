@@ -14,7 +14,7 @@ export default function Activities() {
   const state = useAppState()
   const { setIsLoading } = useAppActions()
   const navigation = useNavigation();
-  const backgroundImage = require('../../assets/images/training_bg.png');
+  const backgroundImage = require('../../assets/images/sarova_gym.jpeg');
 
   const handleBookNow = () => {
     setIsLoading(true)
@@ -39,7 +39,7 @@ export default function Activities() {
         />
         <ImageBackground
           source={backgroundImage}
-          resizeMode="stretch"
+          // resizeMode="stretch"
           style={styles.container}
         />
         

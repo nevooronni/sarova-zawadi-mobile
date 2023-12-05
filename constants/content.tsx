@@ -34,27 +34,27 @@ interface Carousel {
 export const carouselData: Carousel[] = [
   {
     id: 1,
-    image: require('../assets/images/training.png'),
+    image: require('../assets/images/sarova_gym.jpeg'),
     title: 'Personal Training'
   },
   {
     id: 2,
-    image: require('../assets/images/brunch.png'),
+    image: require('../assets/images/sarova_dinner.jpeg'),
     title: 'Sunday Brunch'
   },
   {
     id: 3,
-    image: require('../assets/images/brunch.png'),
+    image: require('../assets/images/sarova_dinner.jpeg'),
     title: 'Swimming'
   },
   {
     id: 4,
-    image: require('../assets/images/brunch.png'),
+    image: require('../assets/images/sarova_dinner.jpeg'),
     title: 'Meditation'
   },
   {
     id: 5,
-    image: require('../assets/images/brunch.png'),
+    image: require('../assets/images/sarova_dinner.jpeg'),
     title: 'Sauna'
   }
 ]
@@ -62,7 +62,7 @@ export const carouselData: Carousel[] = [
 export const carouselData2: Carousel[] = [
   {
     id: 1,
-    image: require('../assets/images/restaurant1.png'),
+    image: require('../assets/images/sarova_dinner.jpeg'),
     title: 'Thorn Tree Cafe'
   },
   {
@@ -72,7 +72,7 @@ export const carouselData2: Carousel[] = [
   },
   {
     id: 3,
-    image: require('../assets/images/restaurant1.png'),
+    image: require('../assets/images/sarova_dinner.jpeg'),
     title: 'Exchange Restaurant'
   },
   {
@@ -82,7 +82,7 @@ export const carouselData2: Carousel[] = [
   },
   {
     id: 5,
-    image: require('../assets/images/restaurant1.png'),
+    image: require('../assets/images/sarova_dinner.jpeg'),
     title: 'Thai Chi Restaurant'
   }
 ]

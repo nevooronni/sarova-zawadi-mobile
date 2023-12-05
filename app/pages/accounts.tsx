@@ -13,6 +13,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler'
 import { useRouter } from "expo-router";
 import { useAppActions, useAppState } from '../../store'
 import SpinnerLoader from '../../components/Loaders/Spinner'
+import { imageUrl } from '../../constants/image'
 
 export default function Accounts() {
   const router = useRouter()
@@ -102,7 +103,7 @@ export default function Accounts() {
         }}
       >
         <Image
-          source={require('../../assets/images/avatar.png')}
+          source={imageUrl}
           style={{
             height: 110,
             width: 110,

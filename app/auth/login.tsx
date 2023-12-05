@@ -26,8 +26,17 @@ type FormData = {
 export default function Login():JSX.Element {
   const state = useAppState()
   const { setIsLoading } = useAppActions()
-  const { control, handleSubmit, formState: { errors }} = useForm<FormData>()
+  const { control, handleSubmit, setValue, formState: { errors }} = useForm<FormData>()
   const router = useRouter()
+
+  React.useEffect(() => {
+    if (state.email) setValue('email', state.email)
+  }, [state.email])
+
+  React.useEffect(() => {
+    if (state.email) setValue('email', state.email)
+  }, [state.email])
+
   const onSubmit = (data: FormData) => {
     setIsLoading(true)
 
@@ -59,7 +68,6 @@ export default function Login():JSX.Element {
             placeholder='Enter email address'
             control={control}
             errors={errors}
-            defaultValue={state.email}
             errorMessage='email is required'
             isRequired
             width='100%'
