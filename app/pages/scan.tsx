@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { ScrollView, StyleSheet, View, Text, Pressable, SafeAreaView, Platform } from 'react-native'
+import { ScrollView, StyleSheet, View, Text, Pressable, SafeAreaView, Platform, BackHandler } from 'react-native'
 import TopNavigation from '../../components/Navigation/Top'
 import colors from '../../styles/theme'
 import * as ImagePicker from 'expo-image-picker'
@@ -150,11 +150,11 @@ export default function Scan():JSX.Element {
           }}>
             <Text style={{ color: colors?.mediumGray, fontSize: 15 }}>Can't scan the code? exit and</Text>
             <Text style={{ color: colors?.mediumGray, fontSize: 15 }}>relauch the app</Text>
-            <Pressable
-              onPress={() => {}}
+            {Platform.OS !== 'ios' ? <Pressable
+              onPress={() => BackHandler.exitApp()}
             >
               <Text style={{ marginTop: 30, color: colors?.bgRed, fontSize: 15, fontWeight: 'bold' }}>Exit</Text>
-            </Pressable>
+            </Pressable> : null}
           </View>
       </SafeAreaView>
         </ScrollView>

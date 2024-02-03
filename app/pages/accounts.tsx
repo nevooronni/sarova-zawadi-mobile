@@ -46,12 +46,12 @@ export default function Accounts() {
       link: 'Accounts',
       show: true,
     },
-    {
-      id: 5,
-      name: 'Settings',
-      link: 'Accounts',
-      show: true,
-    },
+    // {
+    //   id: 5,
+    //   name: 'Settings',
+    //   link: 'Accounts',
+    //   show: true,
+    // },
     {
       id: 6,
       name: 'Sign Out',
@@ -69,6 +69,12 @@ export default function Accounts() {
       setIsLoading(false)
       router.replace('/auth/login')
     }, 3000)
+  }
+
+  const defaultRoutes: any = {
+    MyProfile: 'Accounts',
+    MyStays: 'Accounts',
+    TellAFriend: 'Accounts',
   }
 
   return (
@@ -132,7 +138,9 @@ export default function Accounts() {
             }}
             onPress={() => tabs?.length === tab?.id 
               ? logoutUser() 
-              : navigation.navigate(tab?.link)
+              : defaultRoutes?.[tab?.link]
+                ? navigation.navigate(tab?.link, { defaultRoute: defaultRoutes?.[tab?.link] })
+                : navigation.navigate(tab?.link)
             }
           >
             <Text style={{ color: colors?.mediumGray }}>

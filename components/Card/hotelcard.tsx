@@ -11,6 +11,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler'
 export default function HotelCard({
   id,
   name, 
+  desc,
   price, 
   points,
   image,
@@ -27,9 +28,9 @@ export default function HotelCard({
   return(
     <Pressable
       //@ts-ignore
-      onPress={() => navigation.navigate(navigateTo || 'Hotel', { id: id })}
+      onPress={() => navigation.navigate(navigateTo || 'Hotel', { id: id, name: name, desc: desc })}
       style={[carouselStyles.pressable, { borderRadius: 25 }]}>
-      <Shadow>
+      <Shadow distance={5}>
         <View style={{  alignItems: "center", justifyContent: "center", borderRadius: 25 }}>
           <View style={{ backgroundColor: "#eee", borderRadius: 25, overflow: "hidden" }}>
             <View>

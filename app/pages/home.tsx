@@ -8,9 +8,10 @@ import { loginStyles } from '../home';
 import Carousel from '../../components/Carousel';
 import { useRouter } from 'expo-router';
 import { imageUrl } from '../../constants/image';
-import { carouselData } from '../../constants/content';
+import { carouselData, promotionOffers } from '../../constants/content';
 import { IosScreenWrapper } from '../../components/ScreenWrapper'
 import MainBottomNavbar from '../../components/Navigation/MainBottomNavbar';
+import SpinnerLoader from '../../components/Loaders/Spinner';
 
 export default function Home({ route, navigation }){
   // console.log("🚀 ~ file: home.tsx:15 ~ Home ~ navigation:", route.name)
@@ -68,7 +69,7 @@ export default function Home({ route, navigation }){
           </Text>
         </View>
         <Carousel 
-          data={carouselData} 
+          data={promotionOffers} 
           paddingTop={30} 
           paddingBottom={10} 
           paddingHorizontal={30} 
@@ -99,7 +100,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 0,
-    paddingBottom: Platform.OS === 'ios' ? 100 : 400,
+    paddingBottom: Platform.OS === 'ios' ? 350 : 400,
     backgroundColor: colors?.white,
     height: '100%'
   },

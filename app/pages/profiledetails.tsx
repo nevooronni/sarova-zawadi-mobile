@@ -34,12 +34,12 @@ export default function ProfileDetails() {
     <IosScreenWrapper background={colors?.white}>
     <SafeAreaView>
       <TopNavigation 
-        // backgroundColor={colors?.white}
         color={colors?.mediumGray} 
         paddingHorizontal={30}
         width='105%'
-        // goBack
         noMenu
+        goBack
+        goBackLink='MyProfile'
       />
       <ScrollView>
       <View style={styles.container}>

@@ -17,11 +17,12 @@ const screenHeightInPixels = PixelRatio.getPixelSizeForLayoutSize(Dimensions.get
 const screenHeight = Dimensions.get('screen').height;
 // console.log("🚀 ~ file: index.tsx:13 ~ screenHeight:", screenHeight)
 
-export default function MainBottomNavbar({ }) {
+export default function MainBottomNavbar() {
   const navigation = useNavigation();
   const route = useRoute(); 
+  const defaultRoute = route?.params?.defaultRoute;
   const currentRouteName: string = route.name;
-
+  const profileRoutes = ['Activities', 'Restaurant', 'MyProfile', 'ProfileDetails', 'MyStays', 'TellAFriend']
   return (
     <View style={styles.container}>
       <View style={{ 
@@ -39,7 +40,7 @@ export default function MainBottomNavbar({ }) {
           >
             <Image
               style={styles?.image}
-              source={currentRouteName === menu?.name 
+              source={currentRouteName === menu?.name || (profileRoutes?.some(route => route === currentRouteName) && menu?.name === defaultRoute)
                 ? menu?.logoActive
                 : menu?.logoInactive}
             />

@@ -25,7 +25,7 @@ export default function SpaTab() {
         width: '100%',
         paddingTop: 250,
         paddingBottom: Platform.OS === 'ios' ? 320 : 420,
-        paddingLeft: 20,
+        paddingLeft: 25,
         alignItems: 'center',
         backgroundColor: colors?.white
       }}      
@@ -41,7 +41,7 @@ export default function SpaTab() {
             // price={item?.price}
             points={item?.points}
             image={item?.image}
-            imageWidth={Platform.OS === 'ios' ? 330 : 300}
+            imageWidth={Platform.OS === 'ios' ? 350 : 320}
             imageHeight={330}
             borderRadius={20}
             pointsColor={colors?.mediumGray3}

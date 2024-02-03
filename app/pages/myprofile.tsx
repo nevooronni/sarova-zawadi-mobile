@@ -19,9 +19,19 @@ export default function MyProfile() {
   const navigation = useNavigation();
   const userName = 'Abi Applessed' 
   const membership = 'Zawadi Emarald Member*'
+
   return (
     <IosScreenWrapper background={colors?.white}>
       <SafeAreaView>
+        <TopNavigation 
+          color={colors?.lightGray} 
+          paddingHorizontal={20}
+          width='105%'
+          // backgroundColor={colors?.white}
+          goBack
+          goBackLink='Accounts'
+          noMenu
+        />
         <ScrollView showsVerticalScrollIndicator={false}>
           <View style={styles.container}>
             <View style={{ width: '100%', gap: 17, paddingTop: 30, paddingBottom: 0, paddingHorizontal: 30, alignItems: 'center' }}>
@@ -55,7 +65,7 @@ export default function MyProfile() {
                   justifyContent: 'center',
                   paddingVertical: 15
                 }}
-                onPress={() => navigation.navigate('ProfileDetails')}
+                onPress={() => navigation.navigate('ProfileDetails', { defaultRoute: 'Accounts' })}
               >
                 <Text style={{ fontWeight: 'bold', color: colors?.white }}>Profile Details</Text>
               </TouchableOpacity>

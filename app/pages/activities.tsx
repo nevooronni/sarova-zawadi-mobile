@@ -6,7 +6,7 @@ import { loginStyles } from '../home';
 import { SimpleLineIcons } from '@expo/vector-icons';
 import SpinnerLoader from '../../components/Loaders/Spinner';
 import { useAppActions, useAppState } from '../../store'
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { IosScreenWrapper } from '../../components/ScreenWrapper';
 import MainBottomNavbar from '../../components/Navigation/MainBottomNavbar';
 
@@ -14,7 +14,9 @@ export default function Activities() {
   const state = useAppState()
   const { setIsLoading } = useAppActions()
   const navigation = useNavigation();
-  const backgroundImage = require('../../assets/images/sarova_gym.jpeg');
+  const route = useRoute(); 
+  const routeData = route?.params;
+  const backgroundImage = routeData?.image;
 
   const handleBookNow = () => {
     setIsLoading(true)
@@ -54,14 +56,12 @@ export default function Activities() {
               backgroundColor: colors?.white,
               // height: '100%'
             }}>
-              <Text style={{ fontSize: 14, color: colors?.darkGray }}>Personal Training</Text>
-              <Text style={{ fontSize: 20, color: colors?.bgRed, fontWeight: 'bold' }}>Feel The Burn </Text>
-              <Text style={{ fontSize: 15, color: colors?.bgRed}}>Sarova Panafric, Jan 26th 2019, 8am to 10am.</Text>
+              <Text style={{ fontSize: 14, color: colors?.darkGray }}>{routeData?.title}</Text>
+              <Text style={{ fontSize: 20, color: colors?.bgRed, fontWeight: 'bold' }}>{routeData?.titleDesc}</Text>
+              <Text style={{ fontSize: 15, color: colors?.bgRed}}>{routeData?.time}</Text>
               <View style={{ marginVertical: 5, borderBottomWidth: .5, borderBottomColor: colors?.mediumGray, width: 35 }} />
               <Text style={{ fontSize: 15, color: colors?.mediumGray }}>
-                Aerobic exercises is physical exercise of how to high intensity that depends primary on the aerobic energy generating process.
-                "Aerobic" means "relationg to, involving, or requiring free oxygen", and refers to the use of oxygen to adequately meet energy 
-                demands during exercise via aerobic metabolism.
+                {routeData?.typeDesc}
               </Text>
               <View style={styles.container2}> 
                 <Pressable

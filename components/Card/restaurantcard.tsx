@@ -22,7 +22,7 @@ export default function RestaurantCard({
       //@ts-ignore
       onPress={() => navigation.navigate('Hotel', { id: id })}
       style={[carouselStyles.pressable, { borderRadius: 25 }]}>
-      <Shadow>
+      <Shadow distance={5}>
         <View style={{  alignItems: "center", justifyContent: "center", borderRadius: 25 }}>
           <View style={{ backgroundColor: "#eee", borderRadius: 25, overflow: "hidden" }}>
             <View>

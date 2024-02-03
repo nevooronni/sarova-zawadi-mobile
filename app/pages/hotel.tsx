@@ -1,25 +1,39 @@
 import React, { useMemo, useState } from 'react'
-import { Text, View, Platform, Pressable } from 'react-native'
+import { Text, View, Platform, Pressable, SafeAreaView } from 'react-native'
 import { useRoute } from '@react-navigation/native'
 import colors from '../../styles/theme'
 import TopNavigation from '../../components/Navigation/Top'
 import { IosScreenWrapper } from '../../components/ScreenWrapper'
-import { CarouselImageData, roomsData } from '../../constants/content'
+import { CarouselImageData, PanafricCarouselImageData, SarovaHillCarouselImageData, SarovaImperialCarouselImageData, SarovaMaraCarouselImageData, SarovaShabaCarouselImageData, WhitesandsCarouselImageData, WoodlandsCarouselImageData, roomsData, roomsData2, roomsData3, roomsData4, roomsData5, roomsData6, roomsData7, roomsData8 } from '../../constants/content'
 import { BackgroundCarousel } from '../../components/Carousel'
 import { loginStyles } from '../home'
 import RoomCard from '../../components/Card/roomcard'
 import { ScrollView } from 'react-native-gesture-handler'
 import MainBottomNavbar from '../../components/Navigation/MainBottomNavbar';
+import SpinnerLoader from '../../components/Loaders/Spinner'
 
 export default function Hotel() {
   const route = useRoute() 
+  const routeData = route?.params;
+  console.log("🚀 ~ Hotel ~ routeData:", routeData)
   //@ts-ignore
   const { id } = route.params
   const [readmore, setReadmore] = useState<boolean>(false)
-  const desc = 'Sarova Stanley Nairobi Guest rooms at Sarova Stanley offer a blend of Victorian elegance and comfort, combined with all the practical executive amenities of the Lorem ipsum test lorem ipsum text lorem ipsum text'
+  const desc = routeData?.desc;
   //@ts-ignore
   const keyExtractor = (item) => item.id;
-  const data = useMemo(() => roomsData, [roomsData]);
+  const renderRoomsData = {
+    'Sarova Stanley Nairobi': roomsData,
+    'Sarova Panafric Nairobi': roomsData2,
+    'Sarova Woodlands Hotel': roomsData3,
+    'Sarova Whitesands Beach Resort': roomsData4,
+    'Sarova Lion Hill Game Lodge': roomsData5,
+    'Sarova Mara Game Camp': roomsData6,
+    'Sarova Shaba Game Lodge': roomsData7,
+    'Sarova Imperial, Kisumu': roomsData8,
+  }
+
+  const data = useMemo(() => renderRoomsData?.[routeData?.name], [renderRoomsData?.[routeData?.name]]);
   const getItemLayout = (_, index: number) => ({  
     length: 120, 
 
@@ -27,6 +41,41 @@ export default function Hotel() {
     offset: 100 * index, 
     index,
   });
+
+  const renderCarouselImageData = {
+    'Sarova Stanley Nairobi': CarouselImageData,
+    'Sarova Panafric Nairobi': PanafricCarouselImageData,
+    'Sarova Woodlands Hotel': WoodlandsCarouselImageData,
+    'Sarova Whitesands Beach Resort': WhitesandsCarouselImageData,
+    'Sarova Lion Hill Game Lodge': SarovaHillCarouselImageData,
+    'Sarova Mara Game Camp': SarovaMaraCarouselImageData,
+    'Sarova Shaba Game Lodge': SarovaShabaCarouselImageData,
+    'Sarova Imperial, Kisumu': SarovaImperialCarouselImageData
+  }
+  const backgroundCarouselImageData = renderCarouselImageData?.[routeData?.name];
+
+  const [isLoading, setIsLoading] = React.useState(true);
+
+  React.useEffect(() => {
+    if (isLoading) {
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 3000);
+    }
+  }, [isLoading]);
+
+  if (isLoading) {
+    return (
+      <IosScreenWrapper background={colors?.white}>
+        <SafeAreaView>
+          <SpinnerLoader
+            isLoading={true}
+            color={colors?.red}
+          />
+        </SafeAreaView>
+      </IosScreenWrapper>
+    )
+  }
 
   return (
     <IosScreenWrapper 
@@ -41,14 +90,14 @@ export default function Hotel() {
         goBack
         noMenu
       />
-      <BackgroundCarousel data={CarouselImageData} />
+      <BackgroundCarousel data={backgroundCarouselImageData} />
         <ScrollView 
           style={{ backgroundColor: colors?.white, flex: 1, marginTop: -25, paddingTop: 20 }}
           showsVerticalScrollIndicator={false} 
         >
           <View style={{ backgroundColor: colors?.white, gap: 16, flex: 1, marginTop: -25, paddingTop: 20, paddingBottom: 100, paddingHorizontal: 30 }}>
             <View style={{ alignItems: 'flex-start' }}>
-              <Text style={{ color: colors?.bgRed, fontSize: 19, fontWeight: 'bold' }}>Sarova Stanley Nairobi</Text>
+              <Text style={{ color: colors?.bgRed, fontSize: 19, fontWeight: 'bold' }}>{routeData?.name}</Text>
             </View>
             <View style={{ alignItems: 'flex-start' }}>
             <Pressable onPress={() => setReadmore(false)}>

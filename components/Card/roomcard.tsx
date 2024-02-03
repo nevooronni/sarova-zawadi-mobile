@@ -31,7 +31,7 @@ export default function RoomCard({
   const routeId = route?.params?.id
   const navigation = useNavigation();
   return (
-    <Shadow offset={[0,10]} paintInside={false} style={{ borderRadius: 10 }}>
+    <Shadow offset={[0,10]} paintInside={false} style={{ borderRadius: 10 }} distance={5}>
       <Pressable 
         //@ts-ignore
         onPress={() => navigation.navigate('Room', { id: id })} 

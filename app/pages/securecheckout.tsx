@@ -51,7 +51,7 @@ function CheckOutCard({
 }: CheckoutCard) {
   const navigation = useNavigation();
   return(
-    <Shadow style={{ margin: 0, width: Platform.OS === 'ios' ? 325 : 300 }}>
+    <Shadow style={{ margin: 0, width: Platform.OS === 'ios' ? 325 : 300 }} distance={5}>
       <View style={{ 
           margin: 0,
           width: Platform.OS === 'ios' ? 325 : 300, 

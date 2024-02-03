@@ -108,7 +108,7 @@ export default function RestaurantBooking() {
       const { status } = await axios.post(`${baseUrl}/email/send`, payload, { headers });
       if(status === 200) {
         setIsLoading(false)
-        toggleModal()
+        // toggleModal()
         setTimeout(() => {
           navigation.navigate('Home')
         }, 500)

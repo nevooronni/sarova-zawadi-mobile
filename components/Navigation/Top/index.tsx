@@ -6,6 +6,7 @@ import { useNavigation } from 'expo-router';
 import { useDrawerStatus } from '@react-navigation/drawer';
 import { Feather, Entypo } from "@expo/vector-icons";
 import { Shadow } from 'react-native-shadow-2';
+import { useRoute } from '@react-navigation/native';
 
 export interface Tab {
   id: number;
@@ -25,6 +26,7 @@ interface NavProps {
   paddingHorizontal?: number | undefined;
   paddingVertical?: number | undefined;
   goBack?: boolean;
+  goBackLink?: string | undefined;
   backgroundColor?: string;
   width?: DimensionValue | undefined;
   clicked?: boolean | undefined;
@@ -43,6 +45,7 @@ const Navbar = ({
   paddingHorizontal,
   paddingVertical,
   goBack,
+  goBackLink,
   width,
   paddingTop,
   backgroundColor,
@@ -50,6 +53,8 @@ const Navbar = ({
  }: NavProps) => {
   const navigation = useNavigation();
   const navStatus = useDrawerStatus();
+  const route = useRoute(); 
+  const currentRouteName: string = route.name;
   return (
     <View style={[styles.container, 
       { 
@@ -69,7 +74,9 @@ const Navbar = ({
         backgroundColor='transparent'
         underlayColor='transparent'
         //@ts-ignore
-        onPress={() => navigation.goBack()}
+        onPress={() => currentRouteName === 'Hotel' 
+          ? navigation.navigate('Explore') : goBackLink 
+            ? navigation.navigate(goBackLink) : navigation.goBack()}
       />}
       {navStatus === 'closed' && !noMenu ? <SimpleLineIcons.Button 
         name='menu' 
@@ -104,7 +111,7 @@ const SearchBar = ({
           backgroundColor: backgroundColor || 'transparent',
         }]}
         >
-        <Shadow style={{ width: '100%', borderRadius: 8 }}>
+        <Shadow style={{ width: '100%', borderRadius: 8 }} distance={5}>
         <View
           style={
             clicked
@@ -175,7 +182,7 @@ const Tabs = ({
       }]}
       >
       <View style={{  
-          width: Platform.OS === 'ios' ? 340 : 305, 
+          width: Platform.OS === 'ios' ? 355 : 315, 
           flexDirection: "row",
           justifyContent: 'space-between',
           borderBottomWidth: .5,
@@ -211,6 +218,7 @@ export default function TopNavigation({
   paddingHorizontal,
   paddingVertical,
   goBack,
+  goBackLink,
   width,
   backgroundColor,
   showSearchBar,
@@ -240,6 +248,7 @@ export default function TopNavigation({
         paddingHorizontal={paddingHorizontal}
         paddingVertical={paddingVertical}
         goBack={goBack}
+        goBackLink={goBackLink}
         width={width}
         noMenu={noMenu}
         backgroundColor={backgroundColor}

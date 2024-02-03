@@ -17,37 +17,37 @@ export default function RestaurantTab() {
       id: 1,
       image: require('../../assets/images/Sarova_Stanley_Thorn_Tree_Cafe_11.webp'),
       title: 'Thorn Tree Cafe',
-      desc: 'The Thorn Cafe is a legendary open air, bistro style pavement cafe that is most famous for lorem ipsum do rem mi lorem ipsum do rem mi',
+      // desc: 'The Thorn Cafe is a legendary open air, bistro style pavement cafe that is most famous for lorem ipsum do rem mi lorem ipsum do rem mi',
     },
     {
       id: 2,
       image: require('../../assets/images/Sarova_Stanley_Thai_Chi_restaurant_7.webp'),
       title: 'Thai Chi Restaurant',
-      desc: 'The Thorn Cafe is a legendary open air, bistro style pavement cafe that is most famous for lorem ipsum do rem mi lorem ipsum do rem mi',
+      // desc: 'The Thorn Cafe is a legendary open air, bistro style pavement cafe that is most famous for lorem ipsum do rem mi lorem ipsum do rem mi',
     },
     {
       id: 3,
       image: require('../../assets/images/Sarova_Stanley_Pool_Deck_Restaurant_4.webp'),
       title: 'Pool Deck Restaurant',
-      desc: 'The Thorn Cafe is a legendary open air, bistro style pavement cafe that is most famous for lorem ipsum do rem mi lorem ipsum do rem mi',
+      // desc: 'The Thorn Cafe is a legendary open air, bistro style pavement cafe that is most famous for lorem ipsum do rem mi lorem ipsum do rem mi',
     },
     {
       id: 4,
       image: require('../../assets/images/Sarova_Stanley_The_Exchange_bar_6.webp'),
       title: 'The Exchange Bar',
-      desc: 'The Thorn Cafe is a legendary open air, bistro style pavement cafe that is most famous for lorem ipsum do rem mi lorem ipsum do rem mi',
+      // desc: 'The Thorn Cafe is a legendary open air, bistro style pavement cafe that is most famous for lorem ipsum do rem mi lorem ipsum do rem mi',
     },
     {
       id: 5,
       image: require('../../assets/images/Sarova_Stanley_1902_Club_Lounge_6_(1).webp'),
       title: 'In Room Dining',
-      desc: 'The Thorn Cafe is a legendary open air, bistro style pavement cafe that is most famous for lorem ipsum do rem mi lorem ipsum do rem mi',
+      // desc: 'The Thorn Cafe is a legendary open air, bistro style pavement cafe that is most famous for lorem ipsum do rem mi lorem ipsum do rem mi',
     },
     {
       id: 6,
       image: require('../../assets/images/Sarova_Stanley_Exterior_1.webp'),
       title: 'Food & Beverage',
-      desc: 'The Thorn Cafe is a legendary open air, bistro style pavement cafe that is most famous for lorem ipsum do rem mi lorem ipsum do rem mi',
+      // desc: 'The Thorn Cafe is a legendary open air, bistro style pavement cafe that is most famous for lorem ipsum do rem mi lorem ipsum do rem mi',
     },
   ]
   const hotelsData = [
@@ -64,7 +64,7 @@ export default function RestaurantTab() {
   //@ts-ignore
   const renderSection = ({ item, index }) => {
     return (
-     <View key={index} style={{ width: '100%', paddingLeft: 15, }}>
+     <View key={index} style={{ width: '100%', paddingLeft: 15 }}>
       <Text style={{ color: colors?.mediumGray3, fontSize: 15, fontWeight: 'bold', marginLeft: 12, marginBottom: -10 }}>
         {item?.title}
       </Text>
@@ -72,7 +72,7 @@ export default function RestaurantTab() {
         data={item?.data}
         paddingTop={30} 
         paddingBottom={10} 
-        imageWidth={250}
+        imageWidth={235}
         imageHeight={270}
         paddingHorizontal={10} 
         descWidth={215}

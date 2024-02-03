@@ -25,7 +25,7 @@ export default function Concierge() {
         width: '100%',
         paddingTop: 250,
         paddingBottom: Platform.OS === 'ios' ? 320 : 420,
-        paddingLeft: 20,
+        paddingLeft: 25,
         alignItems: 'center',
         backgroundColor: colors?.white
       }}      
@@ -42,12 +42,12 @@ export default function Concierge() {
             image={item?.image}
             button={item?.button}
             namePaddingBottom={1}
-            imageWidth={Platform.OS === 'ios' ? 330 : 300}
+            imageWidth={Platform.OS === 'ios' ? 350 : 320}
             imageHeight={330}
             borderRadius={20}
             pointsColor={colors?.mediumGray3}
             pointsFontSize={13}
-            navigateTo='SpaBooking'
+            navigateTo='Explore'
           />
         )
       }}

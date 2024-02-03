@@ -13,7 +13,7 @@ import { loginStyles } from '../home'
 export default function Room() {
   const navigation = useNavigation();
   const [readmore, setReadmore] = useState<boolean>(false)
-  const desc = 'The Stanley Suite is the official presidential suite of the hotel and is named after the explorer Henry Morton Stanley Lorem ipsum test lorem ipsum text lorem ipsum text Lorem ipsum test lorem ipsum text lorem ipsum text Lorem ipsum test lorem ipsum text lorem ipsum text'
+  const desc = 'The Suite is the official suite of the hotel and is named after the explorer Henry Morton Stanley Lorem ipsum test lorem ipsum text lorem ipsum text Lorem ipsum test lorem ipsum text lorem ipsum text Lorem ipsum test lorem ipsum text lorem ipsum text'
 
   const route = useRoute() 
   //@ts-ignore
@@ -51,10 +51,10 @@ export default function Room() {
         >
           <View style={{ alignItems: 'flex-start', gap: 4 }}>
             <Text style={{ color: colors?.bgRed, fontSize: 19, fontWeight: 'bold' }}>
-              Stanley Themed Suites
+              Themed Suites
             </Text>
             <Text style={{ fontSize: 12, color: colors?.darkGray, fontWeight: 'bold' }}>
-              From US $150 per night
+              From per night
             </Text>
           </View>
           <View style={{ 
@@ -153,7 +153,7 @@ export default function Room() {
               { height: 40, width: 125, paddingVertical: 10, 
               }]}
               //@ts-ignore
-              onPress={() => navigation.navigate('Booking', { id: routeId })} 
+              // onPress={() => navigation.navigate('Booking', { id: routeId })} 
             >
               <Text style={loginStyles.loginText}>Book Now</Text>
               </Pressable>

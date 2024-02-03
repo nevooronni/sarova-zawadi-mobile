@@ -26,8 +26,8 @@ export function BackgroundCarousel({ data }: { data: ImageProps[]}){
         width={width}
         height={width / 1.5}
         data={data}
-        autoPlayInterval={1500}
-        scrollAnimationDuration={1700}
+        autoPlayInterval={700}
+        scrollAnimationDuration={700}
         onProgressChange={(_, absoluteProgress) => {
           handleIndex(Math.round(absoluteProgress));
         }}
@@ -159,12 +159,25 @@ export default function Carousel({
             <Pressable
               key={index}
               //@ts-ignore
-              onPress={onPress && !item?.isLocked ? () => onPress() : !item?.isLocked ? () => navigation.navigate('Activities') : () => toggleModal()}
+              onPress={onPress && !item?.isLocked 
+                ? () => onPress() 
+                : !item?.isLocked 
+                 ? () => navigation.navigate('Activities', { 
+                  defaultRoute: item?.defaultRoute, 
+                  desc: item?.desc, 
+                  title: item?.title,
+                  titleDesc: item?.titleDesc,
+                  image: item?.image,
+                  time: item?.time,
+                  typeDesc: item?.typeDesc,
+                }) 
+                 : () => toggleModal()
+              }
               style={carouselStyles.pressable}
             >
-              <Shadow>
-                <View style={{  alignItems: "center", justifyContent: "center", borderRadius: borderRadius || 25, }}>
-                  <View style={{ backgroundColor: "#eee", borderRadius: borderRadius || 25, overflow: "hidden" }}>
+              <Shadow distance={4}>
+                <View style={{  alignItems: "center", justifyContent: "center", borderRadius: borderRadius || 25,  }}>
+                  <View style={{ backgroundColor: "#fff", borderRadius: borderRadius || 25, overflow: "hidden",  paddingVertical: 5 }}>
                     <View>
                       <Image
                         style={[carouselStyles.image, 

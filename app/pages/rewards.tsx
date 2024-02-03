@@ -106,7 +106,7 @@ export default function Rewards() {
         alignSelfBottomCardText='flex-start'
         toggleModal={toggleModal}
         //@ts-ignore
-        onPress={() => navigation.navigate('Restaurant', { id: item?.id })}
+        onPress={() => navigation.navigate('Restaurant', { id: item?.id, defaultRoute: 'Rewards' })}
       />
     </View>
     );

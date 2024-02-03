@@ -31,8 +31,9 @@ function HotelTab() {
         width: '100%',
         paddingTop: 250,
         paddingBottom: Platform.OS === 'ios' ? 350 : 420,
-        paddingLeft: 20,
+        paddingLeft: 25,
         alignItems: 'center',
+        justifyContent: 'center',
         backgroundColor: colors?.white
       }}      
       keyExtractor={keyExtractor}
@@ -47,7 +48,8 @@ function HotelTab() {
             price={item?.price}
             points={item?.points}
             image={item?.image}
-            imageWidth={Platform.OS === 'ios' ? 330 : 300}
+            desc={item?.desc}
+            imageWidth={Platform.OS === 'ios' ? 350 : 320}
             imageHeight={330}
             borderRadius={20}
           />
