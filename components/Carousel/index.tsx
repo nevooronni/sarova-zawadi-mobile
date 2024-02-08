@@ -9,6 +9,7 @@ import AnimatedDotsCarousel from 'react-native-animated-dots-carousel'
 import { blurhash } from '../../constants/image'
 import { FontAwesome } from '@expo/vector-icons'
 import SuccessModalPopup from '../Modal';
+import { useAppActions } from '../../store';
 
 export function BackgroundCarousel({ data }: { data: ImageProps[]}){
   const width = Dimensions.get('window').width;
@@ -21,7 +22,7 @@ export function BackgroundCarousel({ data }: { data: ImageProps[]}){
     <>
       <ReanimatedCarousel
         loop
-        autoPlay
+        autoPlay={data?.length > 1}
         pagingEnabled
         width={width}
         height={width / 1.5}
@@ -141,6 +142,7 @@ export default function Carousel({
 }) {
   const navigation = useNavigation();
   const [readmore, setReadmore] = useState<boolean>(false)
+  const { setRouteStateId } = useAppActions()
 
   return (
     <FlatList
@@ -160,18 +162,20 @@ export default function Carousel({
               key={index}
               //@ts-ignore
               onPress={onPress && !item?.isLocked 
-                ? () => onPress() 
+                ? () => { onPress(); setRouteStateId(item?.id); }
                 : !item?.isLocked 
-                 ? () => navigation.navigate('Activities', { 
-                  defaultRoute: item?.defaultRoute, 
-                  desc: item?.desc, 
-                  title: item?.title,
-                  titleDesc: item?.titleDesc,
-                  image: item?.image,
-                  time: item?.time,
-                  typeDesc: item?.typeDesc,
-                }) 
-                 : () => toggleModal()
+                 ? () => {
+                  navigation.navigate('Activities', { 
+                    defaultRoute: item?.defaultRoute, 
+                    desc: item?.desc, 
+                    title: item?.title,
+                    titleDesc: item?.titleDesc,
+                    image: item?.image,
+                    time: item?.time,
+                    typeDesc: item?.typeDesc,
+                  });
+                  setRouteStateId(item?.id);
+                 } : () => { toggleModal(); setRouteStateId(item?.id);} 
               }
               style={carouselStyles.pressable}
             >
@@ -199,7 +203,7 @@ export default function Carousel({
                     </View>
                     <View style={{ paddingTop: paddingTopCard || 20, paddingBottom: paddingBottomCard || 25, paddingHorizontal: paddingHorizontalBottomCard, backgroundColor: colors?.white }}>
                       <Text style={[carouselStyles.text, { fontSize: fontSize, alignSelf: alignSelfBottomCardText || 'center', color: bottomTextTitleColor  || colors?.lightGray }]}>
-                        {item?.title ? item?.title?.slice(0,20) : '-'}
+                        {item?.title ? item?.title?.slice(0,26) : '-'}
                       </Text>
                       {item?.desc && <Pressable onPress={() => setReadmore(false)} style={{ width: '100%', marginTop: 5 }}>
                         <Text style={{ color: colors?.mediumGray4, flexWrap: 'wrap', width: descWidth, fontSize: 12 }}>{item?.desc ? readmore ? item?.desc : `${item?.desc?.slice(0,55)}...` : ''}{!readmore 

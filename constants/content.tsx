@@ -38,7 +38,7 @@ interface Carousel {
 export const carouselData: Carousel[] = [
   {
     id: 1,
-    image: require('../assets/images/sarova_gym.jpeg'),
+    image: require('../assets/images/gym.jpg'),
     title: 'Personal Training',
     titleDesc: 'Feel the Burn',
     time: 'Sarova Panafric, Jan 26th 2019, 8am to 10am.',
@@ -47,16 +47,16 @@ export const carouselData: Carousel[] = [
   },
   {
     id: 2,
-    image: require('../assets/images/sarova_dinner.jpeg'),
+    image: require('../assets/images/brunch.jpg'),
     title: 'Sunday Brunch',
-    titleDesc: 'Feel the Burn',
+    titleDesc: 'Brunch',
     time: 'Sarova Panafric, Jan 26th 2019, 8am to 10am.',
     defaultRoute: 'Home',
     typeDesc: `Aerobic exercises is physical exercise of how to high intensity that depends primary on the aerobic energy generating process."Aerobic" means "relationg to, involving, or requiring free oxygen", and refers to the use of oxygen to adequately meet energy demands during exercise via aerobic metabolism.`
   },
   {
     id: 3,
-    image: require('../assets/images/sarova_dinner.jpeg'),
+    image: require('../assets/images/swimming.jpg'),
     title: 'Swimming',
     titleDesc: 'Relax in the pool',
     time: 'Sarova Panafric, Jan 26th 2019, 8am to 10am.',
@@ -65,7 +65,7 @@ export const carouselData: Carousel[] = [
   },
   {
     id: 4,
-    image: require('../assets/images/sarova_dinner.jpeg'),
+    image: require('../assets/images/meditation.jpg'),
     title: 'Meditation',
     titleDesc: 'Feel the Meditation',
     time: 'Sarova Panafric, Jan 26th 2019, 8am to 10am.',
@@ -74,7 +74,7 @@ export const carouselData: Carousel[] = [
   },
   {
     id: 5,
-    image: require('../assets/images/sarova_dinner.jpeg'),
+    image: require('../assets/images/sauna.jpg'),
     title: 'Sauna',
     titleDesc: 'Relax in the Sauna',
     time: 'Sarova Panafric, Jan 26th 2019, 8am to 10am.',
@@ -305,12 +305,266 @@ export const hotels: Hotel[] = [
 ]
 
 export const CarouselImageData: ImageProps[] = [
-  require('../assets/images/Sarova_Stanley_Exterior_1.webp'),
-  require('../assets/images/Sarova_Stanley_1902_Club_Lounge_6_(1).webp'),
+  require('../assets/images/Sarova-Stanley-Thorn-Tree-Cafe-3.jpeg'),
+  require('../assets/images/Thorn-Cafe-2.jpeg'),
+  require('../assets/images/Thorn-Tree-Cafe-10.jpeg'),
+  require('../assets/images/Sarova-Stanley-Thorn-Tree-Cafe-5.jpeg'),
+]
+
+export const CarouselImageData2: ImageProps[] = [
   require('../assets/images/Sarova_Stanley_The_Exchange_bar_6.webp'),
-  require('../assets/images/Sarova_Stanley_Thorn_Tree_Cafe_11.webp'),
-  require('../assets/images/Sarova_Stanley_Thai_Chi_restaurant_8.webp'),
+  require('../assets/images/Sarova-Stanley-The-Exchange-bar-3.jpeg'),
+  require('../assets/images/Exchange-bar-7.jpeg'),
+  require('../assets/images/Exchange-bar-10.jpeg'),
+  require('../assets/images/Exchange-bar-13.jpeg'),
+]
+
+export const CarouselImageData3: ImageProps[] = [
+  require('../assets/images/Sarova_Stanley_Thai_Chi_restaurant_7.webp'),
+  require('../assets/images/Thai-Chi-restaurant-8.jpeg'),
+  require('../assets/images/Thai-Chi-restaurant-6.jpeg'),
+  require('../assets/images/Thai-Chi-restaurant-3.jpeg'),
+  require('../assets/images/Thai-Chi-restaurant-23.jpeg'),
+]
+
+export const CarouselImageData4: ImageProps[] = [
   require('../assets/images/Sarova_Stanley_Pool_Deck_Restaurant_4.webp'),
+  require('../assets/images/Pool-Deck-Restaurant-1.jpeg'),
+  require('../assets/images/Pool-Deck-Restaurant-3.jpeg'),
+]
+
+export const CarouselImageData5: ImageProps[] = [
+  require('../assets/images/Sarova-Stanley-In-Room-dining.jpeg'),
+]
+
+export const CarouselImageData6: ImageProps[] = [
+  require('../assets/images/Food-2.jpeg'),
+  require('../assets/images/Food-4.jpeg'),
+  require('../assets/images/Food-6.jpeg'),
+  require('../assets/images/Food-7.jpeg'),
+  require('../assets/images/Food-8.jpeg'),
+  require('../assets/images/Drinks-5.jpeg'),
+  require('../assets/images/Drinks-6.jpeg'),
+  require('../assets/images/Drinks-7.jpeg'),
+  require('../assets/images/Drinks-8.jpeg'),
+]
+
+export const CarouselImageData7: ImageProps[] = [
+  require('../assets/images/Flame-Tree-Bar.jpeg'),
+]
+
+export const CarouselImageData8: ImageProps[] = [
+  require('../assets/images/PoolDeckdining10.jpeg'),
+]
+
+export const CarouselImageData9: ImageProps[] = [
+  require('../assets/images/Deck-Pool-Lounge-Bar-3.jpeg'),
+  require('../assets/images/Deck-Pool-Lounge-Bar-1.jpeg'),
+  require('../assets/images//Deck-Pool-Lounge-Bar-4.jpeg'),
+]
+
+export const CarouselImageData10: ImageProps[] = [
+  require('../assets/images/Deck-Cocktail-3.jpeg'),
+  require('../assets/images/Deck-Cocktail-2.jpeg'),
+  require('../assets/images/Deck-Cocktail-01.jpeg'),
+]
+
+export const CarouselImageData11: ImageProps[] = [
+  require('../assets/images/Cinnamon-Restaurant-15.jpeg'),
+  require('../assets/images/Cinnamon-Restaurant-10.jpeg'),
+  require('../assets/images/Cinnamon-Restaurant-12.jpeg'),
+  require('../assets/images/Cinnamon-Restaurant-17.jpeg'),
+]
+
+export const CarouselImageData12: ImageProps[] = [
+  require('../assets/images/Leather-Bar14.jpeg'),
+  require('../assets/images/Leather-Bar17.jpeg'),
+  require('../assets/images/Leather-Bar24.jpeg'),
+  require('../assets/images/Leather-Bar25.jpeg'),
+  require('../assets/images/Leather-Bar35.jpeg'),
+]
+
+export const CarouselImageData13: ImageProps[] = [
+  require('../assets/images/Romantic-dining-3.jpeg'),
+]
+
+export const CarouselImageData14: ImageProps[] = [
+  require('../assets/images/WD-1.jpeg'),
+  require('../assets/images/WD-4.jpeg'),
+]
+
+export const CarouselImageData15: ImageProps[] = [
+  require('../assets/images/WOODLANDS-BRUNCH-52.jpeg'),
+  require('../assets/images/WOODLANDS-BRUNCH-55.jpeg'),
+  require('../assets/images/WOODLANDS-BRUNCH-45.jpeg'),
+  require('../assets/images/WOODLANDS-BRUNCH-47.jpeg'),
+]
+
+export const CarouselImageData16: ImageProps[] = [
+  require('../assets/images/WS-5.jpeg'),
+  require('../assets/images/WS-6.jpeg'),
+  require('../assets/images/WS-13.jpeg'),
+  require('../assets/images/WS-4.jpeg'),
+]
+
+export const CarouselImageData17: ImageProps[] = [
+  require('../assets/images/MN-2.jpeg'),
+  require('../assets/images/MN-1.jpeg'),
+  require('../assets/images/MN-11.jpeg'),
+  require('../assets/images/MN-3.jpeg'),
+]
+
+export const CarouselImageData18: ImageProps[] = [
+  require('../assets/images/LS-6.jpeg'),
+  require('../assets/images/LS-3.jpeg'),
+  require('../assets/images/LC-1.jpeg'),
+  require('../assets/images/WOODLANDS-BRUNCH-47.jpeg'),
+]
+
+export const CarouselImageData19: ImageProps[] = [
+  require('../assets/images/CBB-3.jpeg'),
+  require('../assets/images/CBB-4.jpeg'),
+  require('../assets/images/CBB-6.jpeg'),
+  require('../assets/images/CBB-5.jpeg'),
+]
+
+export const CarouselImageData20: ImageProps[] = [
+  require('../assets/images/pb-22.jpeg'),
+  require('../assets/images/PB-33.jpeg'),
+  require('../assets/images/PB-11.jpeg'),
+  require('../assets/images/PB-66.jpeg'),
+]
+
+export const CarouselImageData21: ImageProps[] = [
+  require('../assets/images/SWB-6.jpeg'),
+  require('../assets/images/SWB-8.jpeg'),
+  require('../assets/images/PS-1.jpeg'),
+  require('../assets/images/PS-2.jpeg'),
+]
+
+export const CarouselImageData22: ImageProps[] = [
+  require('../assets/images/FR-4.jpeg'),
+  require('../assets/images/FR-10.jpeg'),
+  require('../assets/images/FR-14.jpeg'),
+  require('../assets/images/FR-17.jpeg'),
+]
+
+export const CarouselImageData23: ImageProps[] = [
+  require('../assets/images/PD-12.jpeg'),
+  require('../assets/images/PD-16.jpeg'),
+  require('../assets/images/PD-21.jpeg'),
+  require('../assets/images/PD-22.jpeg'),
+]
+
+export const CarouselImageData24: ImageProps[] = [
+  require('../assets/images/SWB-6.jpeg'),
+  require('../assets/images/SWB-8.jpeg'),
+]
+
+export const CarouselImageData25: ImageProps[] = [
+  require('../assets/images/PG-16.jpeg'),
+  require('../assets/images/PG-9.jpeg'),
+]
+
+export const CarouselImageData26: ImageProps[] = [
+  require('../assets/images/LH-3.jpeg'),
+  require('../assets/images/LH-2.jpeg'),
+]
+
+export const CarouselImageData27: ImageProps[] = [
+  require('../assets/images/Sundowner-10.jpeg'),
+  require('../assets/images/Sundowner-5.jpeg'),
+  require('../assets/images/Sundowner-11.jpeg'),
+]
+
+export const CarouselImageData28: ImageProps[] = [
+  require('../assets/images/PDD-77.jpeg'),
+  require('../assets/images/PDD-99.jpeg'),
+  require('../assets/images/PDD-12.jpeg'),
+  require('../assets/images/PDD-13.jpeg'),
+]
+
+export const CarouselImageData29: ImageProps[] = [
+  require('../assets/images/IR-2.jpeg'),
+  require('../assets/images/IR-3.jpeg'),
+  require('../assets/images/IR-5.jpeg'),
+  require('../assets/images/IR-6.jpeg'),
+]
+
+export const CarouselImageData30: ImageProps[] = [
+  require('../assets/images/OB-1.jpeg'),
+  require('../assets/images/OB-3.jpeg'),
+  require('../assets/images/OB-4.jpeg'),
+  require('../assets/images/OB-2.jpeg'),
+]
+
+export const CarouselImageData31: ImageProps[] = [
+  require('../assets/images/SBBB-1.jpeg'),
+  require('../assets/images/SLD-1.jpeg'),
+  require('../assets/images/SLD-2.jpeg'),
+]
+
+export const CarouselImageData32: ImageProps[] = [
+  require('../assets/images/SSR-2.jpeg'),
+  require('../assets/images/SSR-5.jpeg'),
+  require('../assets/images/SSR-10.jpeg'),
+]
+
+export const CarouselImageData33: ImageProps[] = [
+  require('../assets/images/SGL-14.jpeg'),
+  require('../assets/images/SGL-24.jpeg'),
+  require('../assets/images/SGL-23.jpeg'),
+]
+
+export const CarouselImageData34: ImageProps[] = [
+  require('../assets/images/LBD-6.jpeg'),
+  require('../assets/images/LBD-7.jpeg'),
+]
+
+export const CarouselImageData35: ImageProps[] = [
+  require('../assets/images/SRD-6.jpeg'),
+  require('../assets/images/SRD-4.jpeg'),
+  require('../assets/images/SRD-11.jpg'),
+]
+
+export const CarouselImageData36: ImageProps[] = [
+  require('../assets/images/SSS-8.jpeg'),
+  require('../assets/images/SSS-7.jpeg'),
+  require('../assets/images/SSS-6.jpeg'),
+]
+
+export const CarouselImageData37: ImageProps[] = [
+  require('../assets/images/LS0-1.jpeg'),
+  require('../assets/images/LS0-4.jpeg'),
+]
+
+export const CarouselImageData38: ImageProps[] = [
+  require('../assets/images/PDL-11.jpeg'),
+  require('../assets/images/PDL-66.jpeg'),
+  require('../assets/images/PDL-88.jpeg'),
+]
+
+export const CarouselImageData39: ImageProps[] = [
+  require('../assets/images/CCB-3.jpeg'),
+  require('../assets/images/CCB-1.jpeg'),
+]
+
+export const CarouselImageData40: ImageProps[] = [
+  require('../assets/images/CY-1.jpeg'),
+  require('../assets/images/CY-2.jpeg'),
+  require('../assets/images/CY-5.jpeg'),
+]
+
+export const CarouselImageData41: ImageProps[] = [
+  require('../assets/images/CFS-3.jpeg'),
+  require('../assets/images/CFS-4.jpeg'),
+  require('../assets/images/CFS-6.jpeg'),
+]
+
+export const CarouselImageData42: ImageProps[] = [
+  require('../assets/images/PRB-1.jpeg'),
+  require('../assets/images/PRB-2.jpeg'),
+  require('../assets/images/PRB-3.jpeg'),
 ]
 
 export const PanafricCarouselImageData: ImageProps[] = [

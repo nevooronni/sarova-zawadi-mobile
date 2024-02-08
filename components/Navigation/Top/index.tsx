@@ -182,7 +182,7 @@ const Tabs = ({
       }]}
       >
       <View style={{  
-          width: Platform.OS === 'ios' ? 355 : 315, 
+          width: Platform.OS === 'ios' ? 365 : 325, 
           flexDirection: "row",
           justifyContent: 'space-between',
           borderBottomWidth: .5,
