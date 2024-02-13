@@ -193,13 +193,13 @@ export default function Carousel({
                         transition={1000}
                       />
                     {item?.isLocked 
-                        ? <FontAwesome
-                            name='lock' 
-                            size={85} 
-                            color={colors?.white}
-                            style={{ position: 'relative', top: '-60%', right: '-40%', zIndex: 1, marginBottom: -85 }} 
-                          /> 
-                        : null}
+                      ? <FontAwesome
+                          name='lock' 
+                          size={85} 
+                          color={colors?.white}
+                          style={{ position: 'relative', top: '-60%', right: '-40%', zIndex: 1, marginBottom: -85 }} 
+                        /> 
+                      : null}
                     </View>
                     <View style={{ paddingTop: paddingTopCard || 20, paddingBottom: paddingBottomCard || 25, paddingHorizontal: paddingHorizontalBottomCard, backgroundColor: colors?.white }}>
                       <Text style={[carouselStyles.text, { fontSize: fontSize, alignSelf: alignSelfBottomCardText || 'center', color: bottomTextTitleColor  || colors?.lightGray }]}>
